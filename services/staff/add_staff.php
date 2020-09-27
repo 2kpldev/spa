@@ -2,11 +2,7 @@
 include ("../../connection.php");
 include ("../../helper/index.php");
 
-$get_resultset=mysqli_query($con,"SELECT*FROM spa_staff");
-$rested=mysqli_num_rows($get_resultset);
-$detake=mysqli_query($con,"SELECT staff_code from spa_staff where staff_code=(select max(staff_code)from spa_staff)");
-$result=mysqli_fetch_array($detake);
-$id=$result[0]+1;
+
 
 ?>
 
@@ -64,7 +60,7 @@ $id=$result[0]+1;
 									<div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 150px; max-height: 180px; line-height: 20px;"></div>
 									<div>
 										<span class="btn btn-sm  btn-info  btn-file"><span class="fileupload-new">ເລືອກຮູບ </span><span class="fileupload-exists">ປ່ຽນຮູບ</span>
-										<input type="file" name="staff_img" id="images"> 	
+										<input type="file" name="staff_img" id="staff_img" required> 	
 									</span>
 									
 
@@ -76,35 +72,28 @@ $id=$result[0]+1;
                     
                
 
-                      <div class="col-md-2 mb-3">
-                      <label>ລະຫັດ <?php isVal();?></label>
-                      <div class="input-group">
-                      <input type="text" class="form-control mr-2 fs-20"
-                      <?php if($rested>=1){echo "readonly";}else{echo "";} ?>
-                      name="m_id" value="<?php if($rested>=1){echo $id;}else{echo "";} ?>" required>
-                      </div>
-                    </div>
+
 
 
 
                     <div class="col-md-4 mb-3">
                       <label>ຊື່ <?php isVal();?></label>
                       <div class="input-group">
-                        <input type="text" class="form-control" required placeholder="ຊື່"  name='staff_name' id="staff_name">
+                        <input type="text" class="form-control" required placeholder="ຊື່"  name='staff_name' id="staff_name" required>
                       </div>
                     </div>
                     <div class="col-md-4 mb-3">
                       <label>ນາມສະກຸນ</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" placeholder="ນາມສະກຸນ" name='staff_lname' id="staff_lname">
+                        <input type="text" class="form-control" placeholder="ນາມສະກຸນ" name='staff_lname' id="staff_lname" required>
                       </div>
                     </div>
 					
-					               <div class="col-md-2 mb-3">
+					               <div class="col-md-4 mb-3">
                       <label>ເພດ</label>
                       <div class="input-group">
                         
-							<select class="form-control" name='staff_gender' id="staff_gender">
+							<select class="form-control" name='staff_gender' id="staff_gender" required>
                                 <option value="">ກະລຸນາເລືອກເພດ</option>
                                 <option value="ຊາຍ">ຊາຍ</option>
                                 <option value="ຍິງ">ຍິງ</option>
@@ -117,13 +106,13 @@ $id=$result[0]+1;
                     <div class="col-md-6 mb-3">
                      <label>ວັນເດືອນປີເກີດ</label>
                       <div class="input-group">
-                        <input type="date" class="form-control"  value="<?=date('Y-m-d');?>" name='staff_dob' id="staff_dob">
+                        <input type="date" class="form-control"  value="<?=date('Y-m-d');?>" name='staff_dob' id="staff_dob" required>
                       </div>
                     </div>
                     <div class="col-md-6 mb-3">
                       <label>ເບີໂທ</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" placeholder="ເບີໂທ" name='staff_tel' id="staff_tel">
+                        <input type="text" class="form-control" placeholder="ເບີໂທ" name='staff_tel' id="staff_tel" required>
                       </div>
                     </div>
                   </div>
@@ -132,13 +121,13 @@ $id=$result[0]+1;
                     <div class="col-md-4 mb-3">
                       <label>ຊື່ຜູ້ນຳໃຊ້</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" placeholder="ຊື່ຜູ້ນຳໃຊ້" name='staff_username' id="staff_username">
+                        <input type="text" class="form-control" placeholder="ຊື່ຜູ້ນຳໃຊ້" name='staff_username' id="staff_username" required>
                       </div>
                     </div>
                     <div class="col-md-4 mb-3">
                       <label>ລະຫັດຜ່ານ</label>
                       <div class="input-group">
-                        <input type="password" class="form-control" placeholder="ລະຫັດຜ່ານ" name='staff_password' id="staff_password">
+                        <input type="password" class="form-control" placeholder="ລະຫັດຜ່ານ" name='staff_password' id="staff_password" required>
                       </div>
                     </div>
 					
@@ -146,7 +135,7 @@ $id=$result[0]+1;
                       <label>ສິດທິນຳໃຊ້</label>
                       <div class="input-group">
                         
-							<select class="form-control" name='staff_role' id="staff_role">
+							<select class="form-control" name='staff_role' id="staff_role" required>
                                 <option value="">ກະລຸນາເລືອກສິດທິນຳໃຊ້</option>
                                 <option value="on">ເປິດການນຳໃຊ້</option>
                                 <option value="off">ປິດການນຳໃຊ້</option>
@@ -159,23 +148,23 @@ $id=$result[0]+1;
                     <div class="col-md-4 mb-3">
                       <label>ຕຳແໜ່ງ</label>
                       <div class="input-group">
-                        	<select class="form-control" name='rankcode' id="rankcode">
+                        	<select class="form-control" name='rankcode' id="rankcode" required> 
                                 <option value="">ກະລຸນາເລືອກຕຳແໜ່ງ</option>
                                 <option value="01">ພະນັກງານຕອນຮັບ</option>
-                                <option value="01">ພະນັກງານທຳຄວາມສະອາດ</option>
+                                <option value="02">ພະນັກງານທຳຄວາມສະອາດ</option>
 							</select>
                       </div>
                     </div>
                     <div class="col-md-4 mb-3">
                       <label>ເງິນເດືອນພື້ນຖານ</label>
                       <div class="input-group">
-                        <input type="number" class="form-control" placeholder="ເງິນເດືອນພື້ນຖານ" name='staff_salary' id="staff_salary">
+                        <input type="number" class="form-control" placeholder="ເງິນເດືອນພື້ນຖານ" name='staff_salary' id="staff_salary" required>
                       </div>
                     </div>
                     <div class="col-md-4 mb-3">
                      <label>ວັນເຂົ້າວຽກ</label>
                       <div class="input-group">
-                        <input type="date" class="form-control"  value="<?=date('Y-m-d');?>" name='staff_date_in' id="staff_date_in">
+                        <input type="date" class="form-control"  value="<?=date('Y-m-d');?>" name='staff_date_in' id="staff_date_in" required>
                       </div>
                     </div>
                   </div>
@@ -210,20 +199,21 @@ $id=$result[0]+1;
     <script>
      
         $('#insert_data').on('submit',function(event){
-				event.preventDefault();
+                event.preventDefault();
+             
             $.ajax({
                 url:'save_staff.php',
                 method:'post',
-                data:new formData(this),
+                data:new FormData(this),
                 contentType:false,
                 processData:false,
                 success: function(dataResult) {
                         var dataResult = JSON.parse(dataResult);
 
                         if (dataResult.statusCode == 200) {
-                            Notiflix.Notify.Success('ບັນທຶກສຳເລັດ');
+                            Notiflix.Report.Success('ສຳເລັດ','ການດຳເນີນງານສຳເລັດ...', 'ປິດ');
+                          
                             $("#insert_data")[0].reset();
-                            fetchdata();
                         } 
                         else if (dataResult.statusCode == 404) {
                             Notiflix.Notify.Failure('ບັນທຶກຂໍ້ມູນບໍ່ສຳເລັດ');
