@@ -5269,7 +5269,7 @@ table.dataTable thead .sorting_desc_disabled:after{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url(../img/costic/lock-screen.jpg);
+  background-image: url('assets/img/empty.gif');
   background-size: cover;
   background-position: center center;
   z-index: 2;

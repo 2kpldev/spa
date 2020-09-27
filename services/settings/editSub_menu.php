@@ -29,11 +29,8 @@
       $spaMenu=mysqli_query($con,"SELECT*FROM spa_menu where m_id='$_GET[page]'");
       $res=$_ASSOC($spaMenu);
 
-      $get_resultset=mysqli_query($con,"SELECT*FROM spa_submenu");
-      $rested=mysqli_num_rows($get_resultset);
-      $detake=mysqli_query($con,"SELECT sub_id from spa_submenu where sub_id=(select max(sub_id)from spa_submenu)");
-      $result=mysqli_fetch_array($detake);
-      $id=$result[0]+1;
+      $get_resultset=mysqli_query($con,"SELECT*FROM spa_submenu WHERE sub_id='$_GET[id]'");
+      $result=mysqli_fetch_array($get_resultset);
       ?>
     <!-- Body Content Wrapper -->
     <div class="ms-content-wrapper">
@@ -49,18 +46,17 @@
                       <label>ລະຫັດ <?php isVal() ?></label>
                       <div class="input-group">
                         <input type="hidden" class="form-control" name="m_id"  value="<?php echo $_GET['page'];?>">
-                        <input type="text" class="form-control" name="sub_id"
-                        <?php if($rested>=1){echo "readonly";}else{echo "";} ?>
-                         value="<?php if($rested>=1){echo $id;}else{echo "";} ?>" required>
+                        <input type="text" class="form-control" name="sub_id" readonly
+                         value="<?php echo $result['sub_id'];?>" required>
                       </div>
 
                       <label>ຊື່ເມນູຍ່ອຍ <?php isVal() ?></label>
                       <div class="input-group">
-                        <input type="text" class="form-control" name="sub_name" placeholder="ກະລຸນາປ້ອນຊື່ເມນູຍ່ອຍ" required>
+                        <input type="text" class="form-control" name="sub_name" value="<?php echo $result['sub_name'];?>" required>
                       </div>
                       <label>ລິ້ງ <?php isVal() ?></label>
                       <div class="input-group">
-                        <input type="text" class="form-control" name="sub_link" placeholder="ກະລຸນາປ້ອນລິ້ງ" required>
+                        <input type="text" class="form-control" name="sub_link" value="<?php echo $result['sub_link'];?>" required>
                       </div>
                   <button class="btn btn-outline-primary mt-4" name="onSubmit" type="submit"><i class="fa fa-check-circle"></i> ບັນທຶກ</button>
                   <button class="btn btn-outline-light mt-4" onclick="_back()" type="reset"><i class="fa fa-times-circle"></i> ຍົກເລີກ</button>
@@ -113,9 +109,8 @@ if(isset($_POST['onSubmit'])){
   $sub_name=$_SETSTRING($con, $_POST['sub_name']);
   $sub_link=$_SETSTRING($con, $_POST['sub_link']);
 
-  $created=$_SQL($con,"INSERT INTO spa_submenu(sub_id,m_id,sub_name,sub_link)
-  VALUES('$sub_id','$m_id','$sub_name','$sub_link')");
-  if($created){
+  $Updated=$_SQL($con,"UPDATE spa_submenu SET sub_id='$sub_id',m_id='$m_id',sub_name='$sub_name',sub_link='$sub_link' WHERE sub_id='$sub_id'");
+  if($Updated){
     echo "<script> Notiflix.Report.Success('ສຳເລັດ','ການດຳເນີນງານສຳເລັດ...', 'ປິດ',function () {location='sub_menu.php?page=$_GET[page]'})</script>";
   }else {
     echo "<script> Notiflix.Report.Failure('ຜິດພາດ','ການດຳເນີນງານບໍ່ສຳເລັດ !', 'ປິດ',function () {location='sub_menu.php?page=$_GET[page]'});</script>";
