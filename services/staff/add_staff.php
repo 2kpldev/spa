@@ -64,7 +64,7 @@ $id=$result[0]+1;
 									<div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 150px; max-height: 180px; line-height: 20px;"></div>
 									<div>
 										<span class="btn btn-sm  btn-info  btn-file"><span class="fileupload-new">ເລືອກຮູບ </span><span class="fileupload-exists">ປ່ຽນຮູບ</span>
-										<input type="file" name="pic" id="images"> 	
+										<input type="file" name="staff_img" id="images"> 	
 									</span>
 									
 
