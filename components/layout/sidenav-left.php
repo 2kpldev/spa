@@ -1,5 +1,4 @@
 <?php include "../../connection.php";?>
-
 <!-- Sidebar Navigation Left -->
 <aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left">
   <!-- Logo -->
