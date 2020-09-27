@@ -96,12 +96,12 @@
                           </a>
                           <ul class="dropdown-menu dropdown-menu-right">
                             <li class="ms-dropdown-list">
-                              <a class="media p-2" href="#">
+                              <a class="media p-2" href="view_staff.php?staff_id=<?php echo $staff['staff_id'];?>">
                                 <div class="media-body">
                                   <span>ເບິ່ງ</span>
                                 </div>
                               </a>
-                              <a class="media p-2" href="#">
+                              <a class="media p-2" href="update_staff.php?staff_id=<?php echo $staff['staff_id'];?>">
                                 <div class="media-body">
                                   <span>ແກ້ໄຂ</span>
                                 </div>
