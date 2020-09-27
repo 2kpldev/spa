@@ -103,7 +103,7 @@ if(isset($_POST['onSubmit'])){
   $m_name=$_SETSTRING($con, $_POST['m_name']);
   $tab_id=$_SETSTRING($con, $_POST['tab_id']);
 
-  $created=$_SQL($con,"INSERT INTO sp_menu(m_id,m_icon,m_nameມtab_id)VALUES('$m_id','$m_icon','$m_name','$tab_id')");
+  $created=$_SQL($con,"INSERT INTO sp_menu(m_id,m_icon,m_name,tab_id)VALUES('$m_id','$m_icon','$m_name','$tab_id')");
   if($created){
     echo "<script> Notiflix.Report.Success('ສຳເລັດ','ການດຳເນີນງານສຳເລັດ...', 'ປິດ',function () {location='menu.php'})</script>";
   }else {
