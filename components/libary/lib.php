@@ -37,3 +37,6 @@
 <link href="../../assets/font/font-style.css" rel="stylesheet">
 <!-- Favicon -->
 <link rel="icon" type="../../image/png" sizes="32x32" href="favicon.ico">
+
+<!-- file upload -->
+<link rel="stylesheet" type="text/css" href="../../assets/bootstrap-fileupload/bootstrap-fileupload.css" />

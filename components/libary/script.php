@@ -29,3 +29,4 @@
 <script src="../../assets/js/framework.js"></script>
 <!-- Settings -->
 <script src="../../assets/js/settings.js"></script>
+<script type="text/javascript" src="../../assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>

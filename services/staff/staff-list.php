@@ -30,7 +30,7 @@
             <div class="align-self-center align-left">
               <h6><i class="fa fa-user"></i>&nbsp; ລາຍການພະນັກງານ: kieng</h6>
             </div>
-            <a href="#" data-toggle="modal" data-target="#reminder-modal" class="btn btn-outline-primary btn-sm has-icon">
+            <a href="add_staff.php" class="btn btn-outline-primary btn-sm has-icon">
               <i class="fa fa-plus-circle"></i> ເພີ່ມ</a>
             </div>
           </div>
