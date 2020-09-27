@@ -1,6 +1,6 @@
 <?php
   include ("../../connection.php");
-
+  mysqli_set_charset($con,"utf8");
 ?>
 
 <!DOCTYPE html>
