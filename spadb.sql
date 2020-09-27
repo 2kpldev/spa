@@ -11,11 +11,41 @@
  Target Server Version : 100136
  File Encoding         : 65001
 
- Date: 27/09/2020 18:08:10
+ Date: 27/09/2020 19:54:59
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for sp_menu
+-- ----------------------------
+DROP TABLE IF EXISTS `sp_menu`;
+CREATE TABLE `sp_menu`  (
+  `m_id` int(11) NOT NULL,
+  `m_icon` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `m_name` varchar(55) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  PRIMARY KEY (`m_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of sp_menu
+-- ----------------------------
+INSERT INTO `sp_menu` VALUES (1000, '<i class=\"fa fa-home\"></i>', 'ໜ້າຫຼັກ');
+INSERT INTO `sp_menu` VALUES (1001, '<i class=\"fa fa-cogs\"></i>', 'ການຕັ້ງຄ່າ');
+INSERT INTO `sp_menu` VALUES (1002, '<i class=\"fa fa-gift\"></i>', 'ຜະລິດຕະພັນ');
+
+-- ----------------------------
+-- Table structure for sp_submenu
+-- ----------------------------
+DROP TABLE IF EXISTS `sp_submenu`;
+CREATE TABLE `sp_submenu`  (
+  `sub_id` int(11) NOT NULL,
+  `m_id` int(11) DEFAULT NULL,
+  `sub_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `sub_icon` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `sub_link` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for spa_appointment
