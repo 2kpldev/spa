@@ -59,7 +59,7 @@
                     <ul class="ms-scrollable">
 					
                       <?php
-                        $sel_staff="select*from spa_staff";
+                        $sel_staff="select*from spa_staff left join spa_rank on spa_staff.rankcode=spa_rank.rank_code";
                         $result = $DB_con->prepare($sel_staff);
                         $result -> execute();
                         if($result -> rowCount() > 0){
@@ -71,7 +71,7 @@
                       <li class="ms-chat-user-container ms-open-chat ms-deletable p-3 media clearfix">
                         <div class="ms-chat-status ms-status-away ms-has-new-msg ms-chat-img mr-3 align-self-center">
                           
-                          <img src="<?php if($staff['staff_img']=='no'){echo "img/no.png";} else{echo $staff['staff_img'];}?>" class="ms-img-round" alt="people">
+                          <img src="img/<?php if($staff['staff_img']=='no'){echo "img/no.png";} else{echo $staff['staff_img'];}?>" class="ms-img-round" alt="people">
                         </div>
 
                         <div class="media-body ms-chat-user-info mt-1">
@@ -89,7 +89,7 @@
                             ?>
                           
                           </h6>
-                          <p><?=$staff['rankcode'];?></p>
+                          <p><?=$staff['rank_name'];?></p>
                           <a href="#" class="ms-hoverable-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="material-icons">more_vert</i>
                           </a>
@@ -105,7 +105,7 @@
                                   <span>ແກ້ໄຂ</span>
                                 </div>
                               </a>
-                              <a class="media p-2" href="#">
+                              <a class="media p-2" href="#" onclick="_deteteStaff(<?php echo $staff['staff_id'];?>)">
                                 <div class="media-body">
                                   <span>ລົບ</span>
                                 </div>
@@ -232,6 +232,25 @@
     <!-- SCRIPTS -->
     <!-- Global Required Scripts Start -->
     <?php include ('../../components/libary/script.php') ?>
+
+
+    <?php
+
+if(isset($_GET['del'])){
+
+  $select_img=mysqli_query($con,"select staff_img from spa_staff where staff_id='$_GET[del]'");
+  $img=mysqli_fetch_assoc($select_img);
+  @unlink("img/".$img['staff_img']);
+  $_onDelete=$_SQL($con,"DELETE FROM  spa_staff WHERE staff_id='$_GET[del]'");
+  if($_onDelete){
+
+    echo "<script> Notiflix.Report.Success('ສຳເລັດ','ການດຳເນີນງານສຳເລັດ...', 'ປິດ',function () {location='staff-list.php'})</script>";
+  }else {
+    echo "<script> Notiflix.Report.Failure('ຜິດພາດ','ການດຳເນີນງານບໍ່ສຳເລັດ !', 'ປິດ',function () {location='staff-list.php'});</script>";
+  }
+}
+    
+    ?>
   </body>
   <!-- Mirrored from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
   </html>

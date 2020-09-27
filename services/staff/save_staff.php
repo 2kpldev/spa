@@ -61,7 +61,7 @@ if($_FILES['staff_img']['name'] !=""){
       '$staff_salary',
       '$staff_date_in',
       '$rankcode',
-      '$location'
+      '$newfilename'
 
       ) ");
 

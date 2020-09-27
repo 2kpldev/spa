@@ -37,11 +37,12 @@ if($row_auto==''){
     <?php include ('../../components/layout/navbar-top.php') ?>
     <!-- Body Content Wrapper -->
     <?php
-      $get_resultset=mysqli_query($con,"SELECT*FROM spa_rank");
-      $rested=mysqli_num_rows($get_resultset);
-      $detake=mysqli_query($con,"SELECT rank_code from spa_rank where rank_id=(select max(rank_id)from spa_rank)");
-      $result=mysqli_fetch_array($detake);
-      $id=$result[0]+1;
+
+        $rank_id=$_GET['rank_id'];
+
+      $get_resultset=mysqli_query($con,"SELECT*FROM spa_rank where rank_id='$rank_id'");
+      $edit=mysqli_fetch_assoc($get_resultset);
+      
       ?>
     <!-- Body Content Wrapper -->
     <div class="ms-content-wrapper">
@@ -53,9 +54,10 @@ if($row_auto==''){
                 <div class="col-xl-12 col-md-6 pd-0">
                   <form action="" method="post">
                     <div class="form-group d-flex m-0 fs-14 clearfix">
-                      <input type="text" class="form-control mr-2 fs-20" name="rank_code" value="<?php echo $rank_code; ?>" readonly required>
-                      <input type="text" class="form-control mr-2 fs-20"  name="rank_name" placeholder="ປ້ອນຕຳແໜ່ງ" required>
-                      <button type="submit" name="onSubmit" class="ms-btn-icon btn-primary w-50 float-right">
+                        <input type="hidden" name='rank_id' value="<?=$rank_id;?>">
+                      <input type="text" class="form-control mr-2 fs-20" name="rank_code" value="<?php echo $edit['rank_code']; ?>" readonly required>
+                      <input type="text" class="form-control mr-2 fs-20"  name="rank_name" value="<?php echo $edit['rank_name']; ?>" placeholder="ປ້ອນຕຳແໜ່ງ" required>
+                      <button type="submit" name="onupdate" class="ms-btn-icon btn-primary w-50 float-right">
                         <i class="fa fa-check-circle"> </i>
                       </button>
                     </div>
@@ -105,12 +107,13 @@ if($row_auto==''){
 <!-- Global Required Scripts Start -->
 <?php include ('../../components/libary/script.php') ?>
 <?php
-if(isset($_POST['onSubmit'])){
+if(isset($_POST['onupdate'])){
+  $rank_id=$_SETSTRING($con, $_POST['rank_id']);
   $rank_code=$_SETSTRING($con, $_POST['rank_code']);
   $rank_name=$_SETSTRING($con, $_POST['rank_name']);
   
 
-  $created=$_SQL($con,"INSERT INTO spa_rank(rank_code,rank_name)VALUES('$rank_code','$rank_name')");
+  $created=$_SQL($con,"update spa_rank set rank_code='$rank_code',rank_name='$rank_name' where rank_id='$rank_id'");
   if($created){
     echo "<script> Notiflix.Report.Success('ສຳເລັດ','ການດຳເນີນງານສຳເລັດ...', 'ປິດ',function () {location='add_rank.php'})</script>";
   }else {

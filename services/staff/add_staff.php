@@ -1,9 +1,6 @@
 <?php
 include ("../../connection.php");
 include ("../../helper/index.php");
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -143,8 +140,18 @@ include ("../../helper/index.php");
                 <div class="input-group">
                   <select class="form-control" name='rankcode' id="rankcode" required>
                     <option value="">ກະລຸນາເລືອກຕຳແໜ່ງ</option>
-                    <option value="01">ພະນັກງານຕອນຮັບ</option>
-                    <option value="02">ພະນັກງານທຳຄວາມສະອາດ</option>
+                    
+                    <?php
+                      $sel_rank="select*from spa_rank";
+                      $result=$DB_con->prepare($sel_rank);
+                      $result->execute();
+                      while($rank=$result->fetch()){
+                        echo "<option value='".$rank['rank_code']."'>".$rank['rank_name']."</option>";
+                      }
+                    ?>
+
+
+
                   </select>
                 </div>
               </div>
