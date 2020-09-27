@@ -1,7 +1,7 @@
 <?php
-@session_start();
+// @session_start();
 $con=mysqli_connect('localhost','root','','spadb');
-mysqli_set_charset($con,"utf8");
+mysqli_query($con,"SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'");
 // if($con){echo "dbx_connect";} else {  echo "no dbx_connect";}
 $DB_HOST = 'localhost';
 $DB_USER = 'root';

@@ -1,7 +1,4 @@
-<?php
-  include ("../../connection.php");
-  mysqli_set_charset($con,"utf8");
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -62,35 +59,33 @@
                     <ul class="ms-scrollable">
 					
                       <?php
-                        $sel_staff=mysqli_query($con,"select*from spa_staff");
-                        $check_data=mysqli_num_rows($sel_staff);
-
-                        if($check_data > 0){
-
-                        foreach($sel_staff as $staff){
+                        $sel_staff="select*from spa_staff";
+                        $result = $DB_con->prepare($sel_staff);
+                        $result -> execute();
+                        if($result -> rowCount() > 0){
+                          
+                          while($staff=$result->fetch()){
                       ?>
 					
 					
                       <li class="ms-chat-user-container ms-open-chat ms-deletable p-3 media clearfix">
                         <div class="ms-chat-status ms-status-away ms-has-new-msg ms-chat-img mr-3 align-self-center">
                           
-                          <img src="<?=$staff['staff_img'];?>" class="ms-img-round" alt="people">
+                          <img src="<?php if($staff['staff_img']=='no'){echo "img/no.png";} else{echo $staff['staff_img'];}?>" class="ms-img-round" alt="people">
                         </div>
+
                         <div class="media-body ms-chat-user-info mt-1">
                           <h6>
                             <?php
-
-                          echo    $staff['staff_name'];
-
-                              // if($staff['staff_gender']=='ຊາຍ'){
-                              //   echo 'ທ້າວ '.$staff['staff_name'].' '.$staff['staff_lname'];
-                              // }
-                              // else if($staff['staff_gender']=='ຍິງ'){
-                              //   echo 'ນາງ '.$staff['staff_name'].' '.$staff['staff_lname'];
-                              // }
-                              // else{
-                              //   echo "error fetch";
-                              // }
+                              if($staff['staff_gender']=='ຊາຍ'){
+                                echo 'ທ້າວ '.$staff['staff_name'].' '.$staff['staff_lname'];
+                              }
+                              else if($staff['staff_gender']=='ຍິງ'){
+                                echo 'ນາງ '.$staff['staff_name'].' '.$staff['staff_lname'];
+                              }
+                              else{
+                                echo "error fetch";
+                              }
                             ?>
                           
                           </h6>
@@ -102,17 +97,17 @@
                             <li class="ms-dropdown-list">
                               <a class="media p-2" href="#">
                                 <div class="media-body">
-                                  <span>Archive</span>
+                                  <span>ເບິ່ງ</span>
                                 </div>
                               </a>
                               <a class="media p-2" href="#">
                                 <div class="media-body">
-                                  <span>Pin</span>
+                                  <span>ແກ້ໄຂ</span>
                                 </div>
                               </a>
                               <a class="media p-2" href="#">
                                 <div class="media-body">
-                                  <span>Delete</span>
+                                  <span>ລົບ</span>
                                 </div>
                               </a>
                             </li>
@@ -120,110 +115,15 @@
                         </div>
                       </li>
                         <?php
-                      }
+                          }
 
                       }
                       else{
                       ?>
 					          <li class="ms-chat-user-container ms-open-chat ms-deletable p-3 media clearfix">
-                        <h3 class='text-center'>ບໍ່ມີຂໍ້ມູນ</h3>
+                        <h5 class='text-center text-danger'>ບໍ່ມີຂໍ້ມູນ</h5>
                     </li>
                       <?php } ?>
-					  
-					  
-                      <li class="ms-chat-user-container ms-open-chat ms-deletable p-3 media clearfix">
-                        <div class="ms-chat-status ms-status-online ms-chat-img mr-3 align-self-center">
-                          <img src="../../assets/img/costic/customer-3.jpg" class="ms-img-round" alt="people">
-                        </div>
-                        <div class="media-body ms-chat-user-info mt-1">
-                          <h6>John Doe</h6> <span class="ms-chat-time">3 Days ago</span>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in arcu turpis. Nunc</p>
-                          <a href="#" class="ms-hoverable-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">more_vert</i>
-                          </a>
-                          <ul class="dropdown-menu dropdown-menu-right">
-                            <li class="ms-dropdown-list">
-                              <a class="media p-2" href="#">
-                                <div class="media-body">
-                                  <span>Archive</span>
-                                </div>
-                              </a>
-                              <a class="media p-2" href="#">
-                                <div class="media-body">
-                                  <span>Pin</span>
-                                </div>
-                              </a>
-                              <a class="media p-2" href="#">
-                                <div class="media-body">
-                                  <span>Delete</span>
-                                </div>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </li>
-                      <li class="ms-chat-user-container ms-open-chat ms-deletable p-3 media clearfix">
-                        <div class="ms-chat-status ms-status-online ms-chat-img mr-3 align-self-center">
-                          <img src="../../assets/img/costic/customer-4.jpg" class="ms-img-round" alt="people">
-                        </div>
-                        <div class="media-body ms-chat-user-info mt-1">
-                          <h6>John Doe</h6> <span class="ms-chat-time">3 Days ago</span>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in arcu turpis. Nunc</p>
-                          <a href="#" class="ms-hoverable-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">more_vert</i>
-                          </a>
-                          <ul class="dropdown-menu dropdown-menu-right">
-                            <li class="ms-dropdown-list">
-                              <a class="media p-2" href="#">
-                                <div class="media-body">
-                                  <span>Archive</span>
-                                </div>
-                              </a>
-                              <a class="media p-2" href="#">
-                                <div class="media-body">
-                                  <span>Pin</span>
-                                </div>
-                              </a>
-                              <a class="media p-2" href="#">
-                                <div class="media-body">
-                                  <span>Delete</span>
-                                </div>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </li>
-                      <li class="ms-chat-user-container ms-open-chat ms-deletable p-3 media clearfix">
-                        <div class="ms-chat-status ms-status-online ms-chat-img mr-3 align-self-center">
-                          <img src="../../assets/img/costic/customer-5.jpg" class="ms-img-round" alt="people">
-                        </div>
-                        <div class="media-body ms-chat-user-info mt-1">
-                          <h6>John Doe</h6> <span class="ms-chat-time">3 Days ago</span>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in arcu turpis. Nunc</p>
-                          <a href="#" class="ms-hoverable-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">more_vert</i>
-                          </a>
-                          <ul class="dropdown-menu dropdown-menu-right">
-                            <li class="ms-dropdown-list">
-                              <a class="media p-2" href="#">
-                                <div class="media-body">
-                                  <span>Archive</span>
-                                </div>
-                              </a>
-                              <a class="media p-2" href="#">
-                                <div class="media-body">
-                                  <span>Pin</span>
-                                </div>
-                              </a>
-                              <a class="media p-2" href="#">
-                                <div class="media-body">
-                                  <span>Delete</span>
-                                </div>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </li>
                     </ul>
                   </div>
 
