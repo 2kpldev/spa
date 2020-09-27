@@ -1,7 +1,7 @@
 <?php
 @session_start();
-$con = mysqli_connect('localhost', 'root', '', 'spadb');
-mysqli_query($con, "SET NAMES UTF8");
+$con=mysqli_connect('localhost','root','','spadb');
+mysqli_set_charset($con,"utf8");
 // if($con){echo "dbx_connect";} else {  echo "no dbx_connect";}
 $DB_HOST = 'localhost';
 $DB_USER = 'root';

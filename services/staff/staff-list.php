@@ -1,3 +1,8 @@
+<?php
+  include ("../../connection.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +35,7 @@
             <div class="align-self-center align-left">
               <h6><i class="fa fa-user"></i>&nbsp; ລາຍການພະນັກງານ</h6>
             </div>
-            <a href="#" data-toggle="modal" data-target="#reminder-modal" class="btn btn-outline-primary btn-sm has-icon">
+            <a href="add_staff.php" class="btn btn-outline-primary btn-sm has-icon">
               <i class="fa fa-plus-circle"></i> ເພີ່ມ</a>
             </div>
           </div>
@@ -55,14 +60,41 @@
                 <div class="tab-content">
                   <div role="tabpanel" class="tab-pane active show fade in mt-4" id="list">
                     <ul class="ms-scrollable">
+					
+                      <?php
+                        $sel_staff=mysqli_query($con,"select*from spa_staff");
+                        $check_data=mysqli_num_rows($sel_staff);
+
+                        if($check_data > 0){
+
+                        foreach($sel_staff as $staff){
+                      ?>
+					
+					
                       <li class="ms-chat-user-container ms-open-chat ms-deletable p-3 media clearfix">
                         <div class="ms-chat-status ms-status-away ms-has-new-msg ms-chat-img mr-3 align-self-center">
-                          <span class="msg-count">3</span>
-                          <img src="../../assets/img/costic/customer-2.jpg" class="ms-img-round" alt="people">
+                          
+                          <img src="<?=$staff['staff_img'];?>" class="ms-img-round" alt="people">
                         </div>
                         <div class="media-body ms-chat-user-info mt-1">
-                          <h6>John Doe</h6> <span class="ms-chat-time">2 Hours ago</span>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in arcu turpis. Nunc</p>
+                          <h6>
+                            <?php
+
+                          echo    $staff['staff_name'];
+
+                              // if($staff['staff_gender']=='ຊາຍ'){
+                              //   echo 'ທ້າວ '.$staff['staff_name'].' '.$staff['staff_lname'];
+                              // }
+                              // else if($staff['staff_gender']=='ຍິງ'){
+                              //   echo 'ນາງ '.$staff['staff_name'].' '.$staff['staff_lname'];
+                              // }
+                              // else{
+                              //   echo "error fetch";
+                              // }
+                            ?>
+                          
+                          </h6>
+                          <p><?=$staff['rankcode'];?></p>
                           <a href="#" class="ms-hoverable-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="material-icons">more_vert</i>
                           </a>
@@ -87,6 +119,18 @@
                           </ul>
                         </div>
                       </li>
+                        <?php
+                      }
+
+                      }
+                      else{
+                      ?>
+					          <li class="ms-chat-user-container ms-open-chat ms-deletable p-3 media clearfix">
+                        <h3 class='text-center'>ບໍ່ມີຂໍ້ມູນ</h3>
+                    </li>
+                      <?php } ?>
+					  
+					  
                       <li class="ms-chat-user-container ms-open-chat ms-deletable p-3 media clearfix">
                         <div class="ms-chat-status ms-status-online ms-chat-img mr-3 align-self-center">
                           <img src="../../assets/img/costic/customer-3.jpg" class="ms-img-round" alt="people">
