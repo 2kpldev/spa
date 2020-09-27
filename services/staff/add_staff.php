@@ -215,8 +215,13 @@ $('#insert_data').on('submit',function(event){
 
         $("#insert_data")[0].reset();
       }
+      else if (dataResult.statusCode == 400) {
+        Notiflix.Report.Warning('ຊື່ຜູ້ນຳໃຊ້ຊ້ຳກັນ','ກະລຸນາກວດສອບ...', 'ປິດ');
+      }
       else if (dataResult.statusCode == 404) {
         Notiflix.Notify.Failure('ບັນທຶກຂໍ້ມູນບໍ່ສຳເລັດ');
+
+        
       }
       else {
         Notiflix.Notify.Warning('ກະລຸນາແຈ້ງຜູ້ພັດທະນາ');
