@@ -33,5 +33,5 @@ $_WEEK_DAY=date('D');
 @$_HOUR = "<font style='color:#086B68;font-weight:bold;font-size:15px'> 'h</font>";
 @$_PERCENT = "<font style='color:#F40C3D;font-weight:bold;font-size:15px'> %</font>";
 
-function isVal(){echo "<font style='color:red'>*</font>";}
+
 ?>
