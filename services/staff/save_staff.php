@@ -12,8 +12,6 @@
 		$staff_code=sprintf("%04d",$row_auto);
 	}
 
-
-
     // $staff_code=mysqli_real_escape_string($con,$_POST["staff_code"]);
     $staff_name=mysqli_real_escape_string($con,$_POST["staff_name"]);
     $staff_lname=mysqli_real_escape_string($con,$_POST["staff_lname"]);
@@ -30,7 +28,7 @@
     @$fileinfo=PATHINFO($_FILES['staff_img']['name']);
 	@$newfilename=$fileinfo['filename']."_".time().".".$fileinfo['extension'];
     @$location="img/".$newfilename;
-    
+
     if($_FILES['staff_img']['name'] !=""){
 		move_uploaded_file($_FILES['staff_img']['tmp_name'],"img/".$newfilename);
 
@@ -64,7 +62,7 @@
         '$staff_date_in',
         '$rankcode',
         '$location'
-        
+
     ) ");
 
     if($insert){
@@ -73,7 +71,7 @@
     else{
         echo json_encode(array("statusCode" => 404));
     }
- 
+
     }
 
     else{
@@ -106,9 +104,9 @@
             '$staff_date_in',
             '$rankcode',
             'no'
-            
+
         ) ");
-    
+
         if($insert2){
             echo json_encode(array("statusCode" => 200));
         }
