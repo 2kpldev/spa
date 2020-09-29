@@ -54,3 +54,10 @@ function _deteteGroup(e){
     window.location='add_group_course.php?del='+e;
   });
 }
+
+function _deteteList(e){
+  Notiflix.Confirm.Show( 'ສະຖານະ', 'ທ່ານຕ້ອງການລຶບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ່ ?', 'ຕົກລົງ', 'ຍົກເລີກ',
+  function(){
+    window.location='detail_list_course.php?del='+e;
+  });
+}
