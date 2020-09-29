@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="vendors/iconic-fonts/cryptocoins/cryptocoins-colors.css">
   <!-- Bootstrap core CSS -->
   <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/AIO/notiflix-2.4.0.min.css" rel="stylesheet">
   <!-- jQuery UI -->
   <link href="assets/css/jquery-ui.min.css" rel="stylesheet">
   <!-- Page Specific CSS (Slick Slider.css) -->
@@ -32,7 +33,7 @@
   <div class="col-md-6" style="margin-top: 10%">
     <div class="ms-panel ms-panel-fh">
       <div class="ms-panel-header" align="center">
-        <h6><i class="fa fa-lock"></i> ເຂົ້າສູ່ລະບົບ</h6>
+        <h3><strong>ລາວປາຍຸກຄວາມງາມ</strong></h3>
       </div>
       <div class="ms-panel-body">
         <form class="needs-validation" action="" method="post">
@@ -40,13 +41,13 @@
             <div class="col-md-6 mb-3">
               <label for="validationCustom08">ຊື <?php isVal() ?></label>
               <div class="input-group">
-                <input type="text" class="form-control" autofocus placeholder="ກະລຸນາປ້ອນຊື່" required>
+                <input type="text" class="form-control" name="username" autofocus placeholder="ກະລຸນາປ້ອນຊື່" required>
               </div>
             </div>
             <div class="col-md-6 mb-2">
               <label for="validationCustom09">ລະຫັດຜ່ານ <?php isVal() ?></label>
               <div class="input-group">
-                <input type="password" class="form-control" placeholder="ກະລຸນາປ້ອນລະຫັດຜ່ານ" required>
+                <input type="password" name="password" class="form-control" placeholder="ກະລຸນາປ້ອນລະຫັດຜ່ານ" required>
               </div>
             </div>
           </div>
@@ -57,11 +58,38 @@
             </label>
             <span> ສະແດງລະຫັດຜ່ານ </span>
           </div>
-          <button class="btn btn-primary mt-4 d-block w-100" type="submit">ລອັກອີນ</button>
+          <button class="btn btn-primary mt-4 d-block w-100" name="onLogin" type="submit">ລອ໊ກອີນ</button>
         </form>
       </div>
     </div>
 </div>
 <div class="col-md-3"></div>
+<?php
+include 'connection.php';
+if(isset($_POST['login'])){
+@session_start();
+@$username=$_POST['username'];
+@$pass=md5($_POST['password']);
+
+$Data_users=mysqli_query($con,"SELECT * FROM tb_users where user_name='$username' or user_email='$username' and user_password='$pass'");
+$count=mysqli_num_rows($Data_users);
+if($count==1){
+  $row=mysqli_fetch_array($Data_users);
+  $userid=$_SESSION['user_id']=$row['user_id'];
+  $_SESSION['user_fname']=$row['user_fname'];
+  $_SESSION['user_lname']=$row['user_lname'];
+
+header("services/home");
+}
+else {
+  echo $val_none;
+}
+}
+ ?>
+ <script>
+   window.history.forward()
+ </script>
+
+ <script type="text/javascript" src="assets/AIO/notiflix-aio-2.0.0.min.js"></script>
 </body>
 </html>

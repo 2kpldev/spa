@@ -104,7 +104,7 @@
         </li>
         <li class="dropdown-divider"></li>
         <li class="dropdown-menu-footer">
-          <a class="media fs-14 p-2" href="pages/prebuilt-pages/default-login.html"> <span><i class="flaticon-shut-down mr-2"></i> ອອກຈາກລະບົບ</span>
+          <a class="media fs-14 p-2" href="#" onclick="logout()"> <span><i class="flaticon-shut-down mr-2"></i> ອອກຈາກລະບົບ</span>
           </a>
         </li>
       </ul>
