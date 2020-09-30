@@ -1,5 +1,15 @@
 <!-- Navigation Bar -->
-<?php include '../../components/layout/empty.php'; ?>
+<?php
+$today = date('D');
+function isVal()
+{echo "<font style='color:red'>*</font>";}
+function _back()
+{?>
+<a href="#"  onclick="window.history.go(-1)">
+<i class="fa fa-angle-left fa-2x" style="margin-top:3px!important;margin-bottom:-0px!important;margin-right:20px!important;"></i></a>
+<?}?>
+
+
 <nav class="navbar ms-navbar">
   <div class="ms-aside-toggler ms-toggler pl-0" data-target="#ms-side-nav" data-toggle="slideLeft"> <span class="ms-toggler-bar bg-primary"></span>
     <span class="ms-toggler-bar bg-primary"></span>
@@ -12,7 +22,7 @@
     <li class="ms-nav-item ms-search-form pb-0 py-0">
       <form class="ms-form" method="post">
         <div class="ms-form-group my-0 mb-0 has-icon fs-14">
-          <input type="search" class="ms-form-input" name="search" placeholder="ຄົ້ນຫາ..." value=""> <i class="flaticon-search text-disabled"></i>
+          <input type="search" class="ms-form-input" id="search" placeholder="ຄົ້ນຫາ..." value=""> <i class="flaticon-search text-disabled"></i>
         </div>
       </form>
     </li>
@@ -115,3 +125,36 @@
     <span class="ms-toggler-bar bg-primary"></span>
   </div>
 </nav>
+<script type="text/javascript">
+$(document).ready(function () {
+	$('#search').keyup(function () {
+    var e=$('#search').val();
+		data($(this).val());
+    console.log("key", e);
+	});
+	function data(value) {
+		$('#display #data').each(function () {
+			var found = 'false';
+			$(this).each(function () {
+				if ($(this).text().toLowerCase().Of(value.toLowerCase()) >= 0) {
+					found = 'true';
+				}
+			});
+			if (found == 'true') {
+				$(this).show();
+			} else {
+				$(this).hide();
+			}
+		});
+	}
+});
+</script>
+<?php function isEmpty()
+{?>
+  <div style="height: 600px;padding: 100px;vertical-align: middle;background-size: 100%">
+    <center>
+      <!-- <h4 style="color:#ccc"><strong>ຂໍອະໄພ !</strong> ຍັງບໍ່ມີຂໍ້ມູນໃດໆໃນລະບົບ...</h4> -->
+    <img src="../../assets/img/empty.png" alt="">
+  </center>
+  </div>
+<?php }?>

@@ -1,6 +1,5 @@
 <?php
 include ("../../connection.php");
-include ("../../helper/index.php");
 ?>
 
 <!DOCTYPE html>
@@ -9,10 +8,10 @@ include ("../../helper/index.php");
   <?php include '../../components/libary/lib.php' ?>
   <style media="screen">
   #staffs{
-    border-left: 4px solid red;
-    border-bottom: 1px solid red;
+    border-left: 4px solid #5A3E36;
+    border-bottom: 1px solid #5A3E36;
   }
-  .fa-user{color: red}
+  .fa-user{color: #5A3E36}
 
   label{
     font-weight:bold;
@@ -85,8 +84,8 @@ include ("../../helper/index.php");
 
                   <select class="form-control" name='staff_gender' id="staff_gender" required>
                     <option value="">ກະລຸນາເລືອກເພດ</option>
-                    <option value="ຊາຍ">ຊາຍ</option>
-                    <option value="ຍິງ">ຍິງ</option>
+                    <option value="ທ້າວ">ຊາຍ</option>
+                    <option value="ນາງ">ຍິງ</option>
                   </select>
                 </div>
               </div>
@@ -140,7 +139,7 @@ include ("../../helper/index.php");
                 <div class="input-group">
                   <select class="form-control" name='rankcode' id="rankcode" required>
                     <option value="">ກະລຸນາເລືອກຕຳແໜ່ງ</option>
-                    
+
                     <?php
                       $sel_rank="select*from spa_rank";
                       $result=$DB_con->prepare($sel_rank);
@@ -191,7 +190,7 @@ include ("../../helper/index.php");
 <!-- Quick bar -->
 <?php include ('../../components/layout/quickbar.php') ?>
 <!-- SCRIPTS -->
-<!-- Global Required Scripts Start -->
+<!-- Global required Scripts Start -->
 
 <?php include ('../../components/libary/script.php') ?>
 <!-- <script src="../../assets/js/jquery-3.3.1.min.js"></script> -->
@@ -221,7 +220,7 @@ $('#insert_data').on('submit',function(event){
       else if (dataResult.statusCode == 404) {
         Notiflix.Notify.Failure('ບັນທຶກຂໍ້ມູນບໍ່ສຳເລັດ');
 
-        
+
       }
       else {
         Notiflix.Notify.Warning('ກະລຸນາແຈ້ງຜູ້ພັດທະນາ');
@@ -236,5 +235,5 @@ $('#insert_data').on('submit',function(event){
 </script>
 
 </body>
-<!-- Mirrored from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
+<!-- Mirro#5A3E36 from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
 </html>

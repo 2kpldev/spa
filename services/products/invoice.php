@@ -4,10 +4,10 @@
   <?php include '../../components/libary/lib.php' ?>
   <style media="screen">
     #products{
-      border-left: 4px solid red;
-      border-bottom: 1px solid red;
+      border-left: 4px solid #5A3E36;
+      border-bottom: 1px solid #5A3E36;
     }
-     .fa-gift{color: red}
+     .fa-gift{color: #5A3E36}
   </style>
 
 </head>
@@ -35,7 +35,7 @@
               </h6>
             </div>
             <div class="ms-panel-body">
-              <ul class="nav nav-tabs tabs-bordered d-flex nav-justified mb-4" role="tablist">
+              <ul class="nav nav-tabs tabs-borde#5A3E36 d-flex nav-justified mb-4" role="tablist">
                 <li role="presentation" ><a href="product-list.php" > ລາຍການ </a></li>
                 <li role="presentation" ><a href="orders.php"> ລາຍການທີ່ເລືອກ </a></li>
                 <li role="presentation" ><a href="#" class="active" > ລາຍການທີ່ຊື້ </a></li>
@@ -147,11 +147,11 @@
   <?php include ('../../components/layout/quickbar.php') ?>
 
   <!-- SCRIPTS -->
-  <!-- Global Required Scripts Start -->
+  <!-- Global required Scripts Start -->
 <?php include ('../../components/libary/script.php') ?>
 
 </body>
 
 
-<!-- Mirrored from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
+<!-- Mirro#5A3E36 from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
 </html>

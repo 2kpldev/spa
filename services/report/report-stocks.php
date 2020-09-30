@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
   <?php include '../../components/libary/lib.php' ?>
-  <?php include '../../helper/index.php' ?>
   <style media="screen">
   #reports{
-    border-left: 4px solid red;
-    border-bottom: 1px solid red;
+    border-left: 4px solid #5A3E36;
+    border-bottom: 1px solid #5A3E36;
   }
-  .fa-bar-chart{color: red}
+  .fa-bar-chart{color: #5A3E36}
   </style>
 </head>
 <body class="ms-body ms-aside-left-open ms-primary-theme ms-has-quickbar">
@@ -59,7 +58,7 @@
                 </div>
                 <div class="ms-chat-body">
                   <br>
-                  <ul class="nav nav-tabs tabs-bordered d-flex nav-justified px-3" role="tablist">
+                  <ul class="nav nav-tabs tabs-borde#5A3E36 d-flex nav-justified px-3" role="tablist">
                     <li role="presentation" class="fs-12"><a href="#chats-2" class="active show" role="tab" data-toggle="tab"> ລູກຄ້າທັງໝົດ </a></li>
                     <li role="presentation" class="fs-12"><a href="#groups-2" role="tab" data-toggle="tab"> ລາຍງານປະຈຳວັນ </a></li>
                     <li role="presentation" class="fs-12"><a href="#contacts-2" role="tab" data-toggle="tab"> ພິມລາຍງານ </a></li>
@@ -541,8 +540,8 @@
 <!-- Quick bar -->
 <?php include ('../../components/layout/quickbar.php') ?>
 <!-- SCRIPTS -->
-<!-- Global Required Scripts Start -->
+<!-- Global required Scripts Start -->
 <?php include ('../../components/libary/script.php') ?>
 </body>
-<!-- Mirrored from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
+<!-- Mirro#5A3E36 from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
 </html>

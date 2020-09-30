@@ -4,10 +4,10 @@
   <?php include '../../components/libary/lib.php' ?>
   <style media="screen">
   #stocks{
-    border-left: 4px solid red;
-    border-bottom: 1px solid red;
+    border-left: 4px solid #5A3E36;
+    border-bottom: 1px solid #5A3E36;
   }
-  .fa-pie-chart{color: red}
+  .fa-pie-chart{color: #5A3E36}
   </style>
 </head>
 <body class="ms-body ms-aside-left-open ms-primary-theme ms-has-quickbar">
@@ -461,8 +461,8 @@
 <!-- Quick bar -->
 <?php include ('../../components/layout/quickbar.php') ?>
 <!-- SCRIPTS -->
-<!-- Global Required Scripts Start -->
+<!-- Global required Scripts Start -->
 <?php include ('../../components/libary/script.php') ?>
 </body>
-<!-- Mirrored from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
+<!-- Mirro#5A3E36 from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
 </html>

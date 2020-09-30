@@ -35,6 +35,11 @@
 <!-- Costic styles -->
 <link href="../../assets/css/style.css" rel="stylesheet">
 <link href="../../assets/font/font-style.css" rel="stylesheet">
+
+<!-- Datepicker css -->
+<link rel="stylesheet" href="../../assets/datepicker/css/classic.css" />
+<link rel="stylesheet" href="../../assets/datepicker/css/classic.date.css" />
+
 <!-- Favicon -->
 <link rel="icon" type="../../image/png" sizes="32x32" href="favicon.ico">
 <link rel="stylesheet" type="text/css" href="../../assets/bootstrap-fileupload/bootstrap-fileupload.css" />

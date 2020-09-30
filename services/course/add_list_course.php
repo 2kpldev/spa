@@ -1,19 +1,16 @@
 <?php
-include ("../../connection.php");
-include ("../../helper/index.php");
+include "../../connection.php";
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <?php include '../../components/libary/lib.php' ?>
+  <?php include '../../components/libary/lib.php'?>
   <style media="screen">
-  #staffs{
-    border-left: 4px solid red;
-    border-bottom: 1px solid red;
+  #products{
+    border-left: 4px solid #5A3E36;
+    border-bottom: 1px solid #5A3E36;
   }
-  .fa-user{color: red}
-
+  .fa-gift{color: #5A3E36}
   label{
     font-weight:bold;
   }
@@ -21,15 +18,15 @@ include ("../../helper/index.php");
 </head>
 <body class="ms-body ms-aside-left-open ms-primary-theme ms-has-quickbar">
   <!-- Preloader -->
-  <?php include ('../../components/layout/loading.php') ?>
+  <?php include '../../components/layout/loading.php'?>
   <!-- Overlays -->
   <div class="ms-aside-overlay ms-overlay-left ms-toggler" data-target="#ms-side-nav" data-toggle="slideLeft"></div>
   <div class="ms-aside-overlay ms-overlay-right ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"></div>
-  <?php include ('../../components/layout/sidenav-left.php') ?>
+  <?php include '../../components/layout/sidenav-left.php'?>
   <!-- Main Content -->
   <main class="body-content">
     <!-- Navigation Bar -->
-    <?php include ('../../components/layout/navbar-top.php') ?>
+    <?php include '../../components/layout/navbar-top.php'?>
     <!-- Body Content Wrapper -->
     <!-- Body Content Wrapper -->
     <div class="ms-content-wrapper">
@@ -37,12 +34,8 @@ include ("../../helper/index.php");
         <div class="ms-panel-header">
           <div class="d-flex justify-content-between">
             <div class="align-self-center align-left">
-              <h6><i class="fa fa-user"></i>&nbsp; ເພີ່ມຂໍ້ມູນລາຍການຄອດໃໝ່</h6>
+              <h5><?php _back();?> ເພີ່ມຂໍ້ມູນລາຍການຄອດໃໝ່</h5>
             </div>
-            <a href="detail_list_course.php" class="btn btn-outline-primary btn-sm has-icon">
-              <i class="fa fa-angle-double-left"></i> ຍ້ອນກັບ
-            </a>
-
           </div>
         </div>
 
@@ -52,11 +45,13 @@ include ("../../helper/index.php");
               <div class="form-row">
                 <div class="col-md-12 mb-3">
                   <div class="fileupload fileupload-new text-center" data-provides="fileupload">
-                    <div class="fileupload-new thumbnail" style="width: 150px; height: 180px;"><img src='img/no.png' alt="" />
+                    <div class="fileupload-new thumbnail" style="width: 150px; height: 180px;"><img src='img/photo.jpg' alt="" />
                     </div>
                     <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 150px; max-height: 180px; line-height: 20px;"></div>
                     <div>
-                      <span class="btn btn-sm  btn-info  btn-file"><span class="fileupload-new">ເລືອກຮູບ </span><span class="fileupload-exists">ປ່ຽນຮູບ</span>
+                      <span class="btn btn-sm  btn-primary btn-file">
+                        <span class="fileupload-new"  style="color:white">ເລືອກຮູບ </span>
+                        <span class="fileupload-exists"  style="color:white">ປ່ຽນຮູບ</span>
                       <input type="file" name="list_img" id="list_img">
                     </span>
 
@@ -74,16 +69,14 @@ include ("../../helper/index.php");
                     <option value="">ກະລຸນາເລືອກກຸ່ມຄອດ</option>
 
                     <?php
-                        $sel_group=mysqli_query($con,"select*from spa_group_course");
+                        $sel_group = mysqli_query($con, "select*from spa_group_course");
 
-                        foreach($sel_group as $group){
+                        foreach ($sel_group as $group) {
 
-                            echo "<option value='".$group['group_code']."'>".$group['group_name']."</option>";
+                            echo "<option value='" . $group['group_code'] . "'>" . $group['group_name'] . "</option>";
                         }
-                    
-                    ?>            
 
-
+                        ?>
                   </select>
                 </div>
               </div>
@@ -93,15 +86,15 @@ include ("../../helper/index.php");
                   <input type="text" class="form-control" required placeholder="ຊື່ຄອດ"  name='list_name' id="list_name" required>
                 </div>
               </div>
-              
+
             </div>
             <div class="form-row">
             <div class="col-md-12 mb-3">
                 <label>ລາຍລະອຽດຄອດ</label>
                 <div class="input-group">
-                  
+
                   <textarea name="list_detail" id="list_detail" class="form-control" rows="3" placeholder='ລາຍລະອຽດ'></textarea>
-                  
+
                 </div>
               </div>
             </div>
@@ -145,9 +138,9 @@ include ("../../helper/index.php");
               <div class="col-md-12 mb-3">
                 <label>ໝາຍເຫດ</label>
                 <div class="input-group">
-                    
+
                     <textarea name="list_remark" id="list_remark" class="form-control" rows="3"></textarea>
-                    
+
                 </div>
               </div>
             </div>
@@ -165,18 +158,17 @@ include ("../../helper/index.php");
           </form>
         </div>
       </div>
-
     </div>
   </div>
 </main>
 <!-- MODALS -->
 
 <!-- Quick bar -->
-<?php include ('../../components/layout/quickbar.php') ?>
+<?php include '../../components/layout/quickbar.php'?>
 <!-- SCRIPTS -->
 <!-- Global Required Scripts Start -->
 
-<?php include ('../../components/libary/script.php') ?>
+<?php include '../../components/libary/script.php'?>
 <!-- <script src="../../assets/js/jquery-3.3.1.min.js"></script> -->
 
 <script>
@@ -204,7 +196,7 @@ $('#insert_data').on('submit',function(event){
       else if (dataResult.statusCode == 404) {
         Notiflix.Notify.Failure('ບັນທຶກຂໍ້ມູນບໍ່ສຳເລັດ');
 
-        
+
       }
       else {
         Notiflix.Notify.Warning('ກະລຸນາແຈ້ງຜູ້ພັດທະນາ');
@@ -213,8 +205,6 @@ $('#insert_data').on('submit',function(event){
     },
   });
 });
-
-
 
 </script>
 

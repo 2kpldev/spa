@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
   <?php include '../../components/libary/lib.php' ?>
-  <?php include '../../helper/index.php' ?>
   <?php include '../../connection.php' ?>
   <style media="screen">
   #settings{
     border
-    left: 4px solid red;
-    border-bottom: 1px solid red;
+    left: 4px solid #5A3E36;
+    border-bottom: 1px solid #5A3E36;
   }
-  .fa-cog{color: red}
+  .fa-cog{color: #5A3E36}
   </style>
 </head>
 <body class="ms-body ms-aside-left-open ms-primary-theme ms-has-quickbar">
@@ -42,7 +41,7 @@
           <form action="#" method="post">
             <div class="ms-panel ms-panel-fh">
               <div class="ms-panel-header">
-                <h6><i class="fa fa-<?php echo $res['m_icon'] ?>"></i>  <?php echo $res['m_name']; ?></h6>
+                <h6><?php _back() ?> <?php echo $res['m_name']; ?></h6>
               </div>
               <div class="ms-panel-body">
                 <form class="needs-validation" method="post" action="" novalidate>
@@ -104,7 +103,7 @@
 <!-- Quick bar -->
 <?php include ('../../components/layout/quickbar.php') ?>
 <!-- SCRIPTS -->
-<!-- Global Required Scripts Start -->
+<!-- Global required Scripts Start -->
 <?php include ('../../components/libary/script.php') ?>
 <?php
 if(isset($_POST['onSubmit'])){
@@ -132,5 +131,5 @@ if(isset($_GET['del'])){
 }
 ?>
 </body>
-<!-- Mirrored from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
+<!-- Mirro#5A3E36 from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
 </html>

@@ -5,10 +5,10 @@
   <?php include '../../connection.php' ?>
   <style media="screen">
   #settings{
-    border-left: 4px solid red;
-    border-bottom: 1px solid red;
+    border-left: 4px solid #5A3E36;
+    border-bottom: 1px solid #5A3E36;
   }
-  .fa-cog{color: red}
+  .fa-cog{color: #5A3E36}
   </style>
 </head>
 <body class="ms-body ms-aside-left-open ms-primary-theme ms-has-quickbar">
@@ -40,12 +40,12 @@
                 <div class="col-xl-12 col-md-6 pd-0">
                   <form action="" method="post">
                     <div class="form-group d-flex m-0 fs-14 clearfix">
-                      <input type="<?php if($rested>=1){echo "hidden";}else{echo "text";} ?>" class="form-control mr-2 fs-20"
+                     <?php _back() ?>  <input type="<?php if($rested>=1){echo "hidden";}else{echo "text";} ?>" class="form-control mr-2 fs-20"
                       name="m_id" value="<?php if($rested>=1){echo $id;}else{echo "";} ?>" required>
                       <input type="text" class="form-control mr-2 fs-20"  name="m_icon" placeholder="ປ້ອນຊື່ໄອຄອ໋ນ" required>
                       <input type="text" class="form-control mr-2 fs-20"  name="m_name" placeholder="ປ້ອນຊື່ເມນູ" required>
                       <input type="text" class="form-control mr-2 fs-20"  name="tab_id" placeholder="ປ້ອນແທັບໄອດີ" required>
-                      <input type="text" class="form-control mr-2 fs-20"  name="tab_id2" placeholder="ປ້ອນແທັບໄອດີ2" required>
+                      <input type="text" class="form-control mr-2 fs-20"  name="tab_id2" placeholder="ປ້ອນແທັບໄອດີສຳຮອງ" required>
                       <button type="submit" name="onSubmit" class="ms-btn-icon btn-primary w-50 float-right">
                       <i class="fa fa-check-circle"> </i>
                       </button>
@@ -94,7 +94,7 @@
 <!-- Quick bar -->
 <?php include ('../../components/layout/quickbar.php') ?>
 <!-- SCRIPTS -->
-<!-- Global Required Scripts Start -->
+<!-- Global required Scripts Start -->
 <?php include ('../../components/libary/script.php') ?>
 <?php
 if(isset($_POST['onSubmit'])){
@@ -122,5 +122,5 @@ if(isset($_GET['del'])){
 }
 ?>
 </body>
-<!-- Mirrored from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
+<!-- Mirro#5A3E36 from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
 </html>

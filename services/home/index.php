@@ -4,10 +4,10 @@
   <?php include '../../components/libary/lib.php' ?>
   <style media="screen">
     #home{
-      border-left: 4px solid red;
-      border-bottom: 1px solid red;
+      border-left: 4px solid #5A3E36;
+      border-bottom: 1px solid #5A3E36;
     }
-    .fa-home{color: red}
+    .fa-home{color: #5A3E36}
   </style>
 </head>
 
@@ -51,7 +51,7 @@
         </div>
         <div class="col-xl-3 col-lg-6 col-md-6">
           <div class="ms-card ms-widget has-graph-full-width ms-infographics-widget">
-            <span class="ms-chart-label bg-red"><i class="material-icons">arrow_downward</i> 4.5%</span>
+            <span class="ms-chart-label .bg-default"><i class="material-icons">arrow_downward</i> 4.5%</span>
             <div class="ms-card-body media">
               <div class="media-body">
                 <span class="black-text"><strong>Total Visitors</strong></span>
@@ -75,7 +75,7 @@
         </div>
         <div class="col-xl-3 col-lg-6 col-md-6">
           <div class="ms-card ms-widget has-graph-full-width ms-infographics-widget">
-            <span class="ms-chart-label bg-red"><i class="material-icons">arrow_upward</i> 9.5%</span>
+            <span class="ms-chart-label .bg-default"><i class="material-icons">arrow_upward</i> 9.5%</span>
             <div class="ms-card-body media">
               <div class="media-body">
                 <span class="black-text"><strong>Total Orders</strong></span>
@@ -194,8 +194,8 @@
                       </div>
 
                       <div class="ms-card-heading-title">
-                        <p>Orders <span class="red-text">15</span></p>
-                        <p>Income <span class="red-text">$175</span></p>
+                        <p>Orders <span class="#5A3E36-text">15</span></p>
+                        <p>Income <span class="#5A3E36-text">$175</span></p>
                       </div>
                     </div>
                   </div>
@@ -212,8 +212,8 @@
                       </div>
 
                       <div class="ms-card-heading-title">
-                        <p>Orders <span class="red-text">75</span></p>
-                        <p>Income <span class="red-text">$275</span></p>
+                        <p>Orders <span class="#5A3E36-text">75</span></p>
+                        <p>Income <span class="#5A3E36-text">$275</span></p>
                       </div>
                     </div>
                   </div>
@@ -230,8 +230,8 @@
                       </div>
 
                       <div class="ms-card-heading-title">
-                        <p>Orders <span class="red-text">85</span></p>
-                        <p>Income <span class="red-text">$575</span></p>
+                        <p>Orders <span class="#5A3E36-text">85</span></p>
+                        <p>Income <span class="#5A3E36-text">$575</span></p>
                       </div>
                     </div>
                   </div>
@@ -247,8 +247,8 @@
                         <span class="green-text"><strong>$85.00</strong></span>
                       </div>
                       <div class="ms-card-heading-title">
-                        <p>Orders <span class="red-text">175</span></p>
-                        <p>Income <span class="red-text">$775</span></p>
+                        <p>Orders <span class="#5A3E36-text">175</span></p>
+                        <p>Income <span class="#5A3E36-text">$775</span></p>
                       </div>
                     </div>
                   </div>
@@ -584,7 +584,7 @@
                       <th scope="col">Customer Name</th>
                       <th scope="col">Location</th>
                       <th scope="col">Order Status</th>
-                      <th scope="col">Delivered Time</th>
+                      <th scope="col">Delive#5A3E36 Time</th>
                       <th scope="col">Price</th>
                     </tr>
                   </thead>
@@ -614,7 +614,7 @@
                       <td>FrieD Egg Sandwich</td>
                       <td>Jack Suit</td>
                       <td>Oxford Street</td>
-                      <td><span class="badge badge-success">Delivered</span>
+                      <td><span class="badge badge-success">Delive#5A3E36</span>
                       </td>
                       <td>12:05</td>
                       <td>$19</td>
@@ -624,7 +624,7 @@
                       <td>Lemon Yogurt Parfait</td>
                       <td>Alesdro Guitto</td>
                       <td>Church hill</td>
-                      <td><span class="badge badge-success">Delivered</span>
+                      <td><span class="badge badge-success">Delive#5A3E36</span>
                       </td>
                       <td>12:05</td>
                       <td>$18</td>
@@ -634,7 +634,7 @@
                       <td>Spicy Grill Sandwich</td>
                       <td>Jacob Sahwny</td>
                       <td>palace Road</td>
-                      <td><span class="badge badge-success">Delivered</span>
+                      <td><span class="badge badge-success">Delive#5A3E36</span>
                       </td>
                       <td>12:05</td>
                       <td>$21</td>
@@ -1011,6 +1011,11 @@
   <!-- client chat -->
 </div>
 </div>
+
+<script>
+window.history.forward()
+</script>
+
 </main>
 <!-- MODALS -->
 <?php include ('../../components/layout/quickbar.php') ?>

@@ -44,7 +44,7 @@ function _deteteRank(e){
 function _deteteStaff(e){
   Notiflix.Confirm.Show( 'ສະຖານະ', 'ທ່ານຕ້ອງການລຶບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ່ ?', 'ຕົກລົງ', 'ຍົກເລີກ',
   function(){
-    window.location='staff-list.php?del='+e;
+    window.location='profile_detail.php?del='+e;
   });
 }
 
@@ -55,14 +55,22 @@ function _deteteGroup(e){
   });
 }
 
-<<<<<<< HEAD
 function _deteteList(e){
   Notiflix.Confirm.Show( 'ສະຖານະ', 'ທ່ານຕ້ອງການລຶບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ່ ?', 'ຕົກລົງ', 'ຍົກເລີກ',
   function(){
     window.location='detail_list_course.php?del='+e;
   });
 }
-=======
+
+
+// preview
+function _preview(e){
+   $('#preview').modal()
+  $.get('preview.php',{e},function(data){
+    $('#preview_content').html(data)
+  })
+}
+
 
 
 // =============================
@@ -73,8 +81,33 @@ function logout() {
     "ຕົກລົງ",
     "ຍົກເລີກ",
     function () {
-      window.location = "../../login.php";
+      window.location = "../../logout.php";
     }
   );
 }
->>>>>>> ec78eb4459051fe0c6484360602b9547eba4c201
+
+
+// ================
+//==============search data
+$(document).ready(function () {
+	$('#search').keyup(function () {
+    var e=$('#search').val();
+		data($(this).val());
+    console.log("key", e);
+	});
+	function data(value) {
+		$('#display #data').each(function () {
+			var found = 'false';
+			$(this).each(function () {
+				if ($(this).text().toLowerCase().Of(value.toLowerCase()) >= 0) {
+					found = 'true';
+				}
+			});
+			if (found == 'true') {
+				$(this).show();
+			} else {
+				$(this).hide();
+			}
+		});
+	}
+});

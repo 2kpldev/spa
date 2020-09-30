@@ -2,7 +2,6 @@
 include ("../../connection.php");
 // echo json_encode(array("statusCode" => 200));
 // exit;
-
 $sql_auto=mysqli_query($con,"select max(staff_code)+1 as Maxid from spa_staff");
 $check_auto=mysqli_fetch_assoc($sql_auto);
 $row_auto=$check_auto['Maxid'];
@@ -29,24 +28,14 @@ $staff_date_in=mysqli_real_escape_string($con,$_POST["staff_date_in"]);
 @$newfilename=$fileinfo['filename']."_".time().".".$fileinfo['extension'];
 @$location="img/".$newfilename;
 
-
-
 $selCount=mysqli_query($con,"select*from spa_staff where staff_username='$staff_username'");
 $Count=mysqli_fetch_assoc($selCount);
 
 if($Count['staff_username']==$staff_username){
   echo json_encode(array("statusCode" => 400));
-}
-
-
-
-else{
-
-
+}else{
 if($_FILES['staff_img']['name'] !=""){
   move_uploaded_file($_FILES['staff_img']['tmp_name'],"img/".$newfilename);
-
-
   $insert=mysqli_query($con,"insert into spa_staff (
     staff_code,
     staff_name,
@@ -117,9 +106,7 @@ if($_FILES['staff_img']['name'] !=""){
           '$staff_date_in',
           '$rankcode',
           'no'
-
           ) ");
-
           if($insert2){
             echo json_encode(array("statusCode" => 200));
           }
@@ -129,4 +116,3 @@ if($_FILES['staff_img']['name'] !=""){
         }
 
       }
-        ?>

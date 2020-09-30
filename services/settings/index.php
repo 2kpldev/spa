@@ -4,10 +4,10 @@
   <?php include '../../components/libary/lib.php' ?>
   <style media="screen">
   #settings{
-    border-left: 4px solid red;
-    border-bottom: 1px solid red;
+    border-left: 4px solid #5A3E36;
+    border-bottom: 1px solid #5A3E36;
   }
-  .fa-cogs{color: red}
+  .fa-cogs{color: #5A3E36}
   </style>
 </head>
 <body class="ms-body ms-aside-left-open ms-primary-theme ms-has-quickbar">
@@ -92,6 +92,19 @@
                   </div>
                 </a>
               </div>
+
+              <div class="col-xl-3 col-md-6">
+                <a href="../rank/add_rank.php">
+                  <div class="ms-panel ms-panel-hoverable has-border ms-widget ms-has-new-msg ms-notification-widget">
+                    <div class="ms-panel-body media">
+                      <i class="fa fa-star"></i>
+                      <div class="media-body">
+                        <h6>ເພີ່ມຕຳແໜ່ງ</h6>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
             </div>
             </div>
           </div>
@@ -104,8 +117,8 @@
 <!-- Quick bar -->
 <?php include ('../../components/layout/quickbar.php') ?>
 <!-- SCRIPTS -->
-<!-- Global Required Scripts Start -->
+<!-- Global required Scripts Start -->
 <?php include ('../../components/libary/script.php') ?>
 </body>
-<!-- Mirrored from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
+<!-- Mirro#5A3E36 from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
 </html>
