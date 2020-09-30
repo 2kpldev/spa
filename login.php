@@ -79,7 +79,7 @@ if($count==1){
   $_SESSION['user_fname']=$row['user_fname'];
   $_SESSION['user_lname']=$row['user_lname'];
 
-header("services/home");
+header("services/home.php");
 }
 else {
   echo $val_none;
