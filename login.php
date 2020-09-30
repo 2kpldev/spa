@@ -84,7 +84,7 @@ function isVal()
         $_SESSION['staff_role'] = $row['staff_role'];
         $_SESSION['staff_img'] = $row['staff_img'];
         $_SESSION['loggedin'] = 1;
-        echo "<script>Notiflix.Loading.Standard('ກຳລັງດຳເນີນງານ...');setInterval(function () {window.location='./services/home/index.php'}, 500);</script>";
+        echo "<script>Notiflix.Loading.Standard('ກຳລັງດຳເນີນງານ...');setInterval(function () {window.location='../services/home/index.php'}, 500);</script>";
       } else {
         echo "<script> Notiflix.Report.Failure('ຜິດພາດ','ຊື່ ຫຼື ລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !', 'ປິດ',function () {location='login.php'});</script>";
       }
