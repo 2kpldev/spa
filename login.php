@@ -66,7 +66,7 @@ function isVal()
     <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="assets/AIO/notiflix-aio-2.0.0.min.js"></script>
     <?php
-    include './connection.php';
+    include 'connection.php';
     if (isset($_POST['onLogin'])) {
       @session_start();
       @$username = $_SETSTRING($con,$_POST['username']);
