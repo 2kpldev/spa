@@ -11,12 +11,23 @@ function print() {
   document.body.innerHTML = originalContents;
 }
 
-
+function _back(){
+  window.history.go(-1);
+}
 // delete function
 function _deteteMenu(e){
   Notiflix.Confirm.Show( 'ສະຖານະ', 'ທ່ານຕ້ອງການລຶບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ່ ?', 'ຕົກລົງ', 'ຍົກເລີກ',
   function(){
     window.location='menu.php?del='+e;
+  },
+  function(){
+  } );
+}
+
+function _deteteSubMenu(e,ev){
+  Notiflix.Confirm.Show( 'ສະຖານະ', 'ທ່ານຕ້ອງການລຶບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ່ ?', 'ຕົກລົງ', 'ຍົກເລີກ',
+  function(){
+    window.location='sub_menu.php?del='+e+'&page='+ev;
   },
   function(){
   } );
