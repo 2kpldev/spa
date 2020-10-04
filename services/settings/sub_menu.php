@@ -24,9 +24,9 @@
     <?php include ('../../components/layout/navbar-top.php') ?>
     <!-- Body Content Wrapper -->
     <?php
-      $get_resultset=mysqli_query($con,"SELECT*FROM sp_menu");
+      $get_resultset=mysqli_query($con,"SELECT*FROM sp_submenu");
       $rested=mysqli_num_rows($get_resultset);
-      $detake=mysqli_query($con,"SELECT m_id from sp_menu where m_id=(select max(m_id)from sp_menu)");
+      $detake=mysqli_query($con,"SELECT sub_id from sp_submenu where sub_id=(select max(sub_id)from sp_submenu)");
       $result=mysqli_fetch_array($detake);
       $id=$result[0]+1;
       ?>
@@ -42,14 +42,16 @@
               <div class="ms-panel-body">
                 <form class="needs-validation" action="" novalidate>
 
-                      <label for="validationCustom08">ຊື <?php isVal() ?></label>
+                      <label for="validationCustom08">ລະຫັດ <?php isVal() ?></label>
                       <div class="input-group">
-                        <input type="email" class="form-control" id="validationCustom08" autofocus placeholder="ກະລຸນາປ້ອນຊື່" required>
+                        <input type="text" class="form-control"
+                        <?php if($rested>=1){echo "readonly";}else{echo "";} ?>
+                         autofocus value="<?php if($rested>=1){echo $id;}else{echo "";} ?>" required>
                       </div>
 
                       <label for="validationCustom09">ລະຫັດຜ່ານ <?php isVal() ?></label>
                       <div class="input-group">
-                        <input type="password" class="form-control" id="validationCustom09" placeholder="ກະລຸນາປ້ອນລະຫັດຜ່ານ" required>
+                        <input type="password" class="form-control" placeholder="ກະລຸນາປ້ອນລະຫັດຜ່ານ" required>
                       </div>
                   <button class="btn btn-outline-primary mt-4" type="submit"><i class="fa fa-check-circle"></i> ບັນທຶກ</button>
                   <button class="btn btn-outline-light mt-4" type="reset"><i class="fa fa-times-circle"></i> ຍົກເລີກ</button>
@@ -66,7 +68,7 @@
             <div class="ms-card-body">
               <ul class="ms-list ms-task-block">
                 <?php
-                $spaMenu=mysqli_query($con,"SELECT*FROM sp_menu");
+                $spaMenu=mysqli_query($con,"SELECT*FROM sp_submenu where m_id=$_GET['page']");
                 $i=1;
                 foreach ($spaMenu as $key) {
                   ?>
