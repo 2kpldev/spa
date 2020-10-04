@@ -37,7 +37,7 @@
         <form class="needs-validation" action="services/home" novalidate>
           <div class="form-row">
             <div class="col-md-6 mb-3">
-              <label for="validationCustom08">ຊື <?php isVal() ?>່</label>
+              <label for="validationCustom08">ຊື <?php isVal() ?></label>
               <div class="input-group">
                 <input type="email" class="form-control" id="validationCustom08" autofocus placeholder="ກະລຸນາປ້ອນຊື່" required>
               </div>
@@ -60,7 +60,7 @@
         </form>
       </div>
     </div>
-  <div class="col-md-3"></div>
 </div>
+<div class="col-md-3"></div>
 </body>
 </html>

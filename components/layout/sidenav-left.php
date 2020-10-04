@@ -1,4 +1,6 @@
+<?php include "../../connection.php";?>
 <!-- Sidebar Navigation Left -->
+<?php $con = mysqli_connect('localhost', 'root', '', 'spadb');?>
 <aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left">
   <!-- Logo -->
   <div class="logo-sn ms-d-block-lg">
@@ -14,21 +16,24 @@
       </a>
     </li>
     <!-- product -->
-
-    <li class="menu-item" id="products">
-      <a href="#" class="has-chevron" data-toggle="collapse" data-target="#product" aria-expanded="false" aria-controls="product">
-         <span><i class="fa fa-gift fs-16"></i>  ຜະລິດຕະພັນ </span>
+<?php
+  $callMenu=mysqli_query($con,'SELECT*FROM sp_menu');
+  foreach ($callMenu as $key) {
+ ?>
+    <li class="menu-item" id="<?php echo $key['tab_id'] ?>">
+      <a href="#" class="has-chevron" data-toggle="collapse" data-target="#<?php echo $key['tab_id'] ?>" aria-expanded="false" aria-controls="<?php echo $key['tab_id'] ?>">
+         <span><?php echo $key['m_icon'] ?>  <?php echo $key['m_name'] ?> </span>
       </a>
-      <ul id="product" class="collapse" aria-labelledby="product" data-parent="#side-nav-accordion">
+      <ul id="<?php echo $key['tab_id'] ?>" class="collapse" aria-labelledby="product" data-parent="#side-nav-accordion">
         <li> <a href="../products/product-list.php"> ຜະລິດຕະພັນ 1</a>
         </li>
         <li> <a href="../products/product-list.php">ຜະລິດຕະພັນ 2</a>
         </li>
       </ul>
     </li>
-
+<?php } ?>
     <!-- services end -->
-    <li class="menu-item" id="service">
+    <!-- <li class="menu-item" id="service">
       <a href="#" class="has-chevron" data-toggle="collapse" data-target="#services" aria-expanded="false" aria-controls="services">
         <span><i class="fa fa-heart fs-16"></i> ການບໍລິການ </span>
       </a>
@@ -38,10 +43,10 @@
         <li> <a href="pages/product/productlist.html"> ການບໍລິການ</a>
         </li>
       </ul>
-      </li>
+      </li> -->
 
       <!-- customer -->
-      <li class="menu-item" id="customers">
+      <!-- <li class="menu-item" id="customers">
         <a href="#" class="has-chevron" data-toggle="collapse" data-target="#customer" aria-expanded="false" aria-controls="customer">
            <span><i class="fa fa-users fs-16"></i>  ຈັດການລູກຄ້າ </span>
         </a>
@@ -49,9 +54,9 @@
           <li><a href="../customer/customer-list.php"> ຂໍ້ມູນລູກ</a> </li>
           <li> <a href="../customer/customer-list.php">ລູກຄ້າ 2</a></li>
         </ul>
-      </li>
+      </li> -->
       <!-- staff -->
-      <li class="menu-item" id="staffs">
+      <!-- <li class="menu-item" id="staffs">
         <a href="#" class="has-chevron" data-toggle="collapse" data-target="#staff" aria-expanded="false" aria-controls="staff">
            <span><i class="fa fa-user fs-16"></i>  ຈັດການພະນັກງານ </span>
         </a>
@@ -61,9 +66,9 @@
           <li> <a href="../staff/pay-slip.php"> ເບີກຈ່າຍເງິນເດືອນ</a>
           </li>
         </ul>
-      </li>
+      </li> -->
       <!-- customer -->
-      <li class="menu-item" id="stocks">
+      <!-- <li class="menu-item" id="stocks">
         <a href="#" class="has-chevron" data-toggle="collapse" data-target="#stock" aria-expanded="false" aria-controls="stock">
            <span><i class="fa fa-pie-chart fs-16"></i>  ຈັດການສາງເຄື່ອງ </span>
         </a>
@@ -73,7 +78,7 @@
           <li> <a href="../stock/"> ເບີກເຄື່ອງອອກສາງ</a></li>
           </li>
         </ul>
-      </li>
+      </li> -->
       <!-- report -->
       <li class="menu-item"  id="reports">
         <a href="#" class="has-chevron" data-toggle="collapse" data-target="#report" aria-expanded="false" aria-controls="report">
