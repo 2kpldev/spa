@@ -1,6 +1,7 @@
 
 
 <!DOCTYPE html>
+<?php include "../../connection.php";?>
 <html lang="en">
 <head>
   <?php include '../../components/libary/lib.php' ?>
@@ -57,20 +58,20 @@
                 <div class="tab-content">
                   <div role="tabpanel" class="tab-pane active show fade in mt-4" id="list">
                     <ul class="ms-scrollable">
-					
+
                       <?php
                         $sel_staff="select*from spa_staff left join spa_rank on spa_staff.rankcode=spa_rank.rank_code";
                         $result = $DB_con->prepare($sel_staff);
                         $result -> execute();
                         if($result -> rowCount() > 0){
-                          
+
                           while($staff=$result->fetch()){
                       ?>
-					
-					
+
+
                       <li class="ms-chat-user-container ms-open-chat ms-deletable p-3 media clearfix">
                         <div class="ms-chat-status ms-status-away ms-has-new-msg ms-chat-img mr-3 align-self-center">
-                          
+
                           <img src="img/<?php if($staff['staff_img']=='no'){echo "img/no.png";} else{echo $staff['staff_img'];}?>" class="ms-img-round" alt="people">
                         </div>
 
@@ -87,7 +88,7 @@
                                 echo "error fetch";
                               }
                             ?>
-                          
+
                           </h6>
                           <p><?=$staff['rank_name'];?></p>
                           <a href="#" class="ms-hoverable-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -249,7 +250,7 @@ if(isset($_GET['del'])){
     echo "<script> Notiflix.Report.Failure('ຜິດພາດ','ການດຳເນີນງານບໍ່ສຳເລັດ !', 'ປິດ',function () {location='staff-list.php'});</script>";
   }
 }
-    
+
     ?>
   </body>
   <!-- Mirrored from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->

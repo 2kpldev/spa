@@ -24,6 +24,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
 </head>
+<?php include 'helper/index.php' ?>
 <?php include 'connection.php' ?>
 <body>
   <div class="row">
@@ -34,18 +35,18 @@
         <h6><i class="fa fa-lock"></i> ເຂົ້າສູ່ລະບົບ</h6>
       </div>
       <div class="ms-panel-body">
-        <form class="needs-validation" action="services/home" novalidate>
+        <form class="needs-validation" action="" method="post">
           <div class="form-row">
             <div class="col-md-6 mb-3">
               <label for="validationCustom08">ຊື <?php isVal() ?></label>
               <div class="input-group">
-                <input type="email" class="form-control" id="validationCustom08" autofocus placeholder="ກະລຸນາປ້ອນຊື່" required>
+                <input type="text" class="form-control" autofocus placeholder="ກະລຸນາປ້ອນຊື່" required>
               </div>
             </div>
             <div class="col-md-6 mb-2">
               <label for="validationCustom09">ລະຫັດຜ່ານ <?php isVal() ?></label>
               <div class="input-group">
-                <input type="password" class="form-control" id="validationCustom09" placeholder="ກະລຸນາປ້ອນລະຫັດຜ່ານ" required>
+                <input type="password" class="form-control" placeholder="ກະລຸນາປ້ອນລະຫັດຜ່ານ" required>
               </div>
             </div>
           </div>
