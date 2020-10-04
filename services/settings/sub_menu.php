@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <?php include '../../components/libary/lib.php' ?>
-  <?php include '../../connection.php' ?>
+  <?php include '../../helper/index.php' ?>
   <style media="screen">
   #settings{
     border-left: 4px solid red;
