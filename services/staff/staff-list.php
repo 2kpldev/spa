@@ -28,7 +28,7 @@
         <div class="ms-panel-header">
           <div class="d-flex justify-content-between">
             <div class="align-self-center align-left">
-              <h6><i class="fa fa-user"></i>&nbsp; ລາຍການພະນັກງານ: kieng</h6>
+              <h6><i class="fa fa-user"></i>&nbsp; ລາຍການພະນັກງານ</h6>
             </div>
             <a href="add_staff.php" class="btn btn-outline-primary btn-sm has-icon">
               <i class="fa fa-plus-circle"></i> ເພີ່ມ</a>
