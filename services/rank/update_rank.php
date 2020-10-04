@@ -1,8 +1,21 @@
+
+<?php
+include '../../connection.php';
+
+$sql_auto=mysqli_query($con,"select max(rank_code)+1 as Maxid from spa_rank");
+$check_auto=mysqli_fetch_assoc($sql_auto);
+$row_auto=$check_auto['Maxid'];
+if($row_auto==''){
+  $rank_code="01";
+}else{
+  $rank_code=sprintf("%02d",$row_auto);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <?php include '../../components/libary/lib.php' ?>
-  <?php include '../../connection.php' ?>
   <style media="screen">
   #settings{
     border-left: 4px solid red;
@@ -24,11 +37,12 @@
     <?php include ('../../components/layout/navbar-top.php') ?>
     <!-- Body Content Wrapper -->
     <?php
-      $get_resultset=mysqli_query($con,"SELECT*FROM sp_menu");
-      $rested=mysqli_num_rows($get_resultset);
-      $detake=mysqli_query($con,"SELECT m_id from sp_menu where m_id=(select max(m_id)from sp_menu)");
-      $result=mysqli_fetch_array($detake);
-      $id=$result[0]+1;
+
+        $rank_id=$_GET['rank_id'];
+
+      $get_resultset=mysqli_query($con,"SELECT*FROM spa_rank where rank_id='$rank_id'");
+      $edit=mysqli_fetch_assoc($get_resultset);
+      
       ?>
     <!-- Body Content Wrapper -->
     <div class="ms-content-wrapper">
@@ -40,13 +54,10 @@
                 <div class="col-xl-12 col-md-6 pd-0">
                   <form action="" method="post">
                     <div class="form-group d-flex m-0 fs-14 clearfix">
-                      <input type="text" class="form-control mr-2 fs-20"
-                      <?php if($rested>=1){echo "readonly";}else{echo "";} ?>
-                      name="m_id" value="<?php if($rested>=1){echo $id;}else{echo "";} ?>" required>
-                      <input type="text" class="form-control mr-2 fs-20"  name="m_icon" placeholder="ປ້ອນຊື່ໄອຄອ໋ນ" required>
-                      <input type="text" class="form-control mr-2 fs-20"  name="m_name" placeholder="ປ້ອນຊື່ເມນູ" required>
-                      <input type="text" class="form-control mr-2 fs-20"  name="tab_id" placeholder="ປ້ອນແທັບໄອດີ" required>
-                      <button type="submit" name="onSubmit" class="ms-btn-icon btn-primary w-50 float-right">
+                        <input type="hidden" name='rank_id' value="<?=$rank_id;?>">
+                      <input type="text" class="form-control mr-2 fs-20" name="rank_code" value="<?php echo $edit['rank_code']; ?>" readonly required>
+                      <input type="text" class="form-control mr-2 fs-20"  name="rank_name" value="<?php echo $edit['rank_name']; ?>" placeholder="ປ້ອນຕຳແໜ່ງ" required>
+                      <button type="submit" name="onupdate" class="ms-btn-icon btn-primary w-50 float-right">
                         <i class="fa fa-check-circle"> </i>
                       </button>
                     </div>
@@ -66,17 +77,16 @@
             <div class="ms-card-body">
               <ul class="ms-list ms-task-block">
                 <?php
-                $spaMenu=mysqli_query($con,"SELECT*FROM sp_menu");
+                $sparank=mysqli_query($con,"SELECT*FROM spa_rank");
                 $i=1;
-                foreach ($spaMenu as $key) {
+                foreach ($sparank as $rank) {
                   ?>
                 <li class="ms-list-item ms-to-do-task ms-deletable">
                 <strong><?php echo $i; ?></strong>&nbsp; | &nbsp;&nbsp;&nbsp;
-                 <span><?php echo $key['m_icon'] ?> <?php echo $key['m_name'] ?></span>
+                 <span><?php echo $rank['rank_name'] ?></span>
                   <div class="close">
-                  <a href="sub_menu.php?page=<?php echo $key['m_id'];?>" class="mt-0"><i class="fa fa-plus-circle"> </i> </a> &nbsp;
-                  <a href="" class="mt-0"><i class="fa fa-edit"> </i> </a> &nbsp;
-                  <a href="#" onclick="_deteteMenu(<?php echo $key['m_id'];?>)" class="mb-0"><i class="fa fa-trash"> </i></a>
+                  <a href="update_rank.php?rank_id=<?php echo $rank['rank_id'];?>" class="mt-0"><i class="fa fa-edit"> </i> </a> &nbsp;
+                  <a href="#" onclick="_deteteRank(<?php echo $rank['rank_id'];?>)" class="mb-0"><i class="fa fa-trash"> </i></a>
                 </div>
                 </li>
               <?php $i++;} ?>
@@ -97,26 +107,26 @@
 <!-- Global Required Scripts Start -->
 <?php include ('../../components/libary/script.php') ?>
 <?php
-if(isset($_POST['onSubmit'])){
-  $m_id=$_SETSTRING($con, $_POST['m_id']);
-  $m_icon=$_SETSTRING($con, $_POST['m_icon']);
-  $m_name=$_SETSTRING($con, $_POST['m_name']);
-  $tab_id=$_SETSTRING($con, $_POST['tab_id']);
+if(isset($_POST['onupdate'])){
+  $rank_id=$_SETSTRING($con, $_POST['rank_id']);
+  $rank_code=$_SETSTRING($con, $_POST['rank_code']);
+  $rank_name=$_SETSTRING($con, $_POST['rank_name']);
+  
 
-  $created=$_SQL($con,"INSERT INTO sp_menu(m_id,m_icon,m_name,tab_id)VALUES('$m_id','$m_icon','$m_name','$tab_id')");
+  $created=$_SQL($con,"update spa_rank set rank_code='$rank_code',rank_name='$rank_name' where rank_id='$rank_id'");
   if($created){
-    echo "<script> Notiflix.Report.Success('ສຳເລັດ','ການດຳເນີນງານສຳເລັດ...', 'ປິດ',function () {location='menu.php'})</script>";
+    echo "<script> Notiflix.Report.Success('ສຳເລັດ','ການດຳເນີນງານສຳເລັດ...', 'ປິດ',function () {location='add_rank.php'})</script>";
   }else {
-    echo "<script> Notiflix.Report.Failure('ຜິດພາດ','ການດຳເນີນງານບໍ່ສຳເລັດ !', 'ປິດ',function () {location='menu.php'});</script>";
+    echo "<script> Notiflix.Report.Failure('ຜິດພາດ','ການດຳເນີນງານບໍ່ສຳເລັດ !', 'ປິດ',function () {location='add_rank.php'});</script>";
   }
 }
 
 if(isset($_GET['del'])){
-  $_onDelete=$_SQL($con,"DELETE FROM  sp_menu WHERE m_id='$_GET[del]'");
+  $_onDelete=$_SQL($con,"DELETE FROM  spa_rank WHERE rank_id='$_GET[del]'");
   if($_onDelete){
-    echo "<script> Notiflix.Report.Success('ສຳເລັດ','ການດຳເນີນງານສຳເລັດ...', 'ປິດ',function () {location='menu.php'})</script>";
+    echo "<script> Notiflix.Report.Success('ສຳເລັດ','ການດຳເນີນງານສຳເລັດ...', 'ປິດ',function () {location='add_rank.php'})</script>";
   }else {
-    echo "<script> Notiflix.Report.Failure('ຜິດພາດ','ການດຳເນີນງານບໍ່ສຳເລັດ !', 'ປິດ',function () {location='menu.php'});</script>";
+    echo "<script> Notiflix.Report.Failure('ຜິດພາດ','ການດຳເນີນງານບໍ່ສຳເລັດ !', 'ປິດ',function () {location='add_rank.php'});</script>";
   }
 }
 ?>
