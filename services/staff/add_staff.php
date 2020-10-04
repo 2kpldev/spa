@@ -1,6 +1,13 @@
 <?php
 include ("../../connection.php");
 include ("../../helper/index.php");
+
+$get_resultset=mysqli_query($con,"SELECT*FROM spa_staff");
+$rested=mysqli_num_rows($get_resultset);
+$detake=mysqli_query($con,"SELECT staff_code from spa_staff where staff_code=(select max(staff_code)from spa_staff)");
+$result=mysqli_fetch_array($detake);
+$id=$result[0]+1;
+
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +64,7 @@ include ("../../helper/index.php");
 									<div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 150px; max-height: 180px; line-height: 20px;"></div>
 									<div>
 										<span class="btn btn-sm  btn-info  btn-file"><span class="fileupload-new">ເລືອກຮູບ </span><span class="fileupload-exists">ປ່ຽນຮູບ</span>
-										<input type="file" name="pic" id="images"> 	
+										<input type="file" name="staff_img" id="images"> 	
 									</span>
 									
 
@@ -67,7 +74,17 @@ include ("../../helper/index.php");
 					</div>
                   <div class="form-row">
                     
-                    <input type="text" name='staff_code' id='staff_code'>
+               
+
+                      <div class="col-md-2 mb-3">
+                      <label>ລະຫັດ <?php isVal();?></label>
+                      <div class="input-group">
+                      <input type="text" class="form-control mr-2 fs-20"
+                      <?php if($rested>=1){echo "readonly";}else{echo "";} ?>
+                      name="m_id" value="<?php if($rested>=1){echo $id;}else{echo "";} ?>" required>
+                      </div>
+                    </div>
+
 
 
                     <div class="col-md-4 mb-3">
@@ -83,7 +100,7 @@ include ("../../helper/index.php");
                       </div>
                     </div>
 					
-					               <div class="col-md-4 mb-3">
+					               <div class="col-md-2 mb-3">
                       <label>ເພດ</label>
                       <div class="input-group">
                         

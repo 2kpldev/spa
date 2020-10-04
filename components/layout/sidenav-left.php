@@ -1,4 +1,4 @@
-<?php include "../../connection.php"; ?>
+<?php include "../../connection.php";?>
 <!-- Sidebar Navigation Left -->
 <?php $con = mysqli_connect('localhost', 'root', '', 'spadb');?>
 <aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left">
