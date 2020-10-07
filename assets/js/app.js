@@ -29,15 +29,17 @@ function _deteteSubMenu(e,ev){
   function(){
     window.location='sub_menu.php?del='+e+'&page='+ev;
   });
-}
+})
 
 
 
 function _deteteRank(e){
   Notiflix.Confirm.Show( 'ສະຖານະ', 'ທ່ານຕ້ອງການລຶບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ່ ?', 'ຕົກລົງ', 'ຍົກເລີກ',
   function(){
-    window.location='add_rank.php?del='+e;
-  });
+    window.location='add_rank.php?del=' + e;
+  },
+  function(){
+  } );
 }
 
 function _deteteStaff(e){
