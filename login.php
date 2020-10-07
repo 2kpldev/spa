@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="vendors/iconic-fonts/cryptocoins/cryptocoins-colors.css">
   <!-- Bootstrap core CSS -->
   <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/AIO/notiflix-2.4.0.min.css" rel="stylesheet">
   <!-- jQuery UI -->
   <link href="assets/css/jquery-ui.min.css" rel="stylesheet">
   <!-- Page Specific CSS (Slick Slider.css) -->
@@ -88,5 +89,7 @@ else {
  <script>
    window.history.forward()
  </script>
+
+ <script type="text/javascript" src="assets/AIO/notiflix-aio-2.0.0.min.js"></script>
 </body>
 </html>
