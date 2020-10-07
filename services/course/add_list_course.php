@@ -37,9 +37,9 @@ include ("../../helper/index.php");
         <div class="ms-panel-header">
           <div class="d-flex justify-content-between">
             <div class="align-self-center align-left">
-              <h6><i class="fa fa-user"></i>&nbsp; ເພີ່ມຂໍ້ມູນພະນັກງານໃໝ່</h6>
+              <h6><i class="fa fa-user"></i>&nbsp; ເພີ່ມຂໍ້ມູນລາຍການຄອດໃໝ່</h6>
             </div>
-            <a href="staff-list.php" class="btn btn-outline-primary btn-sm has-icon">
+            <a href="detail_list_course.php" class="btn btn-outline-primary btn-sm has-icon">
               <i class="fa fa-angle-double-left"></i> ຍ້ອນກັບ
             </a>
 
@@ -57,7 +57,7 @@ include ("../../helper/index.php");
                     <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 150px; max-height: 180px; line-height: 20px;"></div>
                     <div>
                       <span class="btn btn-sm  btn-info  btn-file"><span class="fileupload-new">ເລືອກຮູບ </span><span class="fileupload-exists">ປ່ຽນຮູບ</span>
-                      <input type="file" name="staff_img" id="staff_img" required>
+                      <input type="file" name="list_img" id="list_img">
                     </span>
 
 
@@ -66,105 +66,88 @@ include ("../../helper/index.php");
               </div>
             </div>
             <div class="form-row">
-              <div class="col-md-4 mb-3">
-                <label>ຊື່ <?php isVal();?></label>
-                <div class="input-group">
-                  <input type="text" class="form-control" required placeholder="ຊື່"  name='staff_name' id="staff_name" required>
-                </div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <label>ນາມສະກຸນ</label>
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="ນາມສະກຸນ" name='staff_lname' id="staff_lname" required>
-                </div>
-              </div>
-
-              <div class="col-md-4 mb-3">
-                <label>ເພດ</label>
+            <div class="col-md-6 mb-3">
+                <label>ກຸ່ມຄອດ <?php isVal();?></label>
                 <div class="input-group">
 
-                  <select class="form-control" name='staff_gender' id="staff_gender" required>
-                    <option value="">ກະລຸນາເລືອກເພດ</option>
-                    <option value="ຊາຍ">ຊາຍ</option>
-                    <option value="ຍິງ">ຍິງ</option>
-                  </select>
-                </div>
-              </div>
-            </div>
+                  <select class="form-control" name='groupcode' id="groupcode" required>
+                    <option value="">ກະລຸນາເລືອກກຸ່ມຄອດ</option>
 
-            <div class="form-row">
-              <div class="col-md-6 mb-3">
-                <label>ວັນເດືອນປີເກີດ</label>
-                <div class="input-group">
-                  <input type="date" class="form-control"  value="<?=date('Y-m-d');?>" name='staff_dob' id="staff_dob" required>
-                </div>
-              </div>
-              <div class="col-md-6 mb-3">
-                <label>ເບີໂທ</label>
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="ເບີໂທ" name='staff_tel' id="staff_tel" required>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="col-md-4 mb-3">
-                <label>ຊື່ຜູ້ນຳໃຊ້</label>
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="ຊື່ຜູ້ນຳໃຊ້" name='staff_username' id="staff_username" required>
-                </div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <label>ລະຫັດຜ່ານ</label>
-                <div class="input-group">
-                  <input type="password" class="form-control" placeholder="ລະຫັດຜ່ານ" name='staff_password' id="staff_password" required>
-                </div>
-              </div>
-
-              <div class="col-md-4 mb-3">
-                <label>ສິດທິນຳໃຊ້</label>
-                <div class="input-group">
-
-                  <select class="form-control" name='staff_role' id="staff_role" required>
-                    <option value="">ກະລຸນາເລືອກສິດທິນຳໃຊ້</option>
-                    <option value="on">ເປິດການນຳໃຊ້</option>
-                    <option value="off">ປິດການນຳໃຊ້</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="col-md-4 mb-3">
-                <label>ຕຳແໜ່ງ</label>
-                <div class="input-group">
-                  <select class="form-control" name='rankcode' id="rankcode" required>
-                    <option value="">ກະລຸນາເລືອກຕຳແໜ່ງ</option>
-                    
                     <?php
-                      $sel_rank="select*from spa_rank";
-                      $result=$DB_con->prepare($sel_rank);
-                      $result->execute();
-                      while($rank=$result->fetch()){
-                        echo "<option value='".$rank['rank_code']."'>".$rank['rank_name']."</option>";
-                      }
-                    ?>
+                        $sel_group=mysqli_query($con,"select*from spa_group_course");
 
+                        foreach($sel_group as $group){
+
+                            echo "<option value='".$group['group_code']."'>".$group['group_name']."</option>";
+                        }
+                    
+                    ?>            
 
 
                   </select>
                 </div>
               </div>
-              <div class="col-md-4 mb-3">
-                <label>ເງິນເດືອນພື້ນຖານ</label>
+              <div class="col-md-6 mb-3">
+                <label>ຊື່ຄອດ <?php isVal();?></label>
                 <div class="input-group">
-                  <input type="number" class="form-control" placeholder="ເງິນເດືອນພື້ນຖານ" name='staff_salary' id="staff_salary" required>
+                  <input type="text" class="form-control" required placeholder="ຊື່ຄອດ"  name='list_name' id="list_name" required>
+                </div>
+              </div>
+              
+            </div>
+            <div class="form-row">
+            <div class="col-md-12 mb-3">
+                <label>ລາຍລະອຽດຄອດ</label>
+                <div class="input-group">
+                  
+                  <textarea name="list_detail" id="list_detail" class="form-control" rows="3" placeholder='ລາຍລະອຽດ'></textarea>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <label>ລາຄາ/ຄັ້ງ <?php isVal();?></label>
+                <div class="input-group">
+                  <input type="number" class="form-control" name='list_price_once' id="list_price_once" required>
                 </div>
               </div>
               <div class="col-md-4 mb-3">
-                <label>ວັນເຂົ້າວຽກ</label>
+                <label>ລາຄາ/ຄອດ <?php isVal();?></label>
                 <div class="input-group">
-                  <input type="date" class="form-control"  value="<?=date('Y-m-d');?>" name='staff_date_in' id="staff_date_in" required>
+                  <input type="number" class="form-control" placeholder="ລາຄາ/ຄອດ" name='list_price_course' id="list_price_course" required>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label>ສ່ວນຫຼຸດ</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="ສ່ວນຫຼຸດ" name='list_discount' id="list_discount" value="0">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <label>ຈຳນວນຄັ້ງ/ຄອດ <?php isVal();?></label>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="ຈຳນວນຄັ້ງ/ຄອດ" name='list_qty_course' id="list_qty_course" required>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label>ສະຖານະ <?php isVal();?></label>
+                <select class="form-control" name='list_status' id="list_status" required>
+                    <option value="">ກະລຸນາເລືອກສະຖານະ</option>
+                    <option value="on">ເປີດບໍລິການ</option>
+                    <option value="off">ປິດບໍລິການ</option>
+                  </select>
+              </div>
+
+              <div class="col-md-12 mb-3">
+                <label>ໝາຍເຫດ</label>
+                <div class="input-group">
+                    
+                    <textarea name="list_remark" id="list_remark" class="form-control" rows="3"></textarea>
+                    
                 </div>
               </div>
             </div>
@@ -202,7 +185,7 @@ $('#insert_data').on('submit',function(event){
   event.preventDefault();
 
   $.ajax({
-    url:'save_staff.php',
+    url:'save_list_course.php',
     method:'post',
     data:new FormData(this),
     contentType:false,

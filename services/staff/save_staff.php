@@ -29,6 +29,20 @@ $staff_date_in=mysqli_real_escape_string($con,$_POST["staff_date_in"]);
 @$newfilename=$fileinfo['filename']."_".time().".".$fileinfo['extension'];
 @$location="img/".$newfilename;
 
+
+
+$selCount=mysqli_query($con,"select*from spa_staff where staff_username='$staff_username'");
+$Count=mysqli_fetch_assoc($selCount);
+
+if($Count['staff_username']==$staff_username){
+  echo json_encode(array("statusCode" => 400));
+}
+
+
+
+else{
+
+
 if($_FILES['staff_img']['name'] !=""){
   move_uploaded_file($_FILES['staff_img']['tmp_name'],"img/".$newfilename);
 
@@ -113,4 +127,6 @@ if($_FILES['staff_img']['name'] !=""){
             echo json_encode(array("statusCode" => 404));
           }
         }
+
+      }
         ?>

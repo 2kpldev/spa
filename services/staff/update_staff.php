@@ -1,6 +1,12 @@
 <?php
 include ("../../connection.php");
 include ("../../helper/index.php");
+
+$staff_id=$_GET['staff_id'];
+$sel_staff=mysqli_query($con,"select*from spa_staff left join spa_rank on spa_staff.rankcode=spa_rank.rank_code where staff_id='$staff_id'");
+$staff=mysqli_fetch_assoc($sel_staff);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +43,7 @@ include ("../../helper/index.php");
         <div class="ms-panel-header">
           <div class="d-flex justify-content-between">
             <div class="align-self-center align-left">
-              <h6><i class="fa fa-user"></i>&nbsp; ເພີ່ມຂໍ້ມູນພະນັກງານໃໝ່</h6>
+              <h6><i class="fa fa-user"></i>&nbsp; ແກ້ໄຂຂໍ້ມູນພະນັກງານໃໝ່</h6>
             </div>
             <a href="staff-list.php" class="btn btn-outline-primary btn-sm has-icon">
               <i class="fa fa-angle-double-left"></i> ຍ້ອນກັບ
@@ -49,15 +55,18 @@ include ("../../helper/index.php");
         <div class="ms-panel ms-panel-fh">
           <div class="ms-panel-body">
             <form class="ms-form-wizard style1-wizard" id="insert_data">
+
+                <input type="hidden" name='staff_id' id="staff_id" value="<?=$staff_id;?>">
+
               <div class="form-row">
                 <div class="col-md-12 mb-3">
                   <div class="fileupload fileupload-new text-center" data-provides="fileupload">
-                    <div class="fileupload-new thumbnail" style="width: 150px; height: 180px;"><img src='img/no.png' alt="" />
+                    <div class="fileupload-new thumbnail" style="width: 150px; height: 180px;"><img src="img/<?=$staff['staff_img'];?>" alt="" />
                     </div>
                     <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 150px; max-height: 180px; line-height: 20px;"></div>
                     <div>
                       <span class="btn btn-sm  btn-info  btn-file"><span class="fileupload-new">ເລືອກຮູບ </span><span class="fileupload-exists">ປ່ຽນຮູບ</span>
-                      <input type="file" name="staff_img" id="staff_img" required>
+                      <input type="file" name="staff_img" id="staff_img">
                     </span>
 
 
@@ -65,17 +74,18 @@ include ("../../helper/index.php");
                 </div>
               </div>
             </div>
+            
             <div class="form-row">
               <div class="col-md-4 mb-3">
                 <label>ຊື່ <?php isVal();?></label>
                 <div class="input-group">
-                  <input type="text" class="form-control" required placeholder="ຊື່"  name='staff_name' id="staff_name" required>
+                  <input type="text" class="form-control" required placeholder="ຊື່"  name='staff_name' id="staff_name" value="<?=$staff['staff_name']?>" required>
                 </div>
               </div>
               <div class="col-md-4 mb-3">
                 <label>ນາມສະກຸນ</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="ນາມສະກຸນ" name='staff_lname' id="staff_lname" required>
+                  <input type="text" class="form-control" placeholder="ນາມສະກຸນ" name='staff_lname' id="staff_lname" value="<?=$staff['staff_lname']?>" required>
                 </div>
               </div>
 
@@ -84,7 +94,7 @@ include ("../../helper/index.php");
                 <div class="input-group">
 
                   <select class="form-control" name='staff_gender' id="staff_gender" required>
-                    <option value="">ກະລຸນາເລືອກເພດ</option>
+                    <option value="<?=$staff['staff_gender']?>"><?=$staff['staff_gender']?></option>
                     <option value="ຊາຍ">ຊາຍ</option>
                     <option value="ຍິງ">ຍິງ</option>
                   </select>
@@ -96,13 +106,13 @@ include ("../../helper/index.php");
               <div class="col-md-6 mb-3">
                 <label>ວັນເດືອນປີເກີດ</label>
                 <div class="input-group">
-                  <input type="date" class="form-control"  value="<?=date('Y-m-d');?>" name='staff_dob' id="staff_dob" required>
+                  <input type="date" class="form-control" value="<?=$staff['staff_dob']?>" name='staff_dob' id="staff_dob" required>
                 </div>
               </div>
               <div class="col-md-6 mb-3">
                 <label>ເບີໂທ</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="ເບີໂທ" name='staff_tel' id="staff_tel" required>
+                  <input type="text" class="form-control" placeholder="ເບີໂທ" value="<?=$staff['staff_tel']?>" name='staff_tel' id="staff_tel" required>
                 </div>
               </div>
             </div>
@@ -111,13 +121,13 @@ include ("../../helper/index.php");
               <div class="col-md-4 mb-3">
                 <label>ຊື່ຜູ້ນຳໃຊ້</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="ຊື່ຜູ້ນຳໃຊ້" name='staff_username' id="staff_username" required>
+                  <input type="text" class="form-control" placeholder="ຊື່ຜູ້ນຳໃຊ້" value="<?=$staff['staff_username']?>" name='staff_username' id="staff_username" required>
                 </div>
               </div>
               <div class="col-md-4 mb-3">
                 <label>ລະຫັດຜ່ານ</label>
                 <div class="input-group">
-                  <input type="password" class="form-control" placeholder="ລະຫັດຜ່ານ" name='staff_password' id="staff_password" required>
+                  <input type="password" class="form-control" placeholder="ລະຫັດຜ່ານ" value="<?=$staff['staff_password']?>" name='staff_password' id="staff_password" required>
                 </div>
               </div>
 
@@ -126,7 +136,16 @@ include ("../../helper/index.php");
                 <div class="input-group">
 
                   <select class="form-control" name='staff_role' id="staff_role" required>
-                    <option value="">ກະລຸນາເລືອກສິດທິນຳໃຊ້</option>
+                    <option value="<?=$staff['staff_role']?>">
+                        <?php
+                            if($staff['staff_role']=='on'){echo "ເປີດການນຳໃຊ້";}
+                            else if($staff['staff_role']=='off'){echo "ປິດການນຳໃຊ້";}
+                            else{
+                                echo "plase check form again";
+                            }
+                        ?>
+                    
+                    </option>
                     <option value="on">ເປິດການນຳໃຊ້</option>
                     <option value="off">ປິດການນຳໃຊ້</option>
                   </select>
@@ -139,7 +158,7 @@ include ("../../helper/index.php");
                 <label>ຕຳແໜ່ງ</label>
                 <div class="input-group">
                   <select class="form-control" name='rankcode' id="rankcode" required>
-                    <option value="">ກະລຸນາເລືອກຕຳແໜ່ງ</option>
+                    <option value="<?=$staff['rank_code']?>"><?=$staff['rank_name'];?></option>
                     
                     <?php
                       $sel_rank="select*from spa_rank";
@@ -158,13 +177,13 @@ include ("../../helper/index.php");
               <div class="col-md-4 mb-3">
                 <label>ເງິນເດືອນພື້ນຖານ</label>
                 <div class="input-group">
-                  <input type="number" class="form-control" placeholder="ເງິນເດືອນພື້ນຖານ" name='staff_salary' id="staff_salary" required>
+                  <input type="number" class="form-control" value="<?=$staff['staff_salary']?>" placeholder="ເງິນເດືອນພື້ນຖານ" name='staff_salary' id="staff_salary" required>
                 </div>
               </div>
               <div class="col-md-4 mb-3">
                 <label>ວັນເຂົ້າວຽກ</label>
                 <div class="input-group">
-                  <input type="date" class="form-control"  value="<?=date('Y-m-d');?>" name='staff_date_in' id="staff_date_in" required>
+                  <input type="date" class="form-control" value="<?=$staff['staff_date_in']?>"  value="<?=date('Y-m-d');?>" name='staff_date_in' id="staff_date_in" required>
                 </div>
               </div>
             </div>
@@ -202,7 +221,7 @@ $('#insert_data').on('submit',function(event){
   event.preventDefault();
 
   $.ajax({
-    url:'save_staff.php',
+    url:'save_update_staff.php',
     method:'post',
     data:new FormData(this),
     contentType:false,
@@ -211,9 +230,9 @@ $('#insert_data').on('submit',function(event){
       var dataResult = JSON.parse(dataResult);
 
       if (dataResult.statusCode == 200) {
-        Notiflix.Report.Success('ສຳເລັດ','ການດຳເນີນງານສຳເລັດ...', 'ປິດ');
+        Notiflix.Report.Success('ສຳເລັດ','ການດຳເນີນງານສຳເລັດ...', 'ປິດ',function(){window.location='staff-list.php';});
 
-        $("#insert_data")[0].reset();
+        // $("#insert_data")[0].reset();
       }
       else if (dataResult.statusCode == 400) {
         Notiflix.Report.Warning('ຊື່ຜູ້ນຳໃຊ້ຊ້ຳກັນ','ກະລຸນາກວດສອບ...', 'ປິດ');

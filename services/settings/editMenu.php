@@ -24,11 +24,8 @@
     <?php include ('../../components/layout/navbar-top.php') ?>
     <!-- Body Content Wrapper -->
     <?php
-      $get_resultset=mysqli_query($con,"SELECT*FROM spa_menu");
-      $rested=mysqli_num_rows($get_resultset);
-      $detake=mysqli_query($con,"SELECT m_id from spa_menu where m_id=(select max(m_id)from spa_menu)");
-      $result=mysqli_fetch_array($detake);
-      $id=$result[0]+1;
+      $get_resultset=mysqli_query($con,"SELECT*FROM spa_menu WHERE m_id='$_GET[page]'");
+      $result=mysqli_fetch_array($get_resultset);
       ?>
     <!-- Body Content Wrapper -->
     <div class="ms-content-wrapper">
@@ -40,12 +37,11 @@
                 <div class="col-xl-12 col-md-6 pd-0">
                   <form action="" method="post">
                     <div class="form-group d-flex m-0 fs-14 clearfix">
-                      <input type="<?php if($rested>=1){echo "hidden";}else{echo "text";} ?>" class="form-control mr-2 fs-20"
-                      name="m_id" value="<?php if($rested>=1){echo $id;}else{echo "";} ?>" required>
-                      <input type="text" class="form-control mr-2 fs-20"  name="m_icon" placeholder="ປ້ອນຊື່ໄອຄອ໋ນ" required>
-                      <input type="text" class="form-control mr-2 fs-20"  name="m_name" placeholder="ປ້ອນຊື່ເມນູ" required>
-                      <input type="text" class="form-control mr-2 fs-20"  name="tab_id" placeholder="ປ້ອນແທັບໄອດີ" required>
-                      <input type="text" class="form-control mr-2 fs-20"  name="tab_id2" placeholder="ປ້ອນແທັບໄອດີ2" required>
+                      <input type="hidden" class="form-control mr-2 fs-20" name="m_id" value="<?php echo $result['m_id']; ?>" required>
+                      <input type="text" class="form-control mr-2 fs-20"  name="m_icon" value="<?php echo $result['m_icon']; ?>" required>
+                      <input type="text" class="form-control mr-2 fs-20"  name="m_name" value="<?php echo $result['m_name']; ?>" required>
+                      <input type="text" class="form-control mr-2 fs-20"  name="tab_id" value="<?php echo $result['tab_id']; ?>" required>
+                      <input type="text" class="form-control mr-2 fs-20"  name="tab_id2" value="<?php echo $result['tab_id2']; ?>" required>
                       <button type="submit" name="onSubmit" class="ms-btn-icon btn-primary w-50 float-right">
                       <i class="fa fa-check-circle"> </i>
                       </button>
@@ -104,7 +100,7 @@ if(isset($_POST['onSubmit'])){
   $tab_id=$_SETSTRING($con, $_POST['tab_id']);
   $tab_id2=$_SETSTRING($con, $_POST['tab_id2']);
 
-  $created=$_SQL($con,"INSERT INTO spa_menu(m_id,m_icon,m_name,tab_id,tab_id2)VALUES('$m_id','$m_icon','$m_name','$tab_id','$tab_id2')");
+  $created=$_SQL($con,"UPDATE spa_menu SET m_id='$m_id',m_icon='$m_icon',m_name='$m_name',tab_id='$tab_id',tab_id2='$tab_id2' WHERE m_id='$_GET[page]'");
   if($created){
     echo "<script> Notiflix.Report.Success('ສຳເລັດ','ການດຳເນີນງານສຳເລັດ...', 'ປິດ',function () {location='menu.php'})</script>";
   }else {

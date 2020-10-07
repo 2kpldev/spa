@@ -3,7 +3,7 @@
 <head>
   <?php include '../../components/libary/lib.php' ?>
   <style media="screen">
-  #product{
+  #products{
     border-left: 4px solid red;
     border-bottom: 1px solid red;
   }

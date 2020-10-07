@@ -16,87 +16,32 @@
       </a>
     </li>
     <!-- product -->
-<?php
-  $callMenu=mysqli_query($con,'SELECT*FROM sp_menu');
-  foreach ($callMenu as $key) {
- ?>
-    <li class="menu-item" id="<?php echo $key['tab_id'] ?>">
-      <a href="#" class="has-chevron" data-toggle="collapse" data-target="#<?php echo $key['tab_id'] ?>" aria-expanded="false" aria-controls="<?php echo $key['tab_id'] ?>">
-         <span><?php echo $key['m_icon'] ?>  <?php echo $key['m_name'] ?> </span>
-      </a>
-      <ul id="<?php echo $key['tab_id'] ?>" class="collapse" aria-labelledby="product" data-parent="#side-nav-accordion">
-        <li> <a href="../products/product-list.php"> ຜະລິດຕະພັນ 1</a>
-        </li>
-        <li> <a href="../products/product-list.php">ຜະລິດຕະພັນ 2</a>
-        </li>
-      </ul>
-    </li>
-<?php } ?>
-    <!-- services end -->
-    <!-- <li class="menu-item" id="service">
-      <a href="#" class="has-chevron" data-toggle="collapse" data-target="#services" aria-expanded="false" aria-controls="services">
-        <span><i class="fa fa-heart fs-16"></i> ການບໍລິການ </span>
-      </a>
-      <ul id="services" class="collapse" aria-labelledby="services" data-parent="#side-nav-accordion">
-        <li> <a href="../service/services-list.php"> ການບໍລິການ</a>
-        </li>
-        <li> <a href="pages/product/productlist.html"> ການບໍລິການ</a>
-        </li>
-      </ul>
-      </li> -->
-
-      <!-- customer -->
-      <!-- <li class="menu-item" id="customers">
-        <a href="#" class="has-chevron" data-toggle="collapse" data-target="#customer" aria-expanded="false" aria-controls="customer">
-           <span><i class="fa fa-users fs-16"></i>  ຈັດການລູກຄ້າ </span>
+    <?php
+    $callMenu=mysqli_query($con,'SELECT*FROM spa_menu');
+    foreach ($callMenu as $key) {
+      ?>
+      <li class="menu-item" id="<?php echo $key['tab_id'] ?>">
+        <a href="#" class="has-chevron" data-toggle="collapse" data-target="#<?php echo $key['tab_id2']; ?>" aria-expanded="false" aria-controls="<?php echo $key['tab_id2']; ?>">
+          <span><i class="fa fa-<?php echo $key['m_icon']; ?>"></i>  <?php echo $key['m_name'] ?> </span>
         </a>
-        <ul id="customer" class="collapse" aria-labelledby="customer" data-parent="#side-nav-accordion">
-          <li><a href="../customer/customer-list.php"> ຂໍ້ມູນລູກ</a> </li>
-          <li> <a href="../customer/customer-list.php">ລູກຄ້າ 2</a></li>
-        </ul>
-      </li> -->
-      <!-- staff -->
-      <!-- <li class="menu-item" id="staffs">
-        <a href="#" class="has-chevron" data-toggle="collapse" data-target="#staff" aria-expanded="false" aria-controls="staff">
-           <span><i class="fa fa-user fs-16"></i>  ຈັດການພະນັກງານ </span>
-        </a>
-        <ul id="staff" class="collapse" aria-labelledby="staff" data-parent="#side-nav-accordion">
-          <li> <a href="../staff/staff-list.php"> ຂໍ້ມູນພະນັກງານ</a></li>
-          <li> <a href="../staff/follow-up.php"> ຕິດຕາມພະນັກງານ</a></li>
-          <li> <a href="../staff/pay-slip.php"> ເບີກຈ່າຍເງິນເດືອນ</a>
-          </li>
-        </ul>
-      </li> -->
-      <!-- customer -->
-      <!-- <li class="menu-item" id="stocks">
-        <a href="#" class="has-chevron" data-toggle="collapse" data-target="#stock" aria-expanded="false" aria-controls="stock">
-           <span><i class="fa fa-pie-chart fs-16"></i>  ຈັດການສາງເຄື່ອງ </span>
-        </a>
-        <ul id="stock" class="collapse" aria-labelledby="stock" data-parent="#side-nav-accordion">
-          <li> <a href="../stock/put-on.php"> ບ່ອນເກັບມ້ຽນ</a></li>
-          <li> <a href="../stock/stock-list.php"> ເອົາເຄື່ອງເຂົ້າສາງ</a></li>
-          <li> <a href="../stock/"> ເບີກເຄື່ອງອອກສາງ</a></li>
-          </li>
-        </ul>
-      </li> -->
-      <!-- report -->
-      <li class="menu-item"  id="reports">
-        <a href="#" class="has-chevron" data-toggle="collapse" data-target="#report" aria-expanded="false" aria-controls="report">
-           <span><i class="fa fa-bar-chart fs-16"></i>  ລາຍງານ </span>
-        </a>
-        <ul id="report" class="collapse" aria-labelledby="report" data-parent="#side-nav-accordion">
-          <li> <a href="../report/report-customer.php"> ລາຍງານຂໍ້ມູນລູກຄ້າ</a>
-          </li>
-          <li> <a href="../report/report-stocks.php">ລາຍງານຂໍ້ມູນເຄື່ອງ</a>
-          </li>
+        <ul id="<?php echo $key['tab_id2']; ?>" class="collapse" aria-labelledby="<?php echo $key['tab_id2'];?>" data-parent="#side-nav-accordion">
+          <?php
+          $m_id=$key['m_id'];
+          $callSubMenu=mysqli_query($con,"SELECT*FROM spa_submenu WHERE m_id='$m_id'");
+          foreach ($callSubMenu as $keys) {
+            ?>
+            <li> <a href="<?php echo $keys['sub_link'];?>"> <?php echo $keys['sub_name'];?></a>  </li>
+          <?php } ?>
         </ul>
       </li>
-    <!-- restaurants -->
-    <li class="menu-item" id="settings">
-      <a href="../settings/"> <span><i class="fa fa-cogs fs-16"></i> ຕັ້ງຄ່າ</span>
-      </a>
-    </li>
-    <!-- restaurants end -->
-  </ul>
+    <?php } ?>
+
+<!-- restaurants -->
+<li class="menu-item" id="settings">
+  <a href="../settings/"> <span><i class="fa fa-cogs fs-16"></i> ຕັ້ງຄ່າ</span>
+  </a>
+</li>
+<!-- restaurants end -->
+</ul>
 </aside>
 <!-- Sidebar Right -->
