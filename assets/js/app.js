@@ -54,3 +54,18 @@ function _deteteGroup(e){
     window.location='add_group_course.php?del='+e;
   });
 }
+
+
+
+// =============================
+function logout() {
+  Notiflix.Confirm.Show(
+    "ສະຖານະ",
+    "ທ່ານຕ້ອງການອອກຈາກລະບົບນີ້ແທ້ ຫຼື ບໍ່ ?",
+    "ຕົກລົງ",
+    "ຍົກເລີກ",
+    function () {
+      window.location = "../../login.php";
+    }
+  );
+}
