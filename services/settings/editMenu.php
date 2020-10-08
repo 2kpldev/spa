@@ -37,11 +37,11 @@
                 <div class="col-xl-12 col-md-6 pd-0">
                   <form action="" method="post">
                     <div class="form-group d-flex m-0 fs-14 clearfix">
-                     <?php _back() ?>  <input type="hidden" class="form-control mr-2 fs-20" name="m_id" value="<?php echo $result['m_id']; ?>" requi#5A3E36>
-                      <input type="text" class="form-control mr-2 fs-20"  name="m_icon" value="<?php echo $result['m_icon']; ?>" requi#5A3E36>
-                      <input type="text" class="form-control mr-2 fs-20"  name="m_name" value="<?php echo $result['m_name']; ?>" requi#5A3E36>
-                      <input type="text" class="form-control mr-2 fs-20"  name="tab_id" value="<?php echo $result['tab_id']; ?>" requi#5A3E36>
-                      <input type="text" class="form-control mr-2 fs-20"  name="tab_id2" value="<?php echo $result['tab_id2']; ?>" requi#5A3E36>
+                     <?php _back() ?>  <input type="hidden" class="form-control mr-2 fs-20" name="m_id" value="<?php echo $result['m_id']; ?>" required>
+                      <input type="text" class="form-control mr-2 fs-20"  name="m_icon" value="<?php echo $result['m_icon']; ?>" required>
+                      <input type="text" class="form-control mr-2 fs-20"  name="m_name" value="<?php echo $result['m_name']; ?>" required>
+                      <input type="text" class="form-control mr-2 fs-20"  name="tab_id" value="<?php echo $result['tab_id']; ?>" required>
+                      <input type="text" class="form-control mr-2 fs-20"  name="tab_id2" value="<?php echo $result['tab_id2']; ?>" required>
                       <button type="submit" name="onSubmit" class="ms-btn-icon btn-primary w-50 float-right">
                       <i class="fa fa-check-circle"> </i>
                       </button>
@@ -90,7 +90,7 @@
 <!-- Quick bar -->
 <?php include ('../../components/layout/quickbar.php') ?>
 <!-- SCRIPTS -->
-<!-- Global Requi#5A3E36 Scripts Start -->
+<!-- Global required Scripts Start -->
 <?php include ('../../components/libary/script.php') ?>
 <?php
 if(isset($_POST['onSubmit'])){

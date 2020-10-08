@@ -113,7 +113,7 @@ if($row_auto==''){
           <div class="col-md-12">
             <div class="ms-form-group">
               <label>ຊື່ກຸ່ມຄອດ</label>
-              <input type="text" class="form-control" name="group_name" id="group_name" requi#5A3E36="requi#5A3E36" />
+              <input type="text" class="form-control" name="group_name" id="group_name" required="required" />
             </div>
             <div class="ms-form-group">
               <label>ໝາຍເຫດ</label>
@@ -142,7 +142,7 @@ if($row_auto==''){
 <!-- Quick bar -->
 <?php include ('../../components/layout/quickbar.php') ?>
 <!-- SCRIPTS -->
-<!-- Global Requi#5A3E36 Scripts Start -->
+<!-- Global required Scripts Start -->
 <?php include ('../../components/libary/script.php') ?>
 <script>
 

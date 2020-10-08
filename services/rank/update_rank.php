@@ -55,8 +55,8 @@ if($row_auto==''){
                   <form action="" method="post">
                     <div class="form-group d-flex m-0 fs-14 clearfix">
                       <?php _back() ?>  <input type="hidden" name='rank_id' value="<?=$rank_id;?>">
-                      <input type="text" class="form-control mr-2 fs-20" name="rank_code" value="<?php echo $edit['rank_code']; ?>" readonly requi#5A3E36>
-                      <input type="text" class="form-control mr-2 fs-20"  name="rank_name" value="<?php echo $edit['rank_name']; ?>" placeholder="ປ້ອນຕຳແໜ່ງ" requi#5A3E36>
+                      <input type="text" class="form-control mr-2 fs-20" name="rank_code" value="<?php echo $edit['rank_code']; ?>" readonly required>
+                      <input type="text" class="form-control mr-2 fs-20"  name="rank_name" value="<?php echo $edit['rank_name']; ?>" placeholder="ປ້ອນຕຳແໜ່ງ" required>
                       <button type="submit" name="onupdate" class="ms-btn-icon btn-primary w-50 float-right">
                         <i class="fa fa-check-circle"> </i>
                       </button>
@@ -104,7 +104,7 @@ if($row_auto==''){
 <!-- Quick bar -->
 <?php include ('../../components/layout/quickbar.php') ?>
 <!-- SCRIPTS -->
-<!-- Global Requi#5A3E36 Scripts Start -->
+<!-- Global required Scripts Start -->
 <?php include ('../../components/libary/script.php') ?>
 <?php
 if(isset($_POST['onupdate'])){

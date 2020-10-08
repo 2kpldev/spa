@@ -540,7 +540,7 @@
 <!-- Quick bar -->
 <?php include ('../../components/layout/quickbar.php') ?>
 <!-- SCRIPTS -->
-<!-- Global Requi#5A3E36 Scripts Start -->
+<!-- Global required Scripts Start -->
 <?php include ('../../components/libary/script.php') ?>
 </body>
 <!-- Mirro#5A3E36 from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->

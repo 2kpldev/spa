@@ -50,16 +50,16 @@
                         <input type="hidden" class="form-control" name="m_id"  value="<?php echo $_GET['page'];?>">
                         <input type="text" class="form-control" name="sub_id"
                         <?php if($rested>=1){echo "readonly";}else{echo "";} ?>
-                         value="<?php if($rested>=1){echo $id;}else{echo "";} ?>" requi#5A3E36>
+                         value="<?php if($rested>=1){echo $id;}else{echo "";} ?>" required>
                       </div>
 
                       <label>ຊື່ເມນູຍ່ອຍ <?php isVal() ?></label>
                       <div class="input-group">
-                        <input type="text" class="form-control" name="sub_name" placeholder="ກະລຸນາປ້ອນຊື່ເມນູຍ່ອຍ" requi#5A3E36>
+                        <input type="text" class="form-control" name="sub_name" placeholder="ກະລຸນາປ້ອນຊື່ເມນູຍ່ອຍ" required>
                       </div>
                       <label>ລິ້ງ <?php isVal() ?></label>
                       <div class="input-group">
-                        <input type="text" class="form-control" name="sub_link" placeholder="ກະລຸນາປ້ອນລິ້ງ" requi#5A3E36>
+                        <input type="text" class="form-control" name="sub_link" placeholder="ກະລຸນາປ້ອນລິ້ງ" required>
                       </div>
                   <button class="btn btn-outline-primary mt-4" name="onSubmit" type="submit"><i class="fa fa-check-circle"></i> ບັນທຶກ</button>
                   <button class="btn btn-outline-light mt-4" onclick="_back()" type="reset"><i class="fa fa-times-circle"></i> ຍົກເລີກ</button>
@@ -103,7 +103,7 @@
 <!-- Quick bar -->
 <?php include ('../../components/layout/quickbar.php') ?>
 <!-- SCRIPTS -->
-<!-- Global Requi#5A3E36 Scripts Start -->
+<!-- Global required Scripts Start -->
 <?php include ('../../components/libary/script.php') ?>
 <?php
 if(isset($_POST['onSubmit'])){

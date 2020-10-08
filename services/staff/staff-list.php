@@ -225,7 +225,7 @@
     <!-- Quick bar -->
     <?php include ('../../components/layout/quickbar.php') ?>
     <!-- SCRIPTS -->
-    <!-- Global Requi#5A3E36 Scripts Start -->
+    <!-- Global required Scripts Start -->
     <?php include ('../../components/libary/script.php') ?>
 
 
