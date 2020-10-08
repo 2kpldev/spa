@@ -1,5 +1,15 @@
 <!-- Navigation Bar -->
-<?php include '../../components/layout/empty.php'; ?>
+<?php
+$today = date('D');
+function isVal()
+{echo "<font style='color:red'>*</font>";}
+function _back()
+{?>
+<a href="#"  onclick="window.history.go(-1)">
+<i class="fa fa-angle-left fa-2x" style="margin-top:3px!important;margin-bottom:-0px!important;margin-right:20px!important;"></i></a>
+<?}?>
+
+
 <nav class="navbar ms-navbar">
   <div class="ms-aside-toggler ms-toggler pl-0" data-target="#ms-side-nav" data-toggle="slideLeft"> <span class="ms-toggler-bar bg-primary"></span>
     <span class="ms-toggler-bar bg-primary"></span>
@@ -115,3 +125,13 @@
     <span class="ms-toggler-bar bg-primary"></span>
   </div>
 </nav>
+
+<?php function isEmpty()
+{?>
+  <div style="height: 600px;padding: 100px;vertical-align: middle;background-size: 100%">
+    <center>
+      <!-- <h4 style="color:#ccc"><strong>ຂໍອະໄພ !</strong> ຍັງບໍ່ມີຂໍ້ມູນໃດໆໃນລະບົບ...</h4> -->
+    <img src="../../assets/img/empty.png" alt="">
+  </center>
+  </div>
+<?php }?>

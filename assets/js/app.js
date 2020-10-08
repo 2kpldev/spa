@@ -57,6 +57,15 @@ function _deteteGroup(e){
 
 
 
+// preview
+function _preview(e){
+   $('#preview').modal()
+  $.get('preview.php',{e},function(data){
+    $('#preview_content').html(data)
+  })
+}
+
+
 // =============================
 function logout() {
   Notiflix.Confirm.Show(
@@ -65,7 +74,7 @@ function logout() {
     "ຕົກລົງ",
     "ຍົກເລີກ",
     function () {
-      window.location = "../../login.php";
+      window.location = "../../logout.php";
     }
   );
 }

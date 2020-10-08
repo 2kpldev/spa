@@ -18,10 +18,10 @@ if($row_auto==''){
   <?php include '../../components/libary/lib.php' ?>
   <style media="screen">
   #settings{
-    border-left: 4px solid red;
-    border-bottom: 1px solid red;
+    border-left: 4px solid #5A3E36;
+    border-bottom: 1px solid #5A3E36;
   }
-  .fa-cog{color: red}
+  .fa-cog{color: #5A3E36}
   </style>
 </head>
 <body class="ms-body ms-aside-left-open ms-primary-theme ms-has-quickbar">
@@ -53,8 +53,8 @@ if($row_auto==''){
                 <div class="col-xl-12 col-md-6 pd-0">
                   <form action="" method="post">
                     <div class="form-group d-flex m-0 fs-14 clearfix">
-                      <input type="text" class="form-control mr-2 fs-20" name="rank_code" value="<?php echo $rank_code; ?>" readonly required>
-                      <input type="text" class="form-control mr-2 fs-20"  name="rank_name" placeholder="ປ້ອນຕຳແໜ່ງ" required>
+                    <?php _back() ?>  <input type="text" class="form-control mr-2 fs-20" name="rank_code" value="<?php echo $rank_code; ?>" readonly requi#5A3E36>
+                      <input type="text" class="form-control mr-2 fs-20"  name="rank_name" placeholder="ປ້ອນຕຳແໜ່ງ" requi#5A3E36>
                       <button type="submit" name="onSubmit" class="ms-btn-icon btn-primary w-50 float-right">
                         <i class="fa fa-check-circle"> </i>
                       </button>
@@ -70,7 +70,7 @@ if($row_auto==''){
         <div class="col-xl-12 col-md-12 col-sm-12 ms-deletable">
           <div class="ms-card">
             <div class="ms-card-header clearfix">
-              <h6 class="ms-card-title"><i class="fa fa-tasks"></i> ເມນູຫຼັກ</h6>
+              <h6 class="ms-card-title"><i class="fa fa-tasks"></i> ເພີ່ມຂໍ້ມູນຕຳແໜ່ງ</h6>
             </div>
             <div class="ms-card-body">
               <ul class="ms-list ms-task-block">
@@ -102,13 +102,13 @@ if($row_auto==''){
 <!-- Quick bar -->
 <?php include ('../../components/layout/quickbar.php') ?>
 <!-- SCRIPTS -->
-<!-- Global Required Scripts Start -->
+<!-- Global Requi#5A3E36 Scripts Start -->
 <?php include ('../../components/libary/script.php') ?>
 <?php
 if(isset($_POST['onSubmit'])){
   $rank_code=$_SETSTRING($con, $_POST['rank_code']);
   $rank_name=$_SETSTRING($con, $_POST['rank_name']);
-  
+
 
   $created=$_SQL($con,"INSERT INTO spa_rank(rank_code,rank_name)VALUES('$rank_code','$rank_name')");
   if($created){
@@ -128,5 +128,5 @@ if(isset($_GET['del'])){
 }
 ?>
 </body>
-<!-- Mirrored from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
+<!-- Mirro#5A3E36 from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
 </html>

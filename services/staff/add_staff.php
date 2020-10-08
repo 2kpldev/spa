@@ -1,6 +1,5 @@
 <?php
 include ("../../connection.php");
-include ("../../helper/index.php");
 ?>
 
 <!DOCTYPE html>
@@ -9,10 +8,10 @@ include ("../../helper/index.php");
   <?php include '../../components/libary/lib.php' ?>
   <style media="screen">
   #staffs{
-    border-left: 4px solid red;
-    border-bottom: 1px solid red;
+    border-left: 4px solid #5A3E36;
+    border-bottom: 1px solid #5A3E36;
   }
-  .fa-user{color: red}
+  .fa-user{color: #5A3E36}
 
   label{
     font-weight:bold;
@@ -57,7 +56,7 @@ include ("../../helper/index.php");
                     <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 150px; max-height: 180px; line-height: 20px;"></div>
                     <div>
                       <span class="btn btn-sm  btn-info  btn-file"><span class="fileupload-new">ເລືອກຮູບ </span><span class="fileupload-exists">ປ່ຽນຮູບ</span>
-                      <input type="file" name="staff_img" id="staff_img" required>
+                      <input type="file" name="staff_img" id="staff_img" requi#5A3E36>
                     </span>
 
 
@@ -69,13 +68,13 @@ include ("../../helper/index.php");
               <div class="col-md-4 mb-3">
                 <label>ຊື່ <?php isVal();?></label>
                 <div class="input-group">
-                  <input type="text" class="form-control" required placeholder="ຊື່"  name='staff_name' id="staff_name" required>
+                  <input type="text" class="form-control" requi#5A3E36 placeholder="ຊື່"  name='staff_name' id="staff_name" requi#5A3E36>
                 </div>
               </div>
               <div class="col-md-4 mb-3">
                 <label>ນາມສະກຸນ</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="ນາມສະກຸນ" name='staff_lname' id="staff_lname" required>
+                  <input type="text" class="form-control" placeholder="ນາມສະກຸນ" name='staff_lname' id="staff_lname" requi#5A3E36>
                 </div>
               </div>
 
@@ -83,7 +82,7 @@ include ("../../helper/index.php");
                 <label>ເພດ</label>
                 <div class="input-group">
 
-                  <select class="form-control" name='staff_gender' id="staff_gender" required>
+                  <select class="form-control" name='staff_gender' id="staff_gender" requi#5A3E36>
                     <option value="">ກະລຸນາເລືອກເພດ</option>
                     <option value="ຊາຍ">ຊາຍ</option>
                     <option value="ຍິງ">ຍິງ</option>
@@ -96,13 +95,13 @@ include ("../../helper/index.php");
               <div class="col-md-6 mb-3">
                 <label>ວັນເດືອນປີເກີດ</label>
                 <div class="input-group">
-                  <input type="date" class="form-control"  value="<?=date('Y-m-d');?>" name='staff_dob' id="staff_dob" required>
+                  <input type="date" class="form-control"  value="<?=date('Y-m-d');?>" name='staff_dob' id="staff_dob" requi#5A3E36>
                 </div>
               </div>
               <div class="col-md-6 mb-3">
                 <label>ເບີໂທ</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="ເບີໂທ" name='staff_tel' id="staff_tel" required>
+                  <input type="text" class="form-control" placeholder="ເບີໂທ" name='staff_tel' id="staff_tel" requi#5A3E36>
                 </div>
               </div>
             </div>
@@ -111,13 +110,13 @@ include ("../../helper/index.php");
               <div class="col-md-4 mb-3">
                 <label>ຊື່ຜູ້ນຳໃຊ້</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="ຊື່ຜູ້ນຳໃຊ້" name='staff_username' id="staff_username" required>
+                  <input type="text" class="form-control" placeholder="ຊື່ຜູ້ນຳໃຊ້" name='staff_username' id="staff_username" requi#5A3E36>
                 </div>
               </div>
               <div class="col-md-4 mb-3">
                 <label>ລະຫັດຜ່ານ</label>
                 <div class="input-group">
-                  <input type="password" class="form-control" placeholder="ລະຫັດຜ່ານ" name='staff_password' id="staff_password" required>
+                  <input type="password" class="form-control" placeholder="ລະຫັດຜ່ານ" name='staff_password' id="staff_password" requi#5A3E36>
                 </div>
               </div>
 
@@ -125,7 +124,7 @@ include ("../../helper/index.php");
                 <label>ສິດທິນຳໃຊ້</label>
                 <div class="input-group">
 
-                  <select class="form-control" name='staff_role' id="staff_role" required>
+                  <select class="form-control" name='staff_role' id="staff_role" requi#5A3E36>
                     <option value="">ກະລຸນາເລືອກສິດທິນຳໃຊ້</option>
                     <option value="on">ເປິດການນຳໃຊ້</option>
                     <option value="off">ປິດການນຳໃຊ້</option>
@@ -138,9 +137,9 @@ include ("../../helper/index.php");
               <div class="col-md-4 mb-3">
                 <label>ຕຳແໜ່ງ</label>
                 <div class="input-group">
-                  <select class="form-control" name='rankcode' id="rankcode" required>
+                  <select class="form-control" name='rankcode' id="rankcode" requi#5A3E36>
                     <option value="">ກະລຸນາເລືອກຕຳແໜ່ງ</option>
-                    
+
                     <?php
                       $sel_rank="select*from spa_rank";
                       $result=$DB_con->prepare($sel_rank);
@@ -158,13 +157,13 @@ include ("../../helper/index.php");
               <div class="col-md-4 mb-3">
                 <label>ເງິນເດືອນພື້ນຖານ</label>
                 <div class="input-group">
-                  <input type="number" class="form-control" placeholder="ເງິນເດືອນພື້ນຖານ" name='staff_salary' id="staff_salary" required>
+                  <input type="number" class="form-control" placeholder="ເງິນເດືອນພື້ນຖານ" name='staff_salary' id="staff_salary" requi#5A3E36>
                 </div>
               </div>
               <div class="col-md-4 mb-3">
                 <label>ວັນເຂົ້າວຽກ</label>
                 <div class="input-group">
-                  <input type="date" class="form-control"  value="<?=date('Y-m-d');?>" name='staff_date_in' id="staff_date_in" required>
+                  <input type="date" class="form-control"  value="<?=date('Y-m-d');?>" name='staff_date_in' id="staff_date_in" requi#5A3E36>
                 </div>
               </div>
             </div>
@@ -191,7 +190,7 @@ include ("../../helper/index.php");
 <!-- Quick bar -->
 <?php include ('../../components/layout/quickbar.php') ?>
 <!-- SCRIPTS -->
-<!-- Global Required Scripts Start -->
+<!-- Global Requi#5A3E36 Scripts Start -->
 
 <?php include ('../../components/libary/script.php') ?>
 <!-- <script src="../../assets/js/jquery-3.3.1.min.js"></script> -->
@@ -221,7 +220,7 @@ $('#insert_data').on('submit',function(event){
       else if (dataResult.statusCode == 404) {
         Notiflix.Notify.Failure('ບັນທຶກຂໍ້ມູນບໍ່ສຳເລັດ');
 
-        
+
       }
       else {
         Notiflix.Notify.Warning('ກະລຸນາແຈ້ງຜູ້ພັດທະນາ');
@@ -236,5 +235,5 @@ $('#insert_data').on('submit',function(event){
 </script>
 
 </body>
-<!-- Mirrored from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
+<!-- Mirro#5A3E36 from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
 </html>

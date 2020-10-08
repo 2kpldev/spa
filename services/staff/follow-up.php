@@ -4,10 +4,10 @@
   <?php include '../../components/libary/lib.php' ?>
   <style media="screen">
   #staffs{
-    border-left: 4px solid red;
-    border-bottom: 1px solid red;
+    border-left: 4px solid #5A3E36;
+    border-bottom: 1px solid #5A3E36;
   }
-  .fa-user{color: red}
+  .fa-user{color: #5A3E36}
   </style>
 </head>
 <body class="ms-body ms-aside-left-open ms-primary-theme ms-has-quickbar">
@@ -34,7 +34,7 @@
               </h6>
             </div>
             <div class="ms-panel-body">
-              <ul class="nav nav-tabs tabs-bordered d-flex nav-justified mb-4" role="tablist">
+              <ul class="nav nav-tabs tabs-borde#5A3E36 d-flex nav-justified mb-4" role="tablist">
                 <li role="presentation" class="fs-12"><a href="#list" class="active show" role="tab" data-toggle="tab"> ລາຍການທັງໝົດ </a></li>
                 <li role="presentation" class="fs-12"><a href="#miss" role="tab" data-toggle="tab"> ລາຍການຂາດ </a></li>
               </ul>
@@ -123,8 +123,8 @@
   <!-- Quick bar -->
   <?php include ('../../components/layout/quickbar.php') ?>
   <!-- SCRIPTS -->
-  <!-- Global Required Scripts Start -->
+  <!-- Global Requi#5A3E36 Scripts Start -->
   <?php include ('../../components/libary/script.php') ?>
 </body>
-<!-- Mirrored from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
+<!-- Mirro#5A3E36 from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
 </html>

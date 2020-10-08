@@ -30,7 +30,7 @@
           $callSubMenu=mysqli_query($con,"SELECT*FROM spa_submenu WHERE m_id='$m_id'");
           foreach ($callSubMenu as $keys) {
             ?>
-            <li> <a href="<?php echo $keys['sub_link'];?>"> <?php echo $keys['sub_name'];?></a>  </li>
+            <li> <a href="<?php echo $keys['sub_link'];?>"><i class="fa fa-angle-right"></i> <?php echo $keys['sub_name'];?></a>  </li>
           <?php } ?>
         </ul>
       </li>
@@ -44,4 +44,5 @@
 <!-- restaurants end -->
 </ul>
 </aside>
+<!-- <link rel="stylesheet" href="../../services/products/product-list.php"> -->
 <!-- Sidebar Right -->

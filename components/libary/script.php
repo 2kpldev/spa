@@ -24,7 +24,12 @@
 <script src="../../assets/js/data-tables.js"></script>
 <script src="../../assets/js/app.js"></script>
 <script src="../../assets/AIO/notiflix-aio-2.0.0.min.js"></script>
-<!-- Page Specific Scripts Finish -->
+
+<!-- Datepickers -->
+<script src="../../assets/datepicker/js/picker.js"></script>
+<script src="../../assets/datepicker/js/picker.date.js"></script>
+<script src="../../assets/datepicker/js/custom-picker.js"></script>
+
 <!-- Costic core JavaScript -->
 <script src="../../assets/js/framework.js"></script>
 <!-- Settings -->

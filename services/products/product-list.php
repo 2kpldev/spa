@@ -3,11 +3,11 @@
 <head>
   <?php include '../../components/libary/lib.php' ?>
   <style media="screen">
-    #products{
-      border-left: 4px solid red;
-      border-bottom: 1px solid red;
-    }
-     .fa-gift{color: red}
+  #products{
+    border-left: 4px solid #5A3E36;
+    border-bottom: 1px solid #5A3E36;
+  }
+  .fa-gift{color: #5A3E36}
   </style>
 
 </head>
@@ -32,253 +32,88 @@
             <div class="ms-panel-header">
               <h6>
                 <i class="fa fa-gift"></i> ຜະລິດຕະພັນ
-                 <a href="#" data-toggle="modal" data-target="#reminder-modal" class="btn btn-outline-primary btn-sm" style="float: right"><i class="fa fa-plus-circle"></i>&nbsp; ເພີ່ມ</a>
+
+                <a href="../course/detail_list_course.php" class="btn btn-outline-primary btn-sm" style="float: right;margin-left: 10px">
+                  <i class="fa fa-edit"></i>&nbsp; ແກ້ໄຂ</a>
+                <a href="../course/add_list_course.php" class="btn btn-outline-primary btn-sm" style="float: right">
+                  <i class="fa fa-plus-circle"></i>&nbsp; ເພີ່ມ</a>
+
               </h6>
             </div>
             <div class="ms-panel-body">
-              <ul class="nav nav-tabs tabs-bordered d-flex nav-justified mb-4" role="tablist">
-                <li role="presentation" ><a href="#" aria-controls="tab1" class="active"> ລາຍການ </a></li>
-                <li role="presentation" ><a href="orders.php"> ລາຍການທີ່ເລືອກ </a></li>
-                <li role="presentation" ><a href="invoice.php"> ລາຍການທີ່ຊື້ </a></li>
+              <ul class="nav nav-tabs tabs-borde#5A3E36 d-flex nav-justified mb-4" role="tablist">
+                <li role="presentation"><a href="#" aria-controls="tab1" class="active"> ລາຍການ </a></li>
+                <li role="presentation"><a href="orders.php"> ລາຍການທີ່ເລືອກ </a></li>
+                <li role="presentation"><a href="invoice.php"> ລາຍການທີ່ຊື້ </a></li>
               </ul>
               <div class="tab-content">
-                <div class="row">
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                      <div class="ms-card">
-                        <div class="ms-card-img">
-                          <img src="../../assets/img/costic/food-1.jpg" alt="card_img">
-                        </div>
-                        <div class="ms-card-body">
-
-                          <div class="new">
-                            <h6 class="mb-0">Veggies </h6>
-                            <h6 class="ms-text-primary mb-0">$45.50</h6>
+                <?php
+                $get_resultset = mysqli_query($con, "SELECT*FROM spa_list_course");
+                $rested = mysqli_num_rows($get_resultset);
+                if($rested < 1 ){
+                  isEmpty();
+                }else{
+                  ?>
+                  <div class="row">
+                    <?php
+                    $spalist = mysqli_query($con, "SELECT*FROM spa_list_course left join spa_group_course on spa_list_course.groupcode=spa_group_course.group_code");
+                    $i = 1;
+                    foreach ($spalist as $key) {
+                      ?>
+                      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                        <div class="ms-card">
+                          <div class="ms-card-img">
+                            <img src="../../assets/img/spa2.jpg" alt="card_img">
                           </div>
-                          <div class="new meta">
-                            <p>Qty:1467 </p>
-                            <span class="badge badge-success">In Stock</span>
-                          </div>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, dolor sit amet, consectetur adipiscing</p>
-                          <div class="new mb-0">
-                            <button type="button" class="btn grid-btn ml-1 btn-sm btn-outline-primary"><i class="fa fa-cart-plus"></i> ເລືອກ</button>
-                            <button type="button" class="btn grid-btn ml-1 btn-sm btn-outline-warning"><i class="fa fa-eye"></i> ລາຍລະອຽດ</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                      <div class="ms-card">
-                        <div class="ms-card-img">
-                          <img src="../../assets/img/costic/food-2.jpg" alt="card_img">
-                        </div>
-                        <div class="ms-card-body">
-                          <div class="new">
-                            <h6 class="mb-0">Garlic Bread </h6>
-                            <h6 class="ms-text-primary mb-0">$45.50</h6>
-                          </div>
-                          <div class="new meta">
-                            <p>Qty:6224 </p>
-                            <span class="badge badge-primary">Out of Stock</span>
-                          </div>
-
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, dolor sit amet, consectetur adipiscing</p>
-                          <div class="new mb-0">
-                            <button type="button" class="btn grid-btn ml-1 btn-sm btn-outline-primary"><i class="fa fa-cart-plus"></i> ເລືອກ</button>
-                            <button type="button" class="btn grid-btn ml-1 btn-sm btn-outline-warning"><i class="fa fa-eye"></i> ລາຍລະອຽດ</button>
+                          <div class="ms-card-body">
+                            <div class="new">
+                              <h6 class="mb-0"><?php echo $key['list_name'] ?> </h6>
+                              <h6 class="ms-text-primary mb-0"><?php echo number_format($key['list_price_once']). $_KIP ?></h6>
+                            </div>
+                            <div class="new meta">
+                              <p>ຈຳນວນ</p>
+                              <span class="badge badge-success"><?php echo $key['list_qty_course'] ?></span>
+                            </div>
+                            <div class="new meta">
+                              <p>ສ່ວນຫຼຸດ</p>
+                              <span class=""><?php echo number_format($key['list_discount']). $_PERCEN ?></span>
+                            </div><hr>
+                            <p><?php echo $key['list_detail']; ?></p>
+                            <div class="new mb-0">
+                              <button type="button" class="btn grid-btn ml-1 btn-sm btn-outline-primary">
+                                <i class="fa fa-cart-plus"></i> ເລືອກ</button>
+                              <button type="button" class="btn grid-btn ml-1 btn-sm btn-outline-warning" onclick="_preview(<?php echo $key['list_id'] ?>)">
+                                <i class="fa fa-eye"></i> ເບິ່ງ</button>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                      <div class="ms-card">
-                        <div class="ms-card-img">
-                          <img src="../../assets/img/costic/food-3.jpg" alt="card_img">
-                        </div>
-                        <div class="ms-card-body">
-                          <div class="new">
-                            <h6 class="mb-0">Veg Sandwich </h6>
-                            <h6 class="ms-text-primary mb-0">$45.50</h6>
-                          </div>
-                          <div class="new meta">
-                            <p>Qty:1467 </p>
-                            <span class="badge badge-success">In Stock</span>
-                          </div>
-
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, dolor sit amet, consectetur adipiscing</p>
-                          <div class="new mb-0">
-                            <button type="button" class="btn grid-btn ml-1 btn-sm btn-outline-success"><i class="fa fa-cart-plus"></i> ເລືອກ</button>
-                            <button type="button" class="btn  grid-btn ml-1 btn-sm btn-outline-warning"><i class="fa fa-eye"></i> ລາຍລະອຽດ</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                      <div class="ms-card">
-                        <div class="ms-card-img">
-                          <img src="../../assets/img/costic/food-4.jpg" alt="card_img">
-                        </div>
-                        <div class="ms-card-body">
-                          <div class="new">
-                            <h6 class="mb-0">Roast Sandwich</h6>
-                            <h6 class="ms-text-primary mb-0">$45.50</h6>
-                          </div>
-                          <div class="new meta">
-                            <p>Qty:6224 </p>
-                            <span class="badge badge-primary">Out of Stock</span>
-                          </div>
-
-
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, dolor sit amet, consectetur adipiscing</p>
-                          <div class="new mb-0">
-                            <button type="button" class="btn grid-btn ml-1 btn-sm btn-outline-success"><i class="fa fa-cart-plus"></i> ເລືອກ</button>
-                            <button type="button" class="btn grid-btn ml-1 btn-sm btn-outline-warning"><i class="fa fa-eye"></i> ລາຍລະອຽດ</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                      <div class="ms-card">
-                        <div class="ms-card-img">
-                          <img src="../../assets/img/costic/food-5.jpg" alt="card_img">
-                        </div>
-                        <div class="ms-card-body">
-                          <div class="new">
-                            <h6 class="mb-0">Burger</h6>
-                            <h6 class="ms-text-primary mb-0">$45.50</h6>
-                          </div>
-                          <div class="new meta">
-                            <p>Qty:1467 </p>
-                            <span class="badge badge-success">In Stock</span>
-                          </div>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, dolor sit amet, consectetur adipiscing</p>
-                          <div class="new mb-0">
-                            <button type="button" class="btn grid-btn ml-1 btn-sm btn-outline-success"><i class="fa fa-cart-plus"></i> ເລືອກ</button>
-                            <button type="button" class="btn grid-btn ml-1 btn-sm btn-outline-warning"><i class="fa fa-eye"></i> ລາຍລະອຽດ</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                      <div class="ms-card">
-                        <div class="ms-card-img">
-                          <img src="../../assets/img/costic/food-6.jpg" alt="card_img">
-                        </div>
-                        <div class="ms-card-body">
-                          <div class="new">
-                            <h6 class="mb-0">Veggies </h6>
-                            <h6 class="ms-text-primary mb-0">$45.50</h6>
-                          </div>
-                          <div class="new meta">
-                            <p>Qty:1467 </p>
-                            <span class="badge badge-success">In Stock</span>
-                          </div>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, dolor sit amet, consectetur adipiscing</p>
-                          <div class="new mb-0">
-                            <button type="button" class="btn grid-btn ml-1 btn-sm btn-outline-success"><i class="fa fa-cart-plus"></i> ເລືອກ</button>
-                            <button type="button" class="btn grid-btn ml-1 btn-sm btn-outline-warning"><i class="fa fa-eye"></i> ລາຍລະອຽດ</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                      <div class="ms-card">
-                        <div class="ms-card-img">
-                          <img src="../../assets/img/costic/food-7.jpg" alt="card_img">
-                        </div>
-                        <div class="ms-card-body">
-                          <div class="new">
-                            <h6 class="mb-0">Pepperoni Pizza </h6>
-                            <h6 class="ms-text-primary mb-0">$45.50</h6>
-                          </div>
-                          <div class="new meta">
-                            <p>Qty:6224 </p>
-                            <span class="badge badge-primary">Out of Stock</span>
-                          </div>
-
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, dolor sit amet, consectetur adipiscing</p>
-                          <div class="new mb-0">
-                            <button type="button" class="btn grid-btn ml-1 btn-sm btn-outline-success"><i class="fa fa-cart-plus"></i> ເລືອກ</button>
-                            <button type="button" class="btn grid-btn ml-1 btn-sm btn-outline-warning"><i class="fa fa-eye"></i> ລາຍລະອຽດ</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                      <div class="ms-card">
-                        <div class="ms-card-img">
-                          <img src="../../assets/img/costic/food-8.jpg" alt="card_img">
-                        </div>
-                        <div class="ms-card-body">
-                          <div class="new">
-                            <h6 class="mb-0">Egg McMuffin </h6>
-                            <h6 class="ms-text-primary mb-0">$45.50</h6>
-                          </div>
-                          <div class="new meta">
-                            <p>Qty:1467 </p>
-                            <span class="badge badge-success">In Stock</span>
-                          </div>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, dolor sit amet, consectetur adipiscing</p>
-                          <div class="new mb-0">
-                            <button type="button" class="btn grid-btn ml-1 btn-sm btn-outline-success"><i class="fa fa-cart-plus"></i> ເລືອກ</button>
-                            <button type="button" class="btn grid-btn ml-1 btn-sm btn-outline-warning"><i class="fa fa-eye"></i> ລາຍລະອຽດ</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <?php } ?>
                   </div>
+                <?php } ?>
               </div>
             </div>
           </div>
+        </div>
+      </main>
 
+      <div class="modal fade" id="preview" tabindex="-1" role="dialog" aria-labelledby="reminder-modal">
+        <div class="modal-dialog modal-lg modal-dialog-cente#5A3E36" role="document">
+          <div class="modal-content">
+            <div class="modal-header bg-primary">
+              <h5 class="modal-title has-icon text-white"> ເບິ່ງລາຍລະອຽດ</h5>
+            </div>
+            <div class="modal-body" id="preview_content">
+              <!-- review -->
+            </div>
           </div>
-
         </div>
-      </div>
+        <!-- Quick bar -->
+        <?php include ('../../components/layout/quickbar.php') ?>
+        <!-- SCRIPTS -->
+        <!-- Global Requi#5A3E36 Scripts Start -->
+        <?php include ('../../components/libary/script.php') ?>
 
-    </div>
-
-  </main>
-
-  <!-- Reminder Modal -->
-  <div class="modal fade" id="reminder-modal" tabindex="-1" role="dialog" aria-labelledby="reminder-modal">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header bg-primary">
-          <h5 class="modal-title has-icon text-white"> ເພີ່ມຜະລິດຕະພັນ</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <form method="post">
-        <div class="modal-body">
-            <div class="ms-form-group has-icon">
-              <label for="">ລະຫັດ</label>
-              <input type="text" placeholder="ກະລຸນາປ້ອນລະຫັດ" class="form-control datepicker" name="news-letter" value="">
-              <i class="material-icons"></i>
-            </div>
-            <div class="ms-form-group has-icon">
-              <label for="">ຊື່</label>
-              <input type="text" placeholder="ກະລຸນາປ້ອນຊື່ຜະລິດຕະພັນ" class="form-control" name="news-letter" value="">
-              <i class="material-icons"></i>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-primary btn-sm has-icon" data-dismiss="modal"><i class="fa fa-check-circle"></i> ບັນທຶກ</button>
-          <button type="button" class="btn btn-outline-light btn-sm has-icon" data-dismiss="modal"><i class="fa fa-times-circle"></i> ຍົກເລີກ</button>
-        </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODALS -->
-  <!-- Quick bar -->
-  <?php include ('../../components/layout/quickbar.php') ?>
-
-  <!-- SCRIPTS -->
-  <!-- Global Required Scripts Start -->
-<?php include ('../../components/libary/script.php') ?>
-
-</body>
-
-
-<!-- Mirrored from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
-</html>
+      </body>
+      <!-- Mirro#5A3E36 from slidesigma.com/themes/html/costic/pages/product/productgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
+      </html>
