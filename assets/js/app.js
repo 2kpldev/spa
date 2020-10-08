@@ -55,14 +55,12 @@ function _deteteGroup(e){
   });
 }
 
-<<<<<<< HEAD
 function _deteteList(e){
   Notiflix.Confirm.Show( 'ສະຖານະ', 'ທ່ານຕ້ອງການລຶບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ່ ?', 'ຕົກລົງ', 'ຍົກເລີກ',
   function(){
     window.location='detail_list_course.php?del='+e;
   });
 }
-=======
 
 
 // preview
@@ -86,4 +84,6 @@ function logout() {
     }
   );
 }
->>>>>>> ec78eb4459051fe0c6484360602b9547eba4c201
+
+
+// ================

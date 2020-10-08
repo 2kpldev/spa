@@ -1011,6 +1011,11 @@
   <!-- client chat -->
 </div>
 </div>
+
+<script>
+window.history.forward()
+</script>
+
 </main>
 <!-- MODALS -->
 <?php include ('../../components/layout/quickbar.php') ?>
