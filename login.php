@@ -26,19 +26,19 @@ function isVal()
 {echo "<font style='color:red'>*</font>";}
 ?>
 
-<body background="assets/img/bg.jpg" style="background-size:cover">
+<body background="assets/img/splash.png" style="background-size:cover;width: 100%;">
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6" style="margin-top: 15%">
       <div class="ms-panel ms-panel-fh" style="border-radius:20px">
         <div class="ms-panel-header" align="center">
-          <h3><strong>ລາວປາຍຸກຄວາມງາມ</strong></h3>
+          <h3><strong>ຍິນດີຕ້ອນຮັບເຂົ້າສູ່ລະບົບ</strong></h3>
         </div>
         <div class="ms-panel-body">
           <form action="#" method="post">
             <div class="form-row">
               <div class="col-md-6 mb-3">
-                <label for="validationCustom08">ຊື່ ຫຼື ເບີໂທ<?php isVal() ?></label>
+                <label for="validationCustom08">ຊື່<?php isVal() ?></label>
                 <div class="input-group">
                   <input type="text" class="form-control" name="username" autofocus placeholder="ກະລຸນາປ້ອນຊື່ ຫຼື ເບີໂທ" required>
                 </div>
@@ -65,7 +65,6 @@ function isVal()
     <div class="col-md-3"></div>
     <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="assets/AIO/notiflix-aio-2.0.0.min.js"></script>
-
     <?php
     include './connection.php';
     if (isset($_POST['onLogin'])) {
@@ -104,5 +103,4 @@ function isVal()
     }
   </script>
 </body>
-
 </html>
