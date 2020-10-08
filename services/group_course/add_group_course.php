@@ -56,7 +56,7 @@ if($row_auto==''){
               </div>
             <div class="ms-panel-body">
               <div class="table-responsive">
-                <table id="data-table" class="table table-striped thead-primary w-100">
+                <table id="display" class="table table-striped thead-primary w-100">
                   <thead>
                     <tr>
                       <th>ລຳດັບ</th>
@@ -73,7 +73,7 @@ if($row_auto==''){
                     $i=1;
                     foreach ($spagroup as $group) {
                       ?>
-                      <tr>
+                      <tr id="data">
                         <td><?php echo $i;?></td>
                         <td><?=$group['group_code'];?></td>
                         <td><?=$group['group_name'];?></td>
@@ -147,8 +147,6 @@ if($row_auto==''){
 <script>
 
 $('#edit').hide();
-
-
 $(document).on("click","#close",function(){
   window.location='add_group_course.php';
 });
@@ -205,8 +203,6 @@ if(isset($_POST['edit'])){
     echo "<script> Notiflix.Report.Failure('ຜິດພາດ','ການດຳເນີນງານບໍ່ສຳເລັດ !', 'ປິດ',function () {location='add_group_course.php'});</script>";
   }
 }
-
-
 
 if(isset($_GET['del'])){
   $_onDelete=$_SQL($con,"DELETE FROM  spa_group_course WHERE group_id='$_GET[del]'");
