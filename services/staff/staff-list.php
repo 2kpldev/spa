@@ -42,7 +42,7 @@
               <div class="ms-chat-header px-3">
                 <form class="ms-form my-3" method="post">
                   <div class="ms-form-group my-0 mb-0 has-icon fs-14">
-                    <input type="search" class="ms-form-input w-100" name="search" placeholder="ຄົ້ນຫາພະນັກງານ" value="">
+                    <input type="search" class="ms-form-input w-100" id="search" placeholder="ຄົ້ນຫາພະນັກງານ" value="">
                     <i class="flaticon-search text-disabled"></i>
                   </div>
                 </form>
@@ -55,7 +55,7 @@
                 </ul>
                 <div class="tab-content">
                   <div role="tabpanel" class="tab-pane active show fade in mt-4" id="list">
-                    <ul class="ms-scrollable">
+                    <ul class="ms-scrollable" id="display">
                       <?php
                       $sel_staff="select*from spa_staff left join spa_rank on spa_staff.rankcode=spa_rank.rank_code";
                       $result = $DB_con->prepare($sel_staff);
@@ -63,7 +63,7 @@
                       if($result -> rowCount() > 0){
                         while($staff=$result->fetch()){
                           ?>
-                          <li class="ms-chat-user-container ms-open-chat ms-deletable p-3 media clearfix" onclick="window.location='profile_detail.php?id=<?php echo $staff['staff_id'];?>'" style="cursor: pointer">
+                          <li class="ms-chat-user-container ms-open-chat ms-deletable p-3 media clearfix" id="data" onclick="window.location='profile_detail.php?id=<?php echo $staff['staff_id'];?>'" style="cursor: pointer">
                             <div class="ms-chat-status ms-status-away ms-has-new-msg ms-chat-img mr-3 align-self-center">
                               <img src="img/<?php if($staff['staff_img']=='no'){echo "img/no.png";} else{echo $staff['staff_img'];}?>" class="ms-img-round" alt="people">
                             </div>
@@ -77,7 +77,6 @@
                           </li>
                           <?php
                         }
-
                       }
                       else{ isEmpty(); } ?>
                     </ul>

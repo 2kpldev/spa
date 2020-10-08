@@ -42,7 +42,7 @@
               <div class="ms-chat-header px-3">
                 <form class="ms-form my-3" method="post">
                   <div class="ms-form-group my-0 mb-0 has-icon fs-14">
-                    <input type="search" class="ms-form-input w-100" name="search" placeholder="ຄົ້ນຫາພະນັກງານ" value="">
+                    <input type="search" class="ms-form-input w-100" id="search" placeholder="ຄົ້ນຫາພະນັກງານ" value="">
                     <i class="flaticon-search text-disabled"></i>
                   </div>
                 </form>
@@ -55,7 +55,7 @@
                 </ul>
                 <div class="tab-content">
                   <div role="tabpanel" class="tab-pane fade in mt-4" id="list">
-                    <ul class="ms-scrollable">
+                    <ul class="ms-scrollable" id="display">
                       <?php
                       $sel_staff="select*from spa_staff left join spa_rank on spa_staff.rankcode=spa_rank.rank_code";
                       $result = $DB_con->prepare($sel_staff);
@@ -63,7 +63,7 @@
                       if($result -> rowCount() > 0){
                         while($staff=$result->fetch()){
                           ?>
-                          <li class="ms-chat-user-container ms-open-chat ms-deletable p-3 media clearfix" onclick="window.location='profile_detail.php?id=<?php echo $staff['staff_id'];?>'" style="cursor: pointer">
+                          <li class="ms-chat-user-container ms-open-chat ms-deletable p-3 media clearfix" id="data" onclick="window.location='profile_detail.php?id=<?php echo $staff['staff_id'];?>'" style="cursor: pointer">
                             <div class="ms-chat-status ms-status-away ms-has-new-msg ms-chat-img mr-3 align-self-center">
                               <img src="img/<?php if($staff['staff_img']=='no'){echo "img/no.png";} else{echo $staff['staff_img'];}?>" class="ms-img-round" alt="people">
                             </div>
@@ -100,8 +100,36 @@
                         <div class="col-md-4"></div>
                         <div class="col-md-4">
                           <div class="new meta">
-                            <p>ລາຄາ/ຄັ້ງ</p>
-                            <span class="">..</span>
+                            <p>ລະຫັດ</p>
+                            <span class=""><?php echo $key['staff_code'] ?></span>
+                          </div>
+                          <div class="new meta">
+                            <p>ວັນເດືອນປີເກີດ</p>
+                            <span class=""><?php echo $key['staff_dob'] ?></span>
+                          </div>
+                          <div class="new meta">
+                            <p>ເບີໂທ</p>
+                            <span class=""><?php echo $key['staff_tel'] ?></span>
+                          </div>
+                          <div class="new meta">
+                            <p>ຊື່ເຂົ້າໃຊ້ລະບົບ</p>
+                            <span class=""><?php echo $key['staff_username'] ?></span>
+                          </div>
+                          <div class="new meta">
+                            <p>ສິດການນຳໃຊ້</p>
+                            <span class=""><?php echo $key['staff_role'] ?></span>
+                          </div>
+                          <div class="new meta">
+                            <p>ເງິນເດືອນພື້ນຖານ</p>
+                            <span class=""><?php echo $key['staff_salary'] ?></span>
+                          </div>
+                          <div class="new meta">
+                            <p>ວັນທີເຂົ້າວຽກ</p>
+                            <span class=""><?php echo $key['staff_date_in'] ?></span>
+                          </div>
+                          <div class="new meta">
+                            <p>ວັນທີອອກວຽກ</p>
+                            <span class=""><?php echo $key['staff_date_out'] ?></span>
                           </div>
                         </div>
                       </div>
@@ -112,11 +140,11 @@
                       <ul class="ms-profile-stats">
                         <li>
                           <h3 class="ms-count">5790</h3>
-                          <span>Followers</span>
+                          <span>ມື້ຂາດ</span>
                         </li>
                         <li>
                           <h3 class="ms-count">4.8</h3>
-                          <span>User Rating</span>
+                          <span>ໂອທີ</span>
                         </li>
                       </ul>
                     </div>
@@ -135,21 +163,17 @@
   <!-- SCRIPTS -->
   <!-- Global required Scripts Start -->
   <?php include ('../../components/libary/script.php') ?>
-
-
   <?php
-
   if(isset($_GET['del'])){
-
     $select_img=mysqli_query($con,"select staff_img from spa_staff where staff_id='$_GET[del]'");
     $img=mysqli_fetch_assoc($select_img);
     @unlink("img/".$img['staff_img']);
     $_onDelete=$_SQL($con,"DELETE FROM  spa_staff WHERE staff_id='$_GET[del]'");
     if($_onDelete){
 
-      echo "<script> Notiflix.Report.Success('ສຳເລັດ','ການດຳເນີນງານສຳເລັດ...', 'ປິດ',function () {location='profile_detail.php'})</script>";
+      echo "<script> Notiflix.Report.Success('ສຳເລັດ','ການດຳເນີນງານສຳເລັດ...', 'ປິດ',function () {location='staff_list.php'})</script>";
     }else {
-      echo "<script> Notiflix.Report.Failure('ຜິດພາດ','ການດຳເນີນງານບໍ່ສຳເລັດ !', 'ປິດ',function () {location='profile_detail.php'});</script>";
+      echo "<script> Notiflix.Report.Failure('ຜິດພາດ','ການດຳເນີນງານບໍ່ສຳເລັດ !', 'ປິດ',function () {location='staff_list.php'});</script>";
     }
   }
 

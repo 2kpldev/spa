@@ -88,3 +88,26 @@ function logout() {
 
 
 // ================
+//==============search data
+$(document).ready(function () {
+	$('#search').keyup(function () {
+    var e=$('#search').val();
+		data($(this).val());
+    console.log("key", e);
+	});
+	function data(value) {
+		$('#display #data').each(function () {
+			var found = 'false';
+			$(this).each(function () {
+				if ($(this).text().toLowerCase().Of(value.toLowerCase()) >= 0) {
+					found = 'true';
+				}
+			});
+			if (found == 'true') {
+				$(this).show();
+			} else {
+				$(this).hide();
+			}
+		});
+	}
+});

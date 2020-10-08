@@ -22,7 +22,7 @@ function _back()
     <li class="ms-nav-item ms-search-form pb-0 py-0">
       <form class="ms-form" method="post">
         <div class="ms-form-group my-0 mb-0 has-icon fs-14">
-          <input type="search" class="ms-form-input" name="search" placeholder="ຄົ້ນຫາ..." value=""> <i class="flaticon-search text-disabled"></i>
+          <input type="search" class="ms-form-input" id="search" placeholder="ຄົ້ນຫາ..." value=""> <i class="flaticon-search text-disabled"></i>
         </div>
       </form>
     </li>
@@ -125,7 +125,30 @@ function _back()
     <span class="ms-toggler-bar bg-primary"></span>
   </div>
 </nav>
-
+<script type="text/javascript">
+$(document).ready(function () {
+	$('#search').keyup(function () {
+    var e=$('#search').val();
+		data($(this).val());
+    console.log("key", e);
+	});
+	function data(value) {
+		$('#display #data').each(function () {
+			var found = 'false';
+			$(this).each(function () {
+				if ($(this).text().toLowerCase().Of(value.toLowerCase()) >= 0) {
+					found = 'true';
+				}
+			});
+			if (found == 'true') {
+				$(this).show();
+			} else {
+				$(this).hide();
+			}
+		});
+	}
+});
+</script>
 <?php function isEmpty()
 {?>
   <div style="height: 600px;padding: 100px;vertical-align: middle;background-size: 100%">
