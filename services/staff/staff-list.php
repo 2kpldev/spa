@@ -52,7 +52,6 @@
                 <ul class="nav nav-tabs tabs-borde#5A3E36 d-flex nav-justified px-3" role="tablist">
                   <li role="presentation" class="fs-12"><a href="#list" class="active show" role="tab" data-toggle="tab"> ພະນັກງານທັງໝົດ </a></li>
                   <li role="presentation" class="fs-12"><a href="#over" role="tab" data-toggle="tab"> ພະນັກງານອອກ </a></li>
-                  <li role="presentation" class="fs-12"><a href="#detail" role="tab" data-toggle="tab"> ລາຍລະອຽດ </a></li>
                 </ul>
                 <div class="tab-content">
                   <div role="tabpanel" class="tab-pane active show fade in mt-4" id="list">
@@ -64,61 +63,23 @@
                       if($result -> rowCount() > 0){
                         while($staff=$result->fetch()){
                           ?>
-                          <li class="ms-chat-user-container ms-open-chat ms-deletable p-3 media clearfix">
+                          <li class="ms-chat-user-container ms-open-chat ms-deletable p-3 media clearfix" onclick="window.location='profile_detail.php?id=<?php echo $staff['staff_id'];?>'" style="cursor: pointer">
                             <div class="ms-chat-status ms-status-away ms-has-new-msg ms-chat-img mr-3 align-self-center">
-
                               <img src="img/<?php if($staff['staff_img']=='no'){echo "img/no.png";} else{echo $staff['staff_img'];}?>" class="ms-img-round" alt="people">
                             </div>
 
                             <div class="media-body ms-chat-user-info mt-1">
                               <h6>
-                                <?php
-                                if($staff['staff_gender']=='ຊາຍ'){
-                                  echo 'ທ້າວ '.$staff['staff_name'].' '.$staff['staff_lname'];
-                                }
-                                else if($staff['staff_gender']=='ຍິງ'){
-                                  echo 'ນາງ '.$staff['staff_name'].' '.$staff['staff_lname'];
-                                }
-                                else{
-                                  echo "error fetch";
-                                }
-                                ?>
+                                <?php echo $staff['staff_gender'].' '.$staff['staff_name'].' '.$staff['staff_lname']; ?>
                               </h6>
                               <p><?=$staff['rank_name'];?></p>
-                              <a href="#" class="ms-hoverable-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-sliders"></i>
-                              </a>
-                              <ul class="dropdown-menu dropdown-menu-right">
-                                <li class="ms-dropdown-list">
-                                  <a class="media p-2" href="view_staff.php?staff_id=<?php echo $staff['staff_id'];?>">
-                                    <div class="media-body">
-                                      <span><i class="fa fa-eye"></i> ເບິ່ງ</span>
-                                    </div>
-                                  </a>
-                                  <a class="media p-2" href="update_staff.php?staff_id=<?php echo $staff['staff_id'];?>">
-                                    <div class="media-body">
-                                      <span><i class="fa fa-edit"></i> ແກ້ໄຂ</span>
-                                    </div>
-                                  </a>
-                                  <a class="media p-2" href="#" onclick="_deteteStaff(<?php echo $staff['staff_id'];?>)">
-                                    <div class="media-body">
-                                      <span><i class="fa fa-trash"></i> ລົບ</span>
-                                    </div>
-                                  </a>
-                                </li>
-                              </ul>
                             </div>
                           </li>
                           <?php
                         }
 
                       }
-                      else{
-                        ?>
-                        <li class="ms-chat-user-container ms-open-chat ms-deletable p-3 media clearfix">
-                          <h5 class='text-center text-danger'>ບໍ່ມີຂໍ້ມູນ</h5>
-                        </li>
-                      <?php } ?>
+                      else{ isEmpty(); } ?>
                     </ul>
                   </div>
 
@@ -188,31 +149,6 @@
                         </div>
                       </li>
                     </ul>
-                  </div>
-
-                  <div role="tabpanel" class="tab-pane fade mt-4" id="detail">
-                    <div class="ms-card ms-widget ms-profile-widget ms-card-fh">
-                      <div class="ms-card-img">
-                        <img src="../../assets/img/costic/banner-1000x370.jpg" alt="card_img">
-                      </div>
-                      <img src="../../assets/img/costic/customer-10.jpg" class="ms-img-large ms-img-round ms-user-img" alt="people">
-                      <div class="ms-card-body">
-                        <h2>Anny Farisha</h2>
-                        <span>Quality Control Manager</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in arcu turpis. Nunc</p>
-                        <button type="button" class="btn btn-gradient-primary" name="button"><i class="material-icons">person_add</i> Follow</button>
-                        <ul class="ms-profile-stats">
-                          <li>
-                            <h3 class="ms-count">5790</h3>
-                            <span>Followers</span>
-                          </li>
-                          <li>
-                            <h3 class="ms-count">4.8</h3>
-                            <span>User Rating</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>

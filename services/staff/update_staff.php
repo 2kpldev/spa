@@ -93,8 +93,8 @@ $staff=mysqli_fetch_assoc($sel_staff);
 
                   <select class="form-control" name='staff_gender' id="staff_gender" requi#5A3E36>
                     <option value="<?=$staff['staff_gender']?>"><?=$staff['staff_gender']?></option>
-                    <option value="ຊາຍ">ຊາຍ</option>
-                    <option value="ຍິງ">ຍິງ</option>
+                    <option value="ທ້າວ">ຊາຍ</option>
+                    <option value="ນາງ">ຍິງ</option>
                   </select>
                 </div>
               </div>

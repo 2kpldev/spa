@@ -108,6 +108,7 @@
             </div>
           </div>
         </div>
+      </div>
         <!-- Quick bar -->
         <?php include ('../../components/layout/quickbar.php') ?>
         <!-- SCRIPTS -->

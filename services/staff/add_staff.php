@@ -84,8 +84,8 @@ include ("../../connection.php");
 
                   <select class="form-control" name='staff_gender' id="staff_gender" required>
                     <option value="">ກະລຸນາເລືອກເພດ</option>
-                    <option value="ຊາຍ">ຊາຍ</option>
-                    <option value="ຍິງ">ຍິງ</option>
+                    <option value="ທ້າວ">ຊາຍ</option>
+                    <option value="ນາງ">ຍິງ</option>
                   </select>
                 </div>
               </div>

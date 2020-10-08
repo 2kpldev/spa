@@ -44,7 +44,7 @@ function _deteteRank(e){
 function _deteteStaff(e){
   Notiflix.Confirm.Show( 'ສະຖານະ', 'ທ່ານຕ້ອງການລຶບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ່ ?', 'ຕົກລົງ', 'ຍົກເລີກ',
   function(){
-    window.location='staff-list.php?del='+e;
+    window.location='profile_detail.php?del='+e;
   });
 }
 
@@ -70,6 +70,7 @@ function _preview(e){
     $('#preview_content').html(data)
   })
 }
+
 
 
 // =============================
