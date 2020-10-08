@@ -363,7 +363,7 @@ Version: 1.0.0
   background-color: #878793;
 }
 .bg-gradient-primary{
-  background-color: #0ab1e8;
+  background-color: #5A3E36;
   background-image: linear-gradient(to right, #0ab1e8, #28f39a);
 }
 .bg-gradient-secondary{
@@ -3216,8 +3216,8 @@ background-color: #d9534f;
 .ms-btn-icon-outline.btn-primary:focus,
 .btn-primary:not(:disabled):not(.disabled):active,
 .btn-outline-primary:hover{
-  background-color: #bc2634;
-  border-color: #bc2634;
+  background-color: #5A3E36;
+  border-color: #5A3E36;
   color: #fff
 }
 .btn-secondary{

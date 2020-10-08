@@ -89,7 +89,7 @@
                   <div role="tabpanel" class="tab-pane active show fade mt-4" id="detail">
                     <div class="ms-card ms-widget ms-profile-widget ms-card-fh">
                       <div class="ms-card-img">
-                        <img src="../../assets/img/costic/banner-1000x370.jpg" alt="card_img">
+                        <img src="../../assets/img/bg.jpg" alt="card_img" style="width: 100%;height: 300px">
                       </div>
                       <img src="img/<?php if($key['staff_img']=='no'){echo "img/no.png";} else{echo $key['staff_img'];}?>" class="ms-img-large ms-img-round ms-user-img" alt="people">
                       <div class="ms-card-body">
