@@ -82,7 +82,6 @@ if($row_auto==''){
                         <td>
                           <a href="#"  id="<?php echo $group['group_id'];?>" class="mt-0 edit_data"><i class="fa fa-edit"> </i> </a> &nbsp;
                           <a href="#" onclick="_deteteGroup(<?php echo $group['group_id'];?>)" class="mb-0"><i class="fa fa-trash"> </i></a>
-
                         </td>
                       </tr>
                     </tbody>
