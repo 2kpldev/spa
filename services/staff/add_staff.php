@@ -41,10 +41,8 @@ include ("../../connection.php");
             <a href="staff-list.php" class="btn btn-outline-primary btn-sm has-icon">
               <i class="fa fa-angle-double-left"></i> ຍ້ອນກັບ
             </a>
-
           </div>
         </div>
-
         <div class="ms-panel ms-panel-fh">
           <div class="ms-panel-body">
             <form class="ms-form-wizard style1-wizard" id="insert_data">
@@ -58,8 +56,6 @@ include ("../../connection.php");
                       <span class="btn btn-sm  btn-info  btn-file"><span class="fileupload-new">ເລືອກຮູບ </span><span class="fileupload-exists">ປ່ຽນຮູບ</span>
                       <input type="file" name="staff_img" id="staff_img" required>
                     </span>
-
-
                   </div>
                 </div>
               </div>
@@ -90,7 +86,6 @@ include ("../../connection.php");
                 </div>
               </div>
             </div>
-
             <div class="form-row">
               <div class="col-md-6 mb-3">
                 <label>ວັນເດືອນປີເກີດ</label>
@@ -148,9 +143,6 @@ include ("../../connection.php");
                         echo "<option value='".$rank['rank_code']."'>".$rank['rank_name']."</option>";
                       }
                     ?>
-
-
-
                   </select>
                 </div>
               </div>

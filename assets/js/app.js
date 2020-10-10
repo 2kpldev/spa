@@ -86,8 +86,6 @@ function logout() {
   );
 }
 
-
-// ================
 //==============search data
 $(document).ready(function () {
 	$('#search').keyup(function () {

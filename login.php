@@ -26,7 +26,7 @@ function isVal()
 {echo "<font style='color:red'>*</font>";}
 ?>
 
-<body background="assets/img/splash.png" style="background-size:cover;width: 100%;">
+<body background="assets/img/splash.png" style="background-size:100%;">
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6" style="margin-top: 15%">
@@ -35,7 +35,7 @@ function isVal()
           <h3><strong>ຍິນດີຕ້ອນຮັບເຂົ້າສູ່ລະບົບ</strong></h3>
         </div>
         <div class="ms-panel-body">
-          <form action="#" method="post">
+          <form action="" method="post">
             <div class="form-row">
               <div class="col-md-6 mb-3">
                 <label for="validationCustom08">ຊື່<?php isVal() ?></label>
@@ -86,7 +86,7 @@ function isVal()
         $_SESSION['loggedin'] = 1;
         echo "<script>Notiflix.Loading.Standard('ກຳລັງດຳເນີນງານ...');setInterval(function () {window.location='services/home/index.php'}, 500);</script>";
       } else {
-        echo "<script> Notiflix.Report.Failure('ຜິດພາດ','ຊື່ ຫຼື ລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !', 'ປິດ',function () {location='login.php'});</script>";
+        echo "<script> Notiflix.Report.Failure('ຜິດພາດ','ຊື່ ຫຼື ລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !', 'ປິດ',function () {window.location='index.php'});</script>";
       }
     }
     ?>
