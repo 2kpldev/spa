@@ -64,7 +64,7 @@ if ($row_auto == '') {
                     <strong><?php echo $i; ?></strong>&nbsp; | &nbsp;&nbsp;&nbsp;
                     <span> <?php echo $list['list_name'] ?></span>
                     <div class="close">
-                      <a href="#" id="<?php echo $list['list_id'] ?>" class="mt-0 edit_data"><i class="fa fa-edit"> </i> </a> &nbsp;
+                      <a href="update_list_course.php?list=<?php echo $list['list_id'] ?>" class="mt-0 edit_data"><i class="fa fa-edit"> </i> </a> &nbsp;
                       <a href="#" onclick="_deteteGroup(<?php echo $list['list_id'] ?>)" class="mb-0"><i class="fa fa-trash"> </i></a>
                     </div>
                   </li>

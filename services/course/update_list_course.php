@@ -1,6 +1,5 @@
 <?php
 include ("../../connection.php");
-include ("../../helper/index.php");
 
 $list_id=$_GET['list'];
 $spalist=mysqli_query($con,"SELECT*FROM spa_list_course left join spa_group_course on spa_list_course.groupcode=spa_group_course.group_code where list_id='$list_id'");
