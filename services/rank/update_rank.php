@@ -1,17 +1,7 @@
 
 <?php
 include '../../connection.php';
-
-$sql_auto=mysqli_query($con,"select max(rank_code)+1 as Maxid from spa_rank");
-$check_auto=mysqli_fetch_assoc($sql_auto);
-$row_auto=$check_auto['Maxid'];
-if($row_auto==''){
-  $rank_code="01";
-}else{
-  $rank_code=sprintf("%02d",$row_auto);
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,9 +27,7 @@ if($row_auto==''){
     <?php include ('../../components/layout/navbar-top.php') ?>
     <!-- Body Content Wrapper -->
     <?php
-
-        $rank_id=$_GET['rank_id'];
-
+      $rank_id=$_GET['rank_id'];
       $get_resultset=mysqli_query($con,"SELECT*FROM spa_rank where rank_id='$rank_id'");
       $edit=mysqli_fetch_assoc($get_resultset);
 
@@ -51,15 +39,16 @@ if($row_auto==''){
           <div class="ms-panel">
             <div class="ms-panel-body">
               <div class="row">
-                <div class="col-xl-12 col-md-6 pd-0">
+                <div class="col-xl-12 col-md-12 pd-0">
                   <form action="" method="post">
                     <div class="form-group d-flex m-0 fs-14 clearfix">
-                      <?php _back() ?>  <input type="hidden" name='rank_id' value="<?=$rank_id;?>">
-                      <input type="text" class="form-control mr-2 fs-20" name="rank_code" value="<?php echo $edit['rank_code']; ?>" readonly required>
+                      <?php _back('add_rank.php') ?>  <input type="hidden" name='rank_id' value="<?=$rank_id;?>">
+                      <div class="input-group">
                       <input type="text" class="form-control mr-2 fs-20"  name="rank_name" value="<?php echo $edit['rank_name']; ?>" placeholder="ປ້ອນຕຳແໜ່ງ" required>
-                      <button type="submit" name="onupdate" class="ms-btn-icon btn-primary w-50 float-right">
-                        <i class="fa fa-check-circle"> </i>
+                      <button type="submit" name="onupdate" class="btn-sm btn-outline-primary">
+                        <i class="fa fa-check-circle"> </i> ຢືນຢັນ
                       </button>
+                    </div>
                     </div>
                   </form>
                 </div>
@@ -109,11 +98,10 @@ if($row_auto==''){
 <?php
 if(isset($_POST['onupdate'])){
   $rank_id=$_SETSTRING($con, $_POST['rank_id']);
-  $rank_code=$_SETSTRING($con, $_POST['rank_code']);
   $rank_name=$_SETSTRING($con, $_POST['rank_name']);
 
 
-  $created=$_SQL($con,"update spa_rank set rank_code='$rank_code',rank_name='$rank_name' where rank_id='$rank_id'");
+  $created=$_SQL($con,"update spa_rank set rank_id='$rank_id',rank_name='$rank_name' where rank_id='$rank_id'");
   if($created){
     echo "<script> Notiflix.Report.Success('ສຳເລັດ','ການດຳເນີນງານສຳເລັດ...', 'ປິດ',function () {location='add_rank.php'})</script>";
   }else {

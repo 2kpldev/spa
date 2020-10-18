@@ -40,16 +40,18 @@
                 <div class="col-xl-12 col-md-6 pd-0">
                   <form action="" method="post">
                     <div class="form-group d-flex m-0 fs-14 clearfix">
-                     <?php _back() ?>  <input type="<?php if($rested>=1){echo "hidden";}else{echo "text";} ?>" class="form-control mr-2 fs-20"
+                     <?php _back('index.php') ?>  <input type="<?php if($rested>=1){echo "hidden";}else{echo "text";} ?>" class="form-control mr-2 fs-20"
                       name="m_id" value="<?php if($rested>=1){echo $id;}else{echo "";} ?>" required>
                       <input type="text" class="form-control mr-2 fs-20"  name="m_icon" placeholder="ປ້ອນຊື່ໄອຄອ໋ນ" required>
                       <input type="text" class="form-control mr-2 fs-20"  name="m_name" placeholder="ປ້ອນຊື່ເມນູ" required>
                       <input type="text" class="form-control mr-2 fs-20"  name="tab_id" placeholder="ປ້ອນແທັບໄອດີ" required>
+                      <div class="input-group">
                       <input type="text" class="form-control mr-2 fs-20"  name="tab_id2" placeholder="ປ້ອນແທັບໄອດີສຳຮອງ" required>
-                      <button type="submit" name="onSubmit" class="ms-btn-icon btn-primary w-50 float-right">
-                      <i class="fa fa-check-circle"> </i>
+                      <button type="submit" name="onSubmit" class="btn-sm btn-outline-primary">
+                      <i class="fa fa-check-circle"> </i> ບັນທຶກ
                       </button>
                     </div>
+                  </div>
                   </form>
                 </div>
               </div>

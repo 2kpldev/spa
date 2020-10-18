@@ -15,6 +15,12 @@ try {
  echo $e->getMessage();
 }
 
+@$_USER_FNAME=$_SESSION['staff_name'];
+@$_USER_LNAME=$_SESSION['staff_lname'];
+@$_USER_NAME=$_SESSION['staff_username'];
+@$_USER_ROLE=$_SESSION['staff_role'];
+@$_USER_IMG=$_SESSION['staff_img'];
+
 date_default_timezone_set("Asia/Bangkok");
 @$_TIMESTAM = date("Y-m-d H:m");
 @$_GEN_ID = date("YmdHm");

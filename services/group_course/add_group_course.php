@@ -17,11 +17,11 @@ if($row_auto==''){
 <head>
   <?php include '../../components/libary/lib.php' ?>
   <style media="screen">
-  #settings{
+  #products{
     border-left: 4px solid #5A3E36;
     border-bottom: 1px solid #5A3E36;
   }
-  .fa-cog{color: #5A3E36}
+  .fa-gift{color: #5A3E36}
   </style>
 </head>
 <body class="ms-body ms-aside-left-open ms-primary-theme ms-has-quickbar">

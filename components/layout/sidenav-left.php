@@ -22,7 +22,8 @@
       ?>
       <li class="menu-item" id="<?php echo $key['tab_id'] ?>">
         <a href="#" class="has-chevron" data-toggle="collapse" data-target="#<?php echo $key['tab_id2']; ?>" aria-expanded="false" aria-controls="<?php echo $key['tab_id2']; ?>">
-          <span><i class="fa fa-<?php echo $key['m_icon']; ?>"></i>  <?php echo $key['m_name'] ?> </span>
+          <span>
+            <i class="fa fa-<?php echo $key['m_icon']; ?>"></i>  <?php echo $key['m_name'] ?> </span>
         </a>
         <ul id="<?php echo $key['tab_id2']; ?>" class="collapse" aria-labelledby="<?php echo $key['tab_id2'];?>" data-parent="#side-nav-accordion">
           <?php
@@ -35,14 +36,13 @@
         </ul>
       </li>
     <?php } ?>
-
-<!-- restaurants -->
-<li class="menu-item" id="settings">
-  <a href="../settings/"> <span><i class="fa fa-cogs fs-16"></i> ຕັ້ງຄ່າ</span>
-  </a>
-</li>
-<!-- restaurants end -->
-</ul>
+    <!-- restaurants -->
+    <li class="menu-item" id="settings">
+      <a href="../settings/"> <span><i class="fa fa-cogs fs-16"></i> ຕັ້ງຄ່າ</span>
+      </a>
+    </li>
+    <!-- restaurants end -->
+  </ul>
 </aside>
 <!-- <link rel="stylesheet" href="../../services/products/product-list.php"> -->
 <!-- Sidebar Right -->

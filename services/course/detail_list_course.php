@@ -42,7 +42,7 @@ if ($row_auto == '') {
         <div class="ms-panel-header">
           <div class="d-flex justify-content-between">
             <div class="align-self-center align-left">
-              <h5> <?php _back();?> ລາຍການຄອດໃໝ່</h5>
+              <h5> <?php _back('../products/product-list.php');?> ລາຍການຄອດໃໝ່</h5>
             </div>
             </div>
           </div>

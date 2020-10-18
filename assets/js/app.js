@@ -62,6 +62,13 @@ function _deteteList(e){
   });
 }
 
+function _deletCategory(e){
+  Notiflix.Confirm.Show( 'ສະຖານະ', 'ທ່ານຕ້ອງການລຶບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ່ ?', 'ຕົກລົງ', 'ຍົກເລີກ',
+  function(){
+    window.location='category-list.php?del='+e;
+  });
+}
+
 
 // preview
 function _preview(e){
@@ -70,9 +77,8 @@ function _preview(e){
     $('#preview_content').html(data)
   })
 }
-
-
-
+// call sub main
+$.get('sub-main.php',{},function(data){$('#subMain').html(data)});
 // =============================
 function logout() {
   Notiflix.Confirm.Show(
@@ -87,25 +93,22 @@ function logout() {
 }
 
 //==============search data
-$(document).ready(function () {
-	$('#search').keyup(function () {
-    var e=$('#search').val();
-		data($(this).val());
-    console.log("key", e);
-	});
-	function data(value) {
-		$('#display #data').each(function () {
-			var found = 'false';
-			$(this).each(function () {
-				if ($(this).text().toLowerCase().Of(value.toLowerCase()) >= 0) {
-					found = 'true';
-				}
-			});
-			if (found == 'true') {
-				$(this).show();
-			} else {
-				$(this).hide();
-			}
-		});
-	}
-});
+  $('#search').keyup(function () {
+    data($(this).val());
+  });
+
+  function data(value) {
+    $('#display #data').each(function () {
+      var found = 'false';
+      $(this).each(function () {
+        if ($(this).text().toLowerCase().Of(value.toLowerCase()) >= 0) {
+          found = 'true';
+        }
+      });
+      if (found == 'true') {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
+  }

@@ -41,7 +41,7 @@
           <form action="#" method="post">
             <div class="ms-panel ms-panel-fh">
               <div class="ms-panel-header">
-                <h6><?php _back() ?> <?php echo $res['m_name']; ?></h6>
+                <h6><?php _back('menu.php') ?> <?php echo $res['m_name']; ?></h6>
               </div>
               <div class="ms-panel-body">
                 <form class="needs-validation" method="post" action="" novalidate>

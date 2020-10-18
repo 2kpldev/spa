@@ -3126,8 +3126,8 @@ background-color: #d9534f;
 }
 .ms-dark-theme .btn-outline-primary:not(:disabled):not(.disabled).active{
   color: #5A3E36;
-      background-color: #ffffff;
-      border-color: #ffffff;
+  background-color: #ffffff;
+  border-color: #ffffff;
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled).active:focus, .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-outline-primary.dropdown-toggle:focus {
@@ -3452,6 +3452,7 @@ background-color: #d9534f;
 .btn-group-sm>.btn, .btn-sm{
   line-height: 0.5;
 }
+.btn-sm{border: 1px solid rgba(0,0,0,.1)!important;}
 .btn.bg-facebook, .btn.bg-twitter, .btn.bg-linkedin,
 .btn.bg-g-plus, .btn.bg-instagram, .btn.bg-pinterest,
 .btn.bg-dropbox, .btn.bg-dribble{

@@ -3,13 +3,15 @@
 $today = date('D');
 function isVal()
 {echo "<font style='color:red'>*</font>";}
-function _back()
-{?>
-<a href="#"  onclick="window.history.go(-1)">
+ function _back( $url ) { ?>
+<a href="#"  onclick="window.location='<?php echo $url;?>'">
 <i class="fa fa-angle-left fa-2x" style="margin-top:3px!important;margin-bottom:-0px!important;margin-right:20px!important;"></i></a>
 <?}?>
 
-
+<?php function _close(){ ?>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times-circle" style="color:white"></i></span>
+  </button>
+<?php } ?>
 <nav class="navbar ms-navbar">
   <div class="ms-aside-toggler ms-toggler pl-0" data-target="#ms-side-nav" data-toggle="slideLeft"> <span class="ms-toggler-bar bg-primary"></span>
     <span class="ms-toggler-bar bg-primary"></span>

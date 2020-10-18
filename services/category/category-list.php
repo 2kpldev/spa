@@ -1,18 +1,14 @@
-
-<?php
-include '../../connection.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <?php include '../../components/libary/lib.php' ?>
+  <?php include '../../connection.php' ?>
   <style media="screen">
-  #settings{
+  #stocks{
     border-left: 4px solid #5A3E36;
     border-bottom: 1px solid #5A3E36;
   }
-  .fa-cog{color: #5A3E36}
+  .fa-industry{color: #5A3E36}
   </style>
 </head>
 <body class="ms-body ms-aside-left-open ms-primary-theme ms-has-quickbar">
@@ -28,9 +24,9 @@ include '../../connection.php';
     <?php include ('../../components/layout/navbar-top.php') ?>
     <!-- Body Content Wrapper -->
     <?php
-      $get_resultset=mysqli_query($con,"SELECT*FROM spa_rank");
+      $get_resultset=mysqli_query($con,"SELECT*FROM spa_category");
       $rested=mysqli_num_rows($get_resultset);
-      $detake=mysqli_query($con,"SELECT rank_id from spa_rank where rank_id=(select max(rank_id)from spa_rank)");
+      $detake=mysqli_query($con,"SELECT cateId from spa_category where cateId=(select max(cateId)from spa_category)");
       $result=mysqli_fetch_array($detake);
       $id=$result[0]+1;
       ?>
@@ -41,20 +37,18 @@ include '../../connection.php';
           <div class="ms-panel">
             <div class="ms-panel-body">
               <div class="row">
-                <div class="col-xl-12 col-md-2 pd-0">
-                  <form action="" method="post">
+                <div class="col-xl-12 col-md-12 pd-0">
+                  <form action="#" method="post">
                     <div class="form-group d-flex m-0 fs-14 clearfix">
-                    <?php _back('../settings/index.php') ?> 
-
                      <input type="<?php if($rested>=1){echo "hidden";}else{echo "text";} ?>" class="form-control mr-2 fs-20"
-                      name="rank_id" value="<?php if($rested>=1){echo $id;}else{echo "";} ?>" required>
+                      name="cateId" value="<?php if($rested>=1){echo $id;}else{echo "";} ?>" placeholder="ປ້ອນລະຫັດໝວດເຄື່ອງ" required>
                       <div class="input-group">
-                      <input type="text" class="form-control mr-2 fs-20"  name="rank_name" placeholder="ປ້ອນຕຳແໜ່ງ" required>
+                      <input type="text" class="form-control mr-2" name="cateName" placeholder="ປ້ອນຊື່ໝວດເຄື່ອງ" required>
                       <button type="submit" name="onSubmit" class="btn-sm btn-outline-primary float-right">
                         <i class="fa fa-check-circle"> </i> ບັນທຶກ
                       </button>
                     </div>
-                  </div>
+                    </div>
                   </form>
                 </div>
               </div>
@@ -66,24 +60,30 @@ include '../../connection.php';
         <div class="col-xl-12 col-md-12 col-sm-12 ms-deletable">
           <div class="ms-card">
             <div class="ms-card-header clearfix">
-              <h6 class="ms-card-title"><i class="fa fa-tasks"></i> ເພີ່ມຂໍ້ມູນຕຳແໜ່ງ</h6>
+              <h6 class="ms-card-title">ໝວດເຄື່ອງທັງໝົດ</h6>
             </div>
             <div class="ms-card-body">
               <ul class="ms-list ms-task-block">
-                <?php
-                $sparank=mysqli_query($con,"SELECT*FROM spa_rank");
-                $i=1;
-                foreach ($sparank as $rank) {
-                  ?>
+                <?php 
+                  $x=1;
+                  $callData=$_SQL($con,"select*from spa_category");
+                  foreach ($callData as $key) {
+                 ?>
                 <li class="ms-list-item ms-to-do-task ms-deletable">
-                <strong><?php echo $i; ?></strong>&nbsp; | &nbsp;&nbsp;&nbsp;
-                 <span><?php echo $rank['rank_name'] ?></span>
+                  <label class="ms-checkbox-wrap ms-todo-complete">
+                    <?php echo $x; ?>
+                  </label> <span> <?php echo $key['cateName'] ?> </span>
+                  
                   <div class="close">
-                  <a href="update_rank.php?rank_id=<?php echo $rank['rank_id'];?>" class="mt-0"><i class="fa fa-edit"> </i> </a> &nbsp;
-                  <a href="#" onclick="_deteteRank(<?php echo $rank['rank_id'];?>)" class="mb-0"><i class="fa fa-trash"> </i></a>
-                </div>
+                    <a href="category-edit.php?id=<?php echo $key['cateId'];?>">
+                      <i class="fa fa-edit mr-2"></i>
+                    </a>
+                    <a href="#" onclick="_deletCategory(<?php echo $key['cateId'];?>)">
+                      <i class="fa fa-trash"></i>
+                    </a>
+                  </div>
                 </li>
-              <?php $i++;} ?>
+              <?php } ?>
               </ul>
             </div>
           </div>
@@ -91,35 +91,36 @@ include '../../connection.php';
       </div>
     </div>
   </div>
-
 </div>
 </div>
 </main>
+<!-- MODALS -->
+
 <!-- Quick bar -->
 <?php include ('../../components/layout/quickbar.php') ?>
 <!-- SCRIPTS -->
 <!-- Global required Scripts Start -->
 <?php include ('../../components/libary/script.php') ?>
+
 <?php
 if(isset($_POST['onSubmit'])){
-  $rank_id=$_SETSTRING($con, $_POST['rank_id']);
-  $rank_name=$_SETSTRING($con, $_POST['rank_name']);
+  $cateId=$_SETSTRING($con, $_POST['cateId']);
+  $cateName=$_SETSTRING($con, $_POST['cateName']);
 
-
-  $created=$_SQL($con,"INSERT INTO spa_rank(rank_id,rank_name)VALUES('$rank_id','$rank_name')");
+  $created=$_SQL($con,"INSERT INTO spa_category VALUES('$cateId','$cateName','')");
   if($created){
-    echo "<script> Notiflix.Report.Success('ສຳເລັດ','ການດຳເນີນງານສຳເລັດ...', 'ປິດ',function () {location='add_rank.php'})</script>";
+    echo "<script> Notiflix.Report.Success('ສຳເລັດ','ການດຳເນີນງານສຳເລັດ...', 'ປິດ',function () {location='category-list.php'})</script>";
   }else {
-    echo "<script> Notiflix.Report.Failure('ຜິດພາດ','ການດຳເນີນງານບໍ່ສຳເລັດ !', 'ປິດ',function () {location='add_rank.php'});</script>";
+    echo "<script> Notiflix.Report.Failure('ຜິດພາດ','ການດຳເນີນງານບໍ່ສຳເລັດ !', 'ປິດ',function () {location='category-list.php'});</script>";
   }
 }
 
 if(isset($_GET['del'])){
-  $_onDelete=$_SQL($con,"DELETE FROM  spa_rank WHERE rank_id='$_GET[del]'");
+  $_onDelete=$_SQL($con,"DELETE FROM  spa_category WHERE cateId='$_GET[del]'");
   if($_onDelete){
-    echo "<script> Notiflix.Report.Success('ສຳເລັດ','ການດຳເນີນງານສຳເລັດ...', 'ປິດ',function () {location='add_rank.php'})</script>";
+    echo "<script> Notiflix.Report.Success('ສຳເລັດ','ການດຳເນີນງານສຳເລັດ...', 'ປິດ',function () {location='category-list.php'})</script>";
   }else {
-    echo "<script> Notiflix.Report.Failure('ຜິດພາດ','ການດຳເນີນງານບໍ່ສຳເລັດ !', 'ປິດ',function () {location='add_rank.php'});</script>";
+    echo "<script> Notiflix.Report.Failure('ຜິດພາດ','ການດຳເນີນງານບໍ່ສຳເລັດ !', 'ປິດ',function () {location='category-list.php'});</script>";
   }
 }
 ?>
